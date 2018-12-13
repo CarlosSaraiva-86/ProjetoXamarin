@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:barcode="clr-namespace:Telerik.XamarinForms.Barcode;assembly=Telerik.XamarinForms.Barcode"
+             x:Class="BragantinaTelerikDemo.Portable.Views.QRcodeView"
+             BackgroundColor="White"
+             Title="Cervejaria Bragantina">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center">
+            <barcode:RadBarcode Grid.Row="9" Grid.ColumnSpan="3" WidthRequest="260" HeightRequest="260" 
+             HorizontalOptions="Center" VerticalOptions="Center"
+             Margin="0, 20, 0, 0"
+             Value="http://br960.teste.website/~cervej27/weiss/">
+                <barcode:RadBarcode.Symbology>
+                    <barcode:QRCode SizingMode="Stretch"/>
+                </barcode:RadBarcode.Symbology>
+            </barcode:RadBarcode>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

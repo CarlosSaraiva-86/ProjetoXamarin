@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="BragantinaTelerikDemo.Portable.Views.MenuView"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:views="clr-namespace:BragantinaTelerikDemo.Portable.Views"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            android:TabbedPage.BarItemColor="White"
+            android:TabbedPage.BarSelectedItemColor="Orange"
+            BarBackgroundColor="#282828"
+            BarTextColor="White"            
+            Title="Cervejaria Bragantina">
+
+    <!--Pages can be added as references or inline-->
+    <views:ComandaView Title="Comanda" Icon="Comanda1.png"></views:ComandaView>
+    <views:CardapioView Title="Cardápio" Icon="Cardapio1.png"></views:CardapioView>
+    <views:PerfilUsuario Title="Perfil" Icon="Perfil1.png"></views:PerfilUsuario>
+</TabbedPage>

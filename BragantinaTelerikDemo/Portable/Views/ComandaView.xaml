@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:primitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:barcode="clr-namespace:Telerik.XamarinForms.Barcode;assembly=Telerik.XamarinForms.Barcode"
+             x:Class="BragantinaTelerikDemo.Portable.Views.ComandaView">
+    <ContentPage.Content>
+        <StackLayout>
+        <Grid Margin="5,5,5,0">
+            <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <primitives:RadBorder BackgroundColor="White" Grid.Row="0" CornerRadius="6, 6, 6, 6" />
+            <Label Text="Nº Comanda: 1576" Margin="20,10,5,15" FontSize="22" TextColor="Black" Grid.Row="0" Grid.Column="0"/>
+        </Grid>
+        <ScrollView VerticalOptions="FillAndExpand" Margin="5,0,5,5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <primitives:RadBorder BackgroundColor="White" Grid.Row="1" CornerRadius="6, 6, 6, 6" />
+                <Grid Grid.Row="1" Padding="20, 10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Text="Status: " FontSize="20" VerticalTextAlignment="Center" Grid.Column="0"/>
+                    <Label Text="Ativa" FontSize="30" VerticalTextAlignment="Center" HorizontalOptions="Start" TextColor="Green" Grid.Column="1"/>
+
+
+                    <BoxView BackgroundColor="#282828" Grid.Row="1" Grid.ColumnSpan="4" HeightRequest="2" />
+
+                    <Label Text="Itens" Grid.Row="2" Grid.ColumnSpan="2" />
+                    <Label Text="Valor"  Grid.Row="2" Grid.Column="3" />
+
+                    <Label Text="(2) Red Ipa" Grid.Row="3" Grid.ColumnSpan="2" />
+                    <Label Text="R$ 24,00" Grid.Row="3" Grid.Column="3" />
+
+                    <Label Text="(3) Blonde Ale" Grid.Row="4" Grid.ColumnSpan="2" />
+                    <Label Text="R$ 21,00" Grid.Row="4" Grid.Column="3" />
+
+                    <Label Text="(1) Weis" Grid.Row="5" Grid.ColumnSpan="2" />
+                    <Label Text="R$ 10,00" Grid.Row="5" Grid.Column="3" />
+
+                    <Label Text="(1) Pizza" Grid.Row="6" Grid.ColumnSpan="2" />
+                    <Label Text="R$ 24,00" Grid.Row="6" Grid.Column="3" />
+
+                    <Button Text="Abrir comanda / Pagar" Grid.Row="10" Grid.ColumnSpan="4" VerticalOptions="End" Clicked="Button_Clicked"></Button>
+
+                    <!--
+                        <barcode:RadBarcode Grid.Row="9" Grid.ColumnSpan="3" WidthRequest="260" HeightRequest="260" HorizontalOptions="Center" VerticalOptions="Center"
+                                                                Margin="0, 20, 0, 0"
+                                                                Value="http://br960.teste.website/~cervej27/weiss/">
+                            <barcode:RadBarcode.Symbology>
+                                <barcode:QRCode SizingMode="Stretch"/>
+                            </barcode:RadBarcode.Symbology>
+                        </barcode:RadBarcode>
+                        -->
+                </Grid>
+            </Grid>
+        </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

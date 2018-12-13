@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:BragantinaTelerikDemo.Portable.Converters"
+             x:Class="BragantinaTelerikDemo.Portable.App">
+	<Application.Resources>
+
+		<!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <!--Global Styles-->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="#282828" />
+                <Setter Property="BarTextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="#282828" />
+            </Style>
+
+
+            <OnPlatform x:TypeArguments="x:String" x:Key="IconsFont">
+                <On Platform="iOS">telerikfontexamples</On>
+                <On Platform="Android">Fonts/telerikfontexamples.ttf#telerikfontexamples</On>
+            </OnPlatform>
+
+            <x:String x:Key="ExpandedIcon">&#xF107;</x:String>
+            <x:String x:Key="CollapsedIcon">&#xF105;</x:String>
+
+
+            <converters:ImageSourceConverter x:Key="ImageSourceConverter" />
+            <converters:InvertedBooleanConverter x:Key="InvertedBooleanConverter" />
+
+            <Style TargetType="Label" x:Key="IconLabelStyle">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontFamily" Value="{StaticResource IconsFont}" />
+                <Setter Property="TextColor" Value="#4A4E52" />
+                <Setter Property="Margin" Value="0, 12, 0, 0" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
