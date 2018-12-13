@@ -28,6 +28,7 @@ evolucao.fdb
 *.opensdf
 *.csproj
 *.unsuccessfulbuild
+
 ipch/
 obj/
 [Bb]in
