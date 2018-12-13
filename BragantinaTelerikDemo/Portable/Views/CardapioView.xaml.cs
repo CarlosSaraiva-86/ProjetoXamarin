@@ -11,34 +11,32 @@ using BragantinaTelerikDemo.Portable.Models;
 
 namespace BragantinaTelerikDemo.Portable.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CardapioView : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class CardapioView : ContentPage
+    {
         public CardapioViewModel ViewModel { get; set; }
 
-        public CardapioView ()
-		{
-			InitializeComponent ();
+        public CardapioView()
+        {
+            InitializeComponent();
             this.ViewModel = new CardapioViewModel();
             this.BindingContext = this.ViewModel;
         }
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
-            MessagingCenter.Subscribe<Cardapio>(this, "VeiculoSelecionado",
+            MessagingCenter.Subscribe<Cardapio>(this, "CardapioSelecionado",
                 (msg) =>
                 {
-                    ////Navigation.PushAsync(new DetalheView(msg));
+                    Navigation.PushAsync(new DetalheView(msg));
                 });
-
-            //await this.ViewModel.GetVeiculos();
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            MessagingCenter.Unsubscribe<Cardapio>(this, "VeiculoSelecionado");
+            MessagingCenter.Unsubscribe<Cardapio>(this, "CardapioSelecionado");
         }
     }
 }

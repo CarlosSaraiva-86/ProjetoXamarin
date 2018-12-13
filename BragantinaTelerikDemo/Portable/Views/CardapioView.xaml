@@ -13,92 +13,10 @@
           Margin="5,0,5,5"    >
             <Grid Grid.ColumnSpacing="0"
               Grid.RowSpacing="0">
-                <!--<Grid.RowDefinitions>
-                    <RowDefinition>
-                        <RowDefinition.Height>
-                            <OnPlatform x:TypeArguments="GridLength">
-                                <On Platform="iOS,Android">40</On>
-                            </OnPlatform>
-                        </RowDefinition.Height>
-                    </RowDefinition>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>-->
-                <!--<Grid Grid.ColumnSpacing="0"
-                  Grid.RowSpacing="0"
-                  BackgroundColor="#808080">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="16"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="16"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Column="1"
-                       Text="Cardápio"
-                       TextColor="#FFFFFF"
-                       FontSize="17"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Center"/>
-                    <Grid Grid.Column="2"
-                      HorizontalOptions="End">
-                        --><!--<telerikDataControls:RadListView ItemsSource="{Binding LayoutOptions}"
-                                                     SelectedItem="{Binding SelectedLayout, Mode=TwoWay}"
-                                                     AutomationId="ChangeLayoutListView">
-                            <telerikDataControls:RadListView.WidthRequest>
-                                <OnPlatform x:TypeArguments="x:Double">
-                                    <On Platform="iOS,Android">104</On>
-                                </OnPlatform>
-                            </telerikDataControls:RadListView.WidthRequest>
-                            <telerikDataControls:RadListView.LayoutDefinition>
-                                <telerikListView:ListViewLinearLayout Orientation="Horizontal">
-                                    <telerikListView:ListViewLinearLayout.HorizontalItemSpacing>
-                                        <OnPlatform x:TypeArguments="x:Double">
-                                            <On Platform="iOS,Android">8</On>
-                                        </OnPlatform>
-                                    </telerikListView:ListViewLinearLayout.HorizontalItemSpacing>
-                                    <telerikListView:ListViewLinearLayout.ItemLength>
-                                        <OnPlatform x:TypeArguments="x:Double">
-                                            <On Platform="iOS,Android">48</On>
-                                        </OnPlatform>
-                                    </telerikListView:ListViewLinearLayout.ItemLength>
-                                </telerikListView:ListViewLinearLayout>
-                            </telerikDataControls:RadListView.LayoutDefinition>
-                            <telerikDataControls:RadListView.ItemStyle>
-                                <telerikListView:ListViewItemStyle BackgroundColor="Transparent"
-                                                               BorderWidth="0"/>
-                            </telerikDataControls:RadListView.ItemStyle>
-                            <telerikDataControls:RadListView.SelectedItemStyle>
-                                <telerikListView:ListViewItemStyle BackgroundColor="Transparent"
-                                                               BorderWidth="3"
-                                                               BorderLocation="Bottom"
-                                                               BorderColor="#FFE2D9"/>
-                            </telerikDataControls:RadListView.SelectedItemStyle>
-                            <telerikDataControls:RadListView.PressedItemStyle>
-                                <telerikListView:ListViewItemStyle BackgroundColor="Transparent"
-                                                               BorderWidth="0"/>
-                            </telerikDataControls:RadListView.PressedItemStyle>
-                            <telerikDataControls:RadListView.ItemTemplate>
-                                <DataTemplate>
-                                    <telerikListView:ListViewTemplateCell>
-                                        <telerikListView:ListViewTemplateCell.View>
-                                            <Grid Grid.ColumnSpacing="0"
-                                              Grid.RowSpacing="0">
-                                                <Grid.Padding>
-                                                    <OnPlatform x:TypeArguments="Thickness">
-                                                        <On Platform="iOS,Android">12</On>
-                                                    </OnPlatform>
-                                                </Grid.Padding>
-                                                <ffimageloading:CachedImage Source="{Binding Image, Converter={StaticResource ImageSourceConverter}}" />
-                                            </Grid>
-                                        </telerikListView:ListViewTemplateCell.View>
-                                    </telerikListView:ListViewTemplateCell>
-                                </DataTemplate>
-                            </telerikDataControls:RadListView.ItemTemplate>
-                        </telerikDataControls:RadListView>--><!--
-                    </Grid>
-                </Grid>-->
                 <telerikDataControls:RadListView Grid.Row="0"
                                              ItemsSource="{Binding Items}"
-                                             WidthRequest="325">
+                                             WidthRequest="325"
+                                             SelectedItem="{Binding CardapioSelecionado, Mode=TwoWay}">
                     <telerikDataControls:RadListView.Triggers>
                         <DataTrigger TargetType="{x:Type telerikDataControls:RadListView}"
                                  Binding="{Binding SelectedLayout.Type}"

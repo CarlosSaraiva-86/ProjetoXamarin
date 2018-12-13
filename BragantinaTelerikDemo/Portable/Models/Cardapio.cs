@@ -9,6 +9,11 @@ namespace BragantinaTelerikDemo.Portable.Models
         public string Image { get; private set; }
         public string Title { get; private set; }
         public string Group { get; private set; }
+        public string Titulo { get; set; }
+        public string Descricao { get; set; }
+        public string Alcool { get; set; }
+        public string Tonalidade { get; set; }
+        public string Amargor { get; set; }
 
         public Cardapio(string image, string title, string group)
         {

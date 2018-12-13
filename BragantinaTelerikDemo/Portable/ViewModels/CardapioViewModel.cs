@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using BragantinaTelerikDemo.Portable.Models;
+using Xamarin.Forms;
 
 namespace BragantinaTelerikDemo.Portable.ViewModels
 {
@@ -55,6 +56,24 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             };
             //this.SelectedLayout = this.LayoutOptions[0];
             this.SelectedLayout = new LayoutOption(LayoutType.Grid, "") ;
+        }
+
+        Cardapio cardapioSelecionado;
+
+        public Cardapio CardapioSelecionado
+        {
+            get
+            {
+                return cardapioSelecionado;
+            }
+            set
+            {
+                cardapioSelecionado = value;
+                if (value != null)
+                {
+                    MessagingCenter.Send(cardapioSelecionado, "CardapioSelecionado");
+                }
+            }
         }
     }
 }
