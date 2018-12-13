@@ -1,12 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
              x:Class="BragantinaTelerikDemo.Portable.Views.DetalheView"
-             Title="{Binding Cardapio.Title}">
+             Title="{Binding Produto.Title}"
+             BackgroundColor="White">
     <ContentPage.Content>
-        <StackLayout>
-            <ffimageloading:CachedImage Source="{Binding Image}"/>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+            <Image Source="{Binding Produto.Image}"/>
+                <StackLayout>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="15"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                            <ColumnDefinition Width="40"></ColumnDefinition>
+                            <ColumnDefinition Width="75"></ColumnDefinition>
+                            <ColumnDefinition Width="40"></ColumnDefinition>
+                            <ColumnDefinition Width="65"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="álcool" Grid.Column="1" Grid.Row="0"></Label>
+                        <Label Text="5%" Grid.Column="1" Grid.Row="1" FontAttributes="Bold"></Label>
+                        <Label Text="tonalidade" Grid.Column="3" Grid.Row="0"></Label>
+                        <Label Text="08 EBC" Grid.Column="3" Grid.Row="1" FontAttributes="Bold"></Label>
+                        <Label Text="amargor" Grid.Column="5" Grid.Row="0"></Label>
+                        <Label Text="17 IBU" Grid.Column="5" Grid.Row="1" FontAttributes="Bold"></Label>
+                        <Image Source="{Binding Produto.Alcool}" Grid.RowSpan="2" Grid.Column="0"></Image>
+                        <Image Source="{Binding Produto.Tonalidade}" Grid.RowSpan="2" Grid.Column="2"></Image>
+                        <Image Source="{Binding Produto.Amargor}" Grid.RowSpan="2" Grid.Column="4"></Image>
+                    </Grid>
+                    <Label Text="{Binding Produto.Titulo}" HorizontalTextAlignment="Center" 
+                           FontSize="Large" FontAttributes="Bold"></Label>
+                    <Label Text="{Binding Produto.Descricao}" HorizontalTextAlignment="Center" 
+                           FontSize="Medium"></Label>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

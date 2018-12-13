@@ -14,13 +14,13 @@ namespace BragantinaTelerikDemo.Portable.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class DetalheView : ContentPage
 	{
-        public Cardapio Cardapio { get; set; }
+        public Produto Produto { get; set; }
 
-        public DetalheView(Cardapio cardapio)
+        public DetalheView(Produto produto)
         {
             InitializeComponent();
-            this.Cardapio = cardapio;
-            this.BindingContext = new DetalheViewModel(cardapio);
+            this.Produto = produto;
+            this.BindingContext = new DetalheViewModel(produto);
         }
 	}
 }

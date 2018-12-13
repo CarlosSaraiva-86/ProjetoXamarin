@@ -16,7 +16,7 @@
                 <telerikDataControls:RadListView Grid.Row="0"
                                              ItemsSource="{Binding Items}"
                                              WidthRequest="325"
-                                             SelectedItem="{Binding CardapioSelecionado, Mode=TwoWay}">
+                                             SelectedItem="{Binding ProdutoSelecionado, Mode=TwoWay}">
                     <telerikDataControls:RadListView.Triggers>
                         <DataTrigger TargetType="{x:Type telerikDataControls:RadListView}"
                                  Binding="{Binding SelectedLayout.Type}"

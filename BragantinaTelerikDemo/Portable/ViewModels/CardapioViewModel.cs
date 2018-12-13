@@ -27,27 +27,27 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             }
         }
 
-        public ObservableCollection<Cardapio> Items { get; private set; }
+        public ObservableCollection<Produto> Items { get; private set; }
         public ObservableCollection<LayoutOption> LayoutOptions { get; private set; }
 
         public CardapioViewModel()
         {
-            this.Items = new ObservableCollection<Cardapio>()
+            this.Items = new ObservableCollection<Produto>()
             {
-                new Cardapio("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/nossabreja_03.jpg", "Brown Ale",  "CERVEJAS"),
-                new Cardapio("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/nossabreja_05.jpg", "Prainha", "CERVEJAS"),
-                new Cardapio("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/breja_07.png", "Milk Robust Porter",  "CERVEJAS"),
-                new Cardapio("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/nossabreja_12.jpg", "Weiss Ipa",  "CERVEJAS"),
-                new Cardapio("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/nossabreja_14.jpg", "Session Ipa",  "CERVEJAS"),
-                new Cardapio("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/nossabreja_16.jpg", "Joker Ipa",  "CERVEJAS"),
-                new Cardapio("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/nossabreja_20.jpg", "Red Ipa",  "CERVEJAS"),
-                new Cardapio("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/nossabreja_21.jpg", "Witbier",  "CERVEJAS"),
-                new Cardapio("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/nossabreja_23.jpg", "Blond Ale",  "CERVEJAS"),
-                new Cardapio("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/8.jpg", "Batata Rustica",  "PORÇÕES"),
-                new Cardapio("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/2.jpg", "Liguiça Autentica",  "PORÇÕES"),
-                new Cardapio("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/4.jpg", "Pizza",  "PORÇÕES"),
-                new Cardapio("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/5.jpg", "Frango",  "PORÇÕES"),
-                new Cardapio("https://http2.mlstatic.com/coca-cola-original-350ml-D_NQ_NP_965923-MLB28675051466_112018-O.webp", "Coca Cola",  "REFRIGERANTES"),
+                new Cerveja("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/nossabreja_03.jpg", "Brown Ale",  "CERVEJAS"),
+                new Cerveja("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/nossabreja_05.jpg", "Prainha", "CERVEJAS"),
+                new Cerveja("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/breja_07.png", "Milk Robust Porter",  "CERVEJAS"),
+                new Cerveja("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/nossabreja_12.jpg", "Weiss Ipa",  "CERVEJAS"),
+                new Cerveja("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/nossabreja_14.jpg", "Session Ipa",  "CERVEJAS"),
+                new Cerveja("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/nossabreja_16.jpg", "Joker Ipa",  "CERVEJAS"),
+                new Cerveja("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/nossabreja_20.jpg", "Red Ipa",  "CERVEJAS"),
+                new Cerveja("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/nossabreja_21.jpg", "Witbier",  "CERVEJAS"),
+                new Cerveja("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/nossabreja_23.jpg", "Blond Ale",  "CERVEJAS"),
+                new Produto("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/8.jpg", "Batata Rustica",  "PORÇÕES"),
+                new Produto("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/2.jpg", "Liguiça Autentica",  "PORÇÕES"),
+                new Produto("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/4.jpg", "Pizza",  "PORÇÕES"),
+                new Produto("http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/5.jpg", "Frango",  "PORÇÕES"),
+                new Produto("https://http2.mlstatic.com/coca-cola-original-350ml-D_NQ_NP_965923-MLB28675051466_112018-O.webp", "Coca Cola",  "REFRIGERANTES"),
             };
             this.LayoutOptions = new ObservableCollection<LayoutOption>()
             {
@@ -58,20 +58,20 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             this.SelectedLayout = new LayoutOption(LayoutType.Grid, "") ;
         }
 
-        Cardapio cardapioSelecionado;
+        Produto produtoSelecionado;
 
-        public Cardapio CardapioSelecionado
+        public Produto ProdutoSelecionado
         {
             get
             {
-                return cardapioSelecionado;
+                return produtoSelecionado;
             }
             set
             {
-                cardapioSelecionado = value;
+                produtoSelecionado = value;
                 if (value != null)
                 {
-                    MessagingCenter.Send(cardapioSelecionado, "CardapioSelecionado");
+                    MessagingCenter.Send(produtoSelecionado, "ProdutoSelecionado");
                 }
             }
         }

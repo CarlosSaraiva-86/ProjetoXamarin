@@ -26,7 +26,7 @@ namespace BragantinaTelerikDemo.Portable.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            MessagingCenter.Subscribe<Cardapio>(this, "CardapioSelecionado",
+            MessagingCenter.Subscribe<Produto>(this, "ProdutoSelecionado",
                 (msg) =>
                 {
                     Navigation.PushAsync(new DetalheView(msg));
@@ -36,7 +36,7 @@ namespace BragantinaTelerikDemo.Portable.Views
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            MessagingCenter.Unsubscribe<Cardapio>(this, "CardapioSelecionado");
+            MessagingCenter.Unsubscribe<Produto>(this, "ProdutoSelecionado");
         }
     }
 }

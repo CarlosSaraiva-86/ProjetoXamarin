@@ -7,11 +7,11 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
 {
     public class DetalheViewModel : BaseViewModel
     {
-        public Cardapio Cardapio { get; set; }
+        public Produto Produto { get; set; }
 
-        public DetalheViewModel(Cardapio cardapio)
+        public DetalheViewModel(Produto produto)
         {
-            this.Cardapio = cardapio;
+            this.Produto = produto;
         }
     }
 }
