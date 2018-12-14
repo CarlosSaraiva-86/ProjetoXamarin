@@ -27,6 +27,8 @@ evolucao.fdb
 *.sdf
 *.opensdf
 *.unsuccessfulbuild
+*.dtbcache
+*.ide-shm
 
 ipch/
 obj/
