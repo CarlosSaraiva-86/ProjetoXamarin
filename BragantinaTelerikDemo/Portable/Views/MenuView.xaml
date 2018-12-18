@@ -6,7 +6,7 @@
             xmlns:views="clr-namespace:BragantinaTelerikDemo.Portable.Views"
             android:TabbedPage.ToolbarPlacement="Bottom"
             android:TabbedPage.BarItemColor="White"
-            android:TabbedPage.BarSelectedItemColor="Orange"
+            android:TabbedPage.BarSelectedItemColor="#e77324"
             BarBackgroundColor="#282828"
             BarTextColor="White"            
             Title="Cervejaria Bragantina">

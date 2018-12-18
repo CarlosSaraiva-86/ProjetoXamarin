@@ -206,5 +206,8 @@
   <ItemGroup>
     <BundleResource Include="Resources\Perfil2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Border_User.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
