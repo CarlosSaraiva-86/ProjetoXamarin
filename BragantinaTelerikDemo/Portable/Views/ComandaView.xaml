@@ -55,18 +55,11 @@
                     <Label Text="(1) Pizza" Grid.Row="6" Grid.ColumnSpan="2" />
                     <Label Text="R$ 24,00" Grid.Row="6" Grid.Column="3" />
 
-                    <Button Text="Abrir comanda / Pagar" Grid.Row="10" Grid.ColumnSpan="4" VerticalOptions="End" Clicked="Button_Clicked"></Button>
-
-                    <!--
-                        <barcode:RadBarcode Grid.Row="9" Grid.ColumnSpan="3" WidthRequest="260" HeightRequest="260" HorizontalOptions="Center" VerticalOptions="Center"
-                                                                Margin="0, 20, 0, 0"
-                                                                Value="http://br960.teste.website/~cervej27/weiss/">
-                            <barcode:RadBarcode.Symbology>
-                                <barcode:QRCode SizingMode="Stretch"/>
-                            </barcode:RadBarcode.Symbology>
-                        </barcode:RadBarcode>
-                        -->
-                </Grid>
+                        <StackLayout Grid.Row="10" Grid.ColumnSpan="4" VerticalOptions="End">
+                            <Button Text="Abrir comanda / Lançar Itens / Saida" Clicked="Button_Clicked"></Button>
+                            <Button Text="Pagar Cartão" Clicked="Button_Clicked_1"></Button>
+                        </StackLayout>
+                    </Grid>
             </Grid>
         </ScrollView>
         </StackLayout>

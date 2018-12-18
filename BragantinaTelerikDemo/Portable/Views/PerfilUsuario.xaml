@@ -39,20 +39,77 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <StackLayout Grid.Row="0" BackgroundColor="#e77324">
+                <StackLayout Grid.Row="0" BackgroundColor="#e77324" Margin="5,0,5,0">
 
                     <StackLayout Margin="0, 30, 0, 20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                         <telerikPrimitives:RadBorder Style="{StaticResource AvatarBorderStyle}">
                             <Image Source="{Binding Avatar, Converter={StaticResource ImageSourceConverter}}" />
                         </telerikPrimitives:RadBorder>
 
-                        <Label Text="Dwayne The Rock" Style="{StaticResource UserNameLabelStyle}" />
-                        <Label Text="(11) 9 9999-9999" Style="{StaticResource UserJobTitleLabelStyle}" />
+                        <Label Text="Antonio Gomes" Style="{StaticResource UserNameLabelStyle}" />
+                        <Label Text="(11) 9 9833-4295" Style="{StaticResource UserJobTitleLabelStyle}" />
                     </StackLayout>
                 </StackLayout>
+
+                <ScrollView BackgroundColor="White" VerticalOptions="FillAndExpand" Margin="5,-10,5,5" Grid.Row="2" Grid.RowSpan="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <!--<telerikPrimitives:RadBorder BackgroundColor="White" Grid.Row="1" CornerRadius="6, 6, 6, 6" />-->
+                        <Grid Grid.Row="1" Padding="20, 10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Pedidos" FontSize="20" VerticalTextAlignment="Center" Grid.Column="0"/>
+
+                            <BoxView BackgroundColor="#282828" Grid.Row="1" Grid.ColumnSpan="4" HeightRequest="2" />
+
+                            <Label Text="Data" Grid.Row="2" Grid.Column="0" />
+                            <Label Text="Comanda"  Grid.Row="2" Grid.Column="1" />
+                            <Label Text="Valor"  Grid.Row="2" Grid.Column="2" />
+                            <Label Text="Status"  Grid.Row="2" Grid.Column="3" />
+
+                            <Label Text="22/12/2018" Grid.Row="3" Grid.Column="0"/>
+                            <Label Text="157" Grid.Row="3" Grid.Column="1" />
+                            <Label Text="R$ 1275,30" Grid.Row="3" Grid.Column="2" />
+                            <Label Text="Aberto" Grid.Row="3" Grid.Column="3" />
+
+                            <Label Text="21/12/2018" Grid.Row="4" Grid.Column="0"/>
+                            <Label Text="214" Grid.Row="4" Grid.Column="1" />
+                            <Label Text="R$ 350,30" Grid.Row="4" Grid.Column="2" />
+                            <Label Text="Pago" Grid.Row="4" Grid.Column="3" />
+
+                            <Label Text="20/12/2018" Grid.Row="5" Grid.Column="0"/>
+                            <Label Text="88" Grid.Row="5" Grid.Column="1" />
+                            <Label Text="R$ 198,30" Grid.Row="5" Grid.Column="2" />
+                            <Label Text="Pago" Grid.Row="5" Grid.Column="3" />
+
+                            <Label Text="7/12/2018" Grid.Row="6" Grid.Column="0"/>
+                            <Label Text="13" Grid.Row="6" Grid.Column="1" />
+                            <Label Text="R$ 36,30" Grid.Row="6" Grid.Column="2" />
+                            <Label Text="Transferido" Grid.Row="6" Grid.Column="3" />
+
+                            <Label Text="17/11/2018" Grid.Row="7" Grid.Column="0"/>
+                            <Label Text="142" Grid.Row="7" Grid.Column="1" />
+                            <Label Text="R$ 108,30" Grid.Row="7" Grid.Column="2" />
+                            <Label Text="Pago" Grid.Row="7" Grid.Column="3" />
+                        </Grid>
+                    </Grid>
+                </ScrollView>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

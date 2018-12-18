@@ -21,5 +21,10 @@ namespace BragantinaTelerikDemo.Portable.Views
         {
             Navigation.PushAsync(new QRcodeView());
         }
+
+        private void Button_Clicked_1(object sender, EventArgs e)
+        {
+            DisplayAlert("Pagamento com Cartão", "Integração Getnet", "OK");
+        }
     }
 }

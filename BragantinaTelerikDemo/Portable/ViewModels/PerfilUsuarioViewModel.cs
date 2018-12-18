@@ -9,7 +9,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         public PerfilUsuarioViewModel()
         {
             //this.Avatar = "Border_User.png";
-            this.Avatar = "https://instagram.fbjp1-1.fna.fbcdn.net/vp/39613770b926f44a56c11558f656ada2/5CD749FC/t51.2885-19/11850309_1674349799447611_206178162_a.jpg?_nc_ht=instagram.fbjp1-1.fna.fbcdn.net";
+            this.Avatar = "https://scontent.fbjp1-1.fna.fbcdn.net/v/t1.0-9/33923600_1395086363925833_547282230553083904_n.jpg?_nc_cat=111&_nc_ht=scontent.fbjp1-1.fna&oh=e812948c16474113a5d63428adaa65eb&oe=5CA7269C";
             //this.Person1Avatar = "Border_Person_1.png";
             //this.Person2Avatar = "Border_Person_2.png";
             //this.Person3Avatar = "Border_Person_3.png";
