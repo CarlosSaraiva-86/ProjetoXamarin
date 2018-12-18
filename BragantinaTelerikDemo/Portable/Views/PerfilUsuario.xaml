@@ -40,8 +40,8 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-
-                <StackLayout Grid.Row="0" BackgroundColor="#e77324" Margin="5,0,5,0">
+                <!--BackgroundColor="#e77324"-->
+                <StackLayout Grid.Row="0"  Margin="5,0,5,0">
 
                     <StackLayout Margin="0, 30, 0, 20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                         <telerikPrimitives:RadBorder Style="{StaticResource AvatarBorderStyle}">
@@ -53,13 +53,13 @@
                     </StackLayout>
                 </StackLayout>
 
-                <ScrollView BackgroundColor="White" VerticalOptions="FillAndExpand" Margin="5,-10,5,5" Grid.Row="2" Grid.RowSpan="2">
+                <!--<ScrollView BackgroundColor="White" VerticalOptions="FillAndExpand" Margin="5,-10,5,5" Grid.Row="2" Grid.RowSpan="2">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <!--<telerikPrimitives:RadBorder BackgroundColor="White" Grid.Row="1" CornerRadius="6, 6, 6, 6" />-->
+                        --><!--<telerikPrimitives:RadBorder BackgroundColor="White" Grid.Row="1" CornerRadius="6, 6, 6, 6" />--><!--
                         <Grid Grid.Row="1" Padding="20, 10">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -107,6 +107,64 @@
                             <Label Text="142" Grid.Row="7" Grid.Column="1" />
                             <Label Text="R$ 108,30" Grid.Row="7" Grid.Column="2" />
                             <Label Text="Pago" Grid.Row="7" Grid.Column="3" />
+                        </Grid>
+                    </Grid>
+                </ScrollView>-->
+                
+                <ScrollView VerticalOptions="FillAndExpand" Margin="5,-10,5,5" Grid.Row="2" Grid.RowSpan="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        
+                        <Grid Grid.Row="1" Padding="20, 10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Pedidos" FontSize="20" VerticalTextAlignment="Center" Grid.Column="0" TextColor="White"/>
+
+                            <BoxView BackgroundColor="White" Grid.Row="1" Grid.ColumnSpan="4" HeightRequest="2" />
+
+                            <Label TextColor="White" Text="Data" Grid.Row="2" Grid.Column="0" />
+                            <Label TextColor="White" Text="Comanda"  Grid.Row="2" Grid.Column="1" />
+                            <Label TextColor="White" Text="Valor"  Grid.Row="2" Grid.Column="2" />
+                            <Label TextColor="White" Text="Status"  Grid.Row="2" Grid.Column="3" />
+
+                            <Label TextColor="White" Text="22/12/2018" Grid.Row="3" Grid.Column="0"/>
+                            <Label TextColor="White" Text="157" Grid.Row="3" Grid.Column="1" />
+                            <Label TextColor="White" Text="R$ 1275,30" Grid.Row="3" Grid.Column="2" />
+                            <Label TextColor="White" Text="Aberto" Grid.Row="3" Grid.Column="3" />
+
+                            <Label TextColor="White" Text="21/12/2018" Grid.Row="4" Grid.Column="0"/>
+                            <Label TextColor="White" Text="214" Grid.Row="4" Grid.Column="1" />
+                            <Label TextColor="White" Text="R$ 350,30" Grid.Row="4" Grid.Column="2" />
+                            <Label TextColor="White" Text="Pago" Grid.Row="4" Grid.Column="3" />
+
+                            <Label TextColor="White" Text="20/12/2018" Grid.Row="5" Grid.Column="0"/>
+                            <Label TextColor="White" Text="88" Grid.Row="5" Grid.Column="1" />
+                            <Label TextColor="White" Text="R$ 198,30" Grid.Row="5" Grid.Column="2" />
+                            <Label TextColor="White" Text="Pago" Grid.Row="5" Grid.Column="3" />
+
+                            <Label TextColor="White" Text="7/12/2018" Grid.Row="6" Grid.Column="0"/>
+                            <Label TextColor="White" Text="13" Grid.Row="6" Grid.Column="1" />
+                            <Label TextColor="White" Text="R$ 36,30" Grid.Row="6" Grid.Column="2" />
+                            <Label TextColor="White" Text="Transferido" Grid.Row="6" Grid.Column="3" />
+
+                            <Label TextColor="White" Text="17/11/2018" Grid.Row="7" Grid.Column="0"/>
+                            <Label TextColor="White" Text="142" Grid.Row="7" Grid.Column="1" />
+                            <Label TextColor="White" Text="R$ 108,30" Grid.Row="7" Grid.Column="2" />
+                            <Label TextColor="White" Text="Pago" Grid.Row="7" Grid.Column="3" />
                         </Grid>
                     </Grid>
                 </ScrollView>
