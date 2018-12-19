@@ -1,15 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:telerikNumericInput="clr-namespace:Telerik.XamarinForms.Input.NumericInput;assembly=Telerik.XamarinForms.Input"
              x:Class="BragantinaTelerikDemo.Portable.Views.DetalheView"
              Title="{Binding Produto.Title}"
              BackgroundColor="White">
+
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView Margin="0,10,0,0">
             <StackLayout>
-            <Image Source="{Binding Produto.Image}"/>
+                <Image Source="{Binding Produto.Image}"/>
                 <StackLayout>
-                    <Grid>
+                    <Grid IsVisible="{Binding Produto.Info}" HorizontalOptions="Center">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="15"></RowDefinition>
                             <RowDefinition Height="30"></RowDefinition>
@@ -37,6 +40,24 @@
                     <Label Text="{Binding Produto.Descricao}" HorizontalTextAlignment="Center" 
                            FontSize="Medium"></Label>
                 </StackLayout>
+
+                <StackLayout Margin="0,10,0,0">
+                    <Grid IsVisible="{Binding Produto.Cozinha}" HorizontalOptions="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Qtde:" TextColor="Black" FontAttributes="Bold" FontSize="Large" Grid.Column="0"/>
+                        <telerikInput:RadNumericInput x:Name="numericInput" Minimum="0" Maximum="5" Grid.Column="1"/>
+                        <Button Text="Pedir"  Grid.Column="2"></Button>
+                    </Grid>
+                </StackLayout>
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

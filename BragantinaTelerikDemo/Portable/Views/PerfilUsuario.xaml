@@ -118,7 +118,7 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         
-                        <Grid Grid.Row="1" Padding="20, 10">
+                        <Grid Grid.Row="1" Padding="10, 5">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />

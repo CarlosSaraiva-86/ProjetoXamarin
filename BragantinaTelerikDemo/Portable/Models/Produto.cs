@@ -11,6 +11,8 @@ namespace BragantinaTelerikDemo.Portable.Models
         public string Group { get; private set; }
         public string Titulo { get; set; }
         public string Descricao { get; set; }
+        public bool Info { get; set; }
+        public bool Cozinha { get; set; }
        
 
         public Produto(string image, string title, string group)
@@ -20,6 +22,10 @@ namespace BragantinaTelerikDemo.Portable.Models
             this.Group = group;            
             this.Titulo = "The Real Ale!";
             this.Descricao = "Refrescante e saborosa, com perfil maltado que remete ao pão combinado com um sutil e suave amargor do nobre lúpulo Saaz.";
+            if (group == "PORÇÕES")
+            {
+                Cozinha = true;
+            }
         }
     }
 }

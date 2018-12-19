@@ -15,6 +15,7 @@ namespace BragantinaTelerikDemo.Portable.Models
             this.Alcool = "http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/icone-breja_03.jpg";
             this.Tonalidade = "http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/icone-breja_05.jpg";
             this.Amargor = "http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/icone-breja_07.png";
+            base.Info = true;
         }
     }
 }
