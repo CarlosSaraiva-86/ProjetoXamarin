@@ -13,7 +13,6 @@ namespace BragantinaTelerikDemo.Portable.Models
         public string Descricao { get; set; }
         public bool Info { get; set; }
         public bool Cozinha { get; set; }
-       
 
         public Produto(string image, string title, string group)
         {

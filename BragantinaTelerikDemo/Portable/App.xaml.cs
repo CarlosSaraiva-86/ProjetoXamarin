@@ -13,6 +13,7 @@ namespace BragantinaTelerikDemo.Portable
         {
             InitializeComponent();
 
+            //MainPage = new NavigationPage(new MenuView());           
             MainPage = new NavigationPage(new MenuView());
         }
 
