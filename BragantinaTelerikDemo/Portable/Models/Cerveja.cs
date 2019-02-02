@@ -9,8 +9,12 @@ namespace BragantinaTelerikDemo.Portable.Models
         public string Alcool { get; set; }
         public string Tonalidade { get; set; }
         public string Amargor { get; set; }
+        public int ImgAlcool { get; set; }
+        public int ImgTonalidade { get; set; }
+        public int ImgAmargor { get; set; }
 
-        public Cerveja(string image, string title, string group) : base(image, title, group)
+
+        public Cerveja(int cod, string image, string title, string group) : base(cod, image, title, group)
         {
             this.Alcool = "http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/icone-breja_03.jpg";
             this.Tonalidade = "http://br960.teste.website/~cervej27/wp-content/uploads/2018/11/icone-breja_05.jpg";
