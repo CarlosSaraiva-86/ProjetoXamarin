@@ -20,7 +20,7 @@ namespace BragantinaTelerikDemo.Portable.Models
             this.Cod = cod;
             this.Image = image;
             this.Title = title;
-            this.Group = group;            
+            this.Group = group;
             this.Titulo = "The Real Ale!";
             this.Descricao = "Refrescante e saborosa, com perfil maltado que remete ao pão combinado com um sutil e suave amargor do nobre lúpulo Saaz.";
             if (group == "PORÇÕES")

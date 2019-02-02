@@ -4,7 +4,7 @@
              xmlns:barcode="clr-namespace:Telerik.XamarinForms.Barcode;assembly=Telerik.XamarinForms.Barcode"
              x:Class="BragantinaTelerikDemo.Portable.Views.QRcodeView"
              BackgroundColor="White"
-             Title="Cervejaria Bragantina">
+             Title="{Binding Titulo}">
     <ContentPage.Content>
         <StackLayout BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center">
             <barcode:RadBarcode Grid.Row="9" Grid.ColumnSpan="3" WidthRequest="260" HeightRequest="260" 

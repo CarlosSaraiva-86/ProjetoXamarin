@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BragantinaTelerikDemo.Portable.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,10 @@ namespace BragantinaTelerikDemo.Portable.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class QRcodeView : ContentPage
 	{
-		public QRcodeView ()
+        public QRcodeView (string titulo)
 		{
 			InitializeComponent ();
+            this.BindingContext = new QRCodeViewModel(titulo);
 		}
 	}
 }
