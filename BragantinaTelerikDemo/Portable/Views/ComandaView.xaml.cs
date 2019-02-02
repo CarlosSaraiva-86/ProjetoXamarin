@@ -41,7 +41,7 @@ namespace BragantinaTelerikDemo.Portable.Views
                 vm.StatusComanda = "Pago";
                 vm.TextoBotao = "CHECKOUT";
                 vm.NumeroComanda = "";
-                DisplayAlert("Pagamento", "", "ok");
+                Navigation.PushAsync(new PagamentoView());
             }
             else
             {

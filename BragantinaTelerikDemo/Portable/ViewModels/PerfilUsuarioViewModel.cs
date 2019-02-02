@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace BragantinaTelerikDemo.Portable.ViewModels
 {
@@ -20,12 +22,22 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
 
         public string Avatar { get; set; }
 
+        public ICommand ClickCommand => new Command<string>((url) =>
+        {
+            Device.OpenUri(new System.Uri(url));
+        });
+
+        public ICommand ClickCommand1 => new Command<string>((url) =>
+        {
+            Device.OpenUri(new System.Uri(url));
+        });
+
         //public string Person1Avatar { get; set; }
         //public string Person2Avatar { get; set; }
         //public string Person3Avatar { get; set; }
         //public string Person4Avatar { get; set; }
 
-            
+
     }
 
     //public class Comment
