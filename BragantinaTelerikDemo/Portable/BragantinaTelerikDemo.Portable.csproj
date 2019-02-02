@@ -85,6 +85,9 @@
       <EmbeddedResource Update="Views\QRcodeView.xaml">
         <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       </EmbeddedResource>
+      <EmbeddedResource Update="Views\Styles.xaml">
+        <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
       <PackageReference Update="SkiaSharp.Views.Forms" Version="1.68.0" />

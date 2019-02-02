@@ -2,6 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BragantinaTelerikDemo.Portable.Views.LoginView">
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+    
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" Margin="64">
             <Image Source="login.png"></Image>
@@ -10,11 +18,16 @@
             <Button Text="Entrar" Command="{Binding EntrarCommand}"/>
             <Button Text="Entrar Facebook" Command="{Binding EntrarFBCommand}"/>
 
-            <Label Text="Cadastrar" HorizontalOptions="Start" Margin="0,0,0,25">
+            <!--<Label Text="Don't have an account?"
+                   Style="{StaticResource NormalLabelStyle}"/>
+            <Button Text="Cadastrar" Command="{Binding CadastrarCommand}"
+                    Style="{StaticResource SecondaryActionButtonStyle}"/>-->
+            
+            <!--<Label Text="Cadastrar" HorizontalOptions="Start" Margin="0,0,0,25">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding TestCommand}" />
                 </Label.GestureRecognizers>
-            </Label>
+            </Label>-->
             
         </StackLayout>
     </ContentPage.Content>
