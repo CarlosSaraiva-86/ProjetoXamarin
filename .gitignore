@@ -52,6 +52,8 @@ _ReSharper*/
 #Subversion files
 .svn
 
+storage.ide
+storage.ide-wal
 Evolucao.vshost
 Evolucao.vshost.exe
 
