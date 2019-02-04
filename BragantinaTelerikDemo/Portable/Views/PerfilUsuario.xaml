@@ -42,7 +42,7 @@
                 </Grid.RowDefinitions>
                 <!--BackgroundColor="#e77324"-->
                 <StackLayout Grid.Row="0"  Margin="5,0,5,0">
-                    <StackLayout Margin="0, 30, 0, 20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <StackLayout Margin="0, 10, 0, 20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                         <telerikPrimitives:RadBorder Style="{StaticResource AvatarBorderStyle}">
                             <Image Source="{Binding Avatar, Converter={StaticResource ImageSourceConverter}}" />
                         </telerikPrimitives:RadBorder>
@@ -50,7 +50,7 @@
                         <Label Text="(11) 9 9833-4295" Style="{StaticResource UserJobTitleLabelStyle}" />
                     </StackLayout>
                 </StackLayout>
-                <ScrollView VerticalOptions="FillAndExpand" Margin="5,-10,5,5" Grid.Row="2" Grid.RowSpan="2">
+                <ScrollView VerticalOptions="FillAndExpand" Margin="5,-10,5,5" Grid.Row="2" Grid.RowSpan="2" BackgroundColor="#FFFFFF">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -73,13 +73,19 @@
 
                             <!--<Label Text="Pedidos" FontSize="20" VerticalTextAlignment="Center" Grid.Column="0" TextColor="White"/>-->
 
-                            <BoxView BackgroundColor="White" Grid.Row="1" Grid.ColumnSpan="4" HeightRequest="2" />
+                            <!--<BoxView BackgroundColor="White" Grid.Row="1" Grid.ColumnSpan="4" HeightRequest="2" />-->
 
-                            <Label TextColor="White" Grid.ColumnSpan="4"  Grid.Row="2" Grid.Column="0">
+                            <Image Source="{Binding Premio}" WidthRequest="150" HeightRequest="150"
+                                   Grid.ColumnSpan="4" Grid.Row="1" VerticalOptions="Center"></Image>
+                            <Button Text="Bonus +" TextColor="#e77324" FontAttributes="Bold" BackgroundColor="Transparent" 
+                                    Grid.ColumnSpan="4" Grid.Row="2" VerticalOptions="Center" Padding="0" Margin="0"
+                                    Command="{Binding TesteCommand}"></Button>
+
+                            <Label TextColor="#000000" Grid.ColumnSpan="4"  Grid.Row="3" Grid.Column="0" Margin="0">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Nos ajude a  escolher a proxima música " />
-                                        <Span Text="Clicando Aqui!" TextColor="Blue" TextDecorations="Underline">
+                                        <Span Text="Clicando Aqui!" TextColor="#e77324">
                                             <Span.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding ClickCommand}"
                                                                       CommandParameter="https://open.spotify.com/user/cizio17/playlist/6PIYSevfhQw9Vd1wFvD9fn?si=ogJF9HSXSL-ceoCS3K_4lg"/>
@@ -89,11 +95,11 @@
                                 </Label.FormattedText>
                             </Label>
 
-                            <Label TextColor="White" Grid.ColumnSpan="4" Grid.Row="3" Grid.Column="0">
+                            <Label TextColor="#000000" Grid.ColumnSpan="4" Grid.Row="4" Grid.Column="0">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Visite nosso site " />
-                                        <Span Text="www.cervejariabragantina.com.br" TextColor="Blue" TextDecorations="Underline">
+                                        <Span Text="www.cervejariabragantina.com.br" TextColor="#e77324">
                                             <Span.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding ClickCommand1}"
                                                                       CommandParameter="http://www.cervejariabragantina.com.br"/>
@@ -101,27 +107,7 @@
                                         </Span>
                                     </FormattedString>
                                 </Label.FormattedText>
-                            </Label>                            
-
-                            <Label TextColor="White" Text="21/12/2018" Grid.Row="4" Grid.Column="0"/>
-                            <Label TextColor="White" Text="214" Grid.Row="4" Grid.Column="1" />
-                            <Label TextColor="White" Text="R$ 350,30" Grid.Row="4" Grid.Column="2" />
-                            <Label TextColor="White" Text="Pago" Grid.Row="4" Grid.Column="3" />
-
-                            <Label TextColor="White" Text="20/12/2018" Grid.Row="5" Grid.Column="0"/>
-                            <Label TextColor="White" Text="88" Grid.Row="5" Grid.Column="1" />
-                            <Label TextColor="White" Text="R$ 198,30" Grid.Row="5" Grid.Column="2" />
-                            <Label TextColor="White" Text="Pago" Grid.Row="5" Grid.Column="3" />
-
-                            <Label TextColor="White" Text="7/12/2018" Grid.Row="6" Grid.Column="0"/>
-                            <Label TextColor="White" Text="13" Grid.Row="6" Grid.Column="1" />
-                            <Label TextColor="White" Text="R$ 36,30" Grid.Row="6" Grid.Column="2" />
-                            <Label TextColor="White" Text="Transferido" Grid.Row="6" Grid.Column="3" />
-
-                            <Label TextColor="White" Text="17/11/2018" Grid.Row="7" Grid.Column="0"/>
-                            <Label TextColor="White" Text="142" Grid.Row="7" Grid.Column="1" />
-                            <Label TextColor="White" Text="R$ 108,30" Grid.Row="7" Grid.Column="2" />
-                            <Label TextColor="White" Text="Pago" Grid.Row="7" Grid.Column="3" />
+                            </Label>
                         </Grid>
                     </Grid>
                 </ScrollView>

@@ -31,6 +31,12 @@ namespace BragantinaTelerikDemo.Portable.Views
                     await DisplayAlert("Login", @"Falha ao efetuar o login. 
 Verifique os dados e tente novamente mais tarde.", "Ok");
                 });
+
+                MessagingCenter.Subscribe<LoginException>(this, "CadastrarUsuario",
+                (msg) =>
+                {
+                    DisplayAlert("Login", @"Tela de cadastro", "Ok");
+                });
             }
             catch (Exception)
             {
@@ -41,6 +47,7 @@ Verifique os dados e tente novamente mais tarde.", "Ok");
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<LoginException>(this, "FalhaLogin");
+            MessagingCenter.Unsubscribe<LoginException>(this, "CadastrarUsuario");
         }
     }
 }

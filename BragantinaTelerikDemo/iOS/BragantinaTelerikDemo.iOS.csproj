@@ -189,7 +189,10 @@
     <BundleResource Include="Resources\ListView_LinearLayout.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\beer.jpg" />
+    <AndroidResource Include="Resources\beer.jpg">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Cardapio1.png" />
@@ -211,6 +214,27 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\getnet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\beer0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\beer100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\beer25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\beer50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\beer75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\login.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -1,34 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BragantinaTelerikDemo.Portable.Views.LoginView">
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
-    
+             x:Class="BragantinaTelerikDemo.Portable.Views.LoginView" 
+             BackgroundColor="#FFFFFF">
+
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Center" Margin="64">
+        <StackLayout VerticalOptions="Center" Margin="32,0,32,0" BackgroundColor="#FFFFFF">
             <Image Source="login.png"></Image>
             <Entry Placeholder="Usuário" Text="{Binding Usuario}"></Entry>
             <Entry Placeholder="Senha" Text="{Binding Senha}" IsPassword="True"></Entry>
-            <Button Text="Entrar" Command="{Binding EntrarCommand}"/>
-            <Button Text="Entrar Facebook" Command="{Binding EntrarFBCommand}"/>
 
-            <!--<Label Text="Don't have an account?"
-                   Style="{StaticResource NormalLabelStyle}"/>
+            <Button Text="Entrar" Command="{Binding EntrarCommand}"  
+                    TextColor="#FFFFFF" BackgroundColor="#282828" 
+                    BorderRadius="10" FontSize="14" FontAttributes="Bold"/>
+
+            <Button Text="Facebook" Command="{Binding EntrarFBCommand}" 
+                    BorderRadius="10" BackgroundColor="#2699FB" 
+                    TextColor="#FFFFFF"
+                    BorderColor="#BCE0FD"/>
+
+            <Button Text="Esqueceu a senha?" Command="{Binding EntrarCommand}"  
+                     TextColor="#2699FB" BackgroundColor="Transparent" 
+                     FontSize="12" FontAttributes="Bold"/>
+
             <Button Text="Cadastrar" Command="{Binding CadastrarCommand}"
-                    Style="{StaticResource SecondaryActionButtonStyle}"/>-->
-            
-            <!--<Label Text="Cadastrar" HorizontalOptions="Start" Margin="0,0,0,25">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding TestCommand}" />
-                </Label.GestureRecognizers>
-            </Label>-->
-            
+                    TextColor="#2699FB" BackgroundColor="Transparent" 
+                    FontSize="12" FontAttributes="Bold"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

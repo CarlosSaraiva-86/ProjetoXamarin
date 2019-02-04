@@ -13,13 +13,14 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
     public class LoginViewModel : BaseViewModel
     {
         public ICommand EntrarCommand { get; private set; }
+        public ICommand CadastrarCommand { get; private set; }
 
         public LoginViewModel()
         {
             EntrarCommand = new Command(
                 async () =>
                 {
-                    var login = new Usuario() { Email = usuario};
+                    var login = new Usuario() { Email = usuario };
                     MessagingCenter.Send<Usuario>(login, "SucessoLogin");
                     //var loginService = new LoginAPI();
                     //HttpResponseMessage resultado = null;
@@ -49,6 +50,12 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                 return !string.IsNullOrEmpty(usuario)
                     && !string.IsNullOrEmpty(senha);
             });
+
+            CadastrarCommand = new Command(
+                async () =>
+                {
+                    MessagingCenter.Send<Usuario>(new Usuario(), "CadastrarUsuario");
+                });
         }
 
         private string usuario;
