@@ -27,29 +27,31 @@ namespace BragantinaTelerikDemo.Portable.Views
             DisplayAlert("Pagamento com Cartão", "Integração Getnet", "OK");
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            if (vm.StatusComanda == "")
+            base.OnAppearing();
+            MessagingCenter.Subscribe<string>(this, "QRCodeAberta", (msg) =>
             {
-                Navigation.PushAsync(new QRcodeView("Apresente o código no caixa"));
-                vm.StatusComanda = "Aberta";
-                vm.TextoBotao = "PAGAMENTO";
-                vm.NumeroComanda = "Comanda: 16783";
-            }
-            else if (vm.StatusComanda == "Aberta")
+                Navigation.PushAsync(new QRcodeView(msg));
+            });
+
+            MessagingCenter.Subscribe<string>(this, "QRCodeFechada", (msg) =>
             {
-                vm.StatusComanda = "Pago";
-                vm.TextoBotao = "CHECKOUT";
-                vm.NumeroComanda = "";
+                Navigation.PushAsync(new QRcodeView(msg));
+            });
+
+            MessagingCenter.Subscribe<string>(this, "AbrirPagamento", (msg) =>
+            {
                 Navigation.PushAsync(new PagamentoView());
-            }
-            else
-            {
-                Navigation.PushAsync(new QRcodeView("Apresente código na saída"));
-                vm.TextoBotao = "ABRIR COMANDA";
-                vm.StatusComanda = "";
-                vm.NumeroComanda = "Abra a comanda no caixa";
-            }
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<string>(this, "QRCodeAberta");
+            MessagingCenter.Unsubscribe<string>(this, "QRCodeFechada");
+            MessagingCenter.Unsubscribe<string>(this, "AbrirPagamento");
         }
     }
 }

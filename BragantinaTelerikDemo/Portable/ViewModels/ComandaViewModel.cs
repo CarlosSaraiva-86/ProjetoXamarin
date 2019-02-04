@@ -9,9 +9,9 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
 {
     public class ComandaViewModel : BaseViewModel
     {
-        string statusComanda;
-        string textoBotao;
-        string numeroComanda;
+        private string statusComanda;
+        private string textoBotao;
+        private string numeroComanda;
 
         public string StatusComanda
         {
@@ -47,5 +47,34 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             textoBotao = "ABRIR COMANDA";
             numeroComanda = "Abra a comanda no caixa";
         }
+
+        public ICommand BotaoPrincipal => new Command(() =>
+        {
+            if (StatusComanda == "")
+            {
+                //Navigation.PushAsync(new QRcodeView("Apresente o código no caixa"));
+                
+                StatusComanda = "Aberta";
+                TextoBotao = "PAGAMENTO";
+                NumeroComanda = "Comanda: 16783";
+                MessagingCenter.Send("Apresente o código no caixa", "QRCodeAberta");
+            }
+            else if (StatusComanda == "Aberta")
+            {
+                StatusComanda = "Pago";
+                TextoBotao = "CHECKOUT";
+                NumeroComanda = "";
+                //Navigation.PushAsync(new PagamentoView());
+                MessagingCenter.Send("", "AbrirPagamento");
+            }
+            else
+            {
+                //Navigation.PushAsync(new QRcodeView("Apresente código na saída"));
+                TextoBotao = "ABRIR COMANDA";
+                StatusComanda = "";
+                NumeroComanda = "Abra a comanda no caixa";
+                MessagingCenter.Send("Apresente código na saída", "QRCodeFechada");
+            }
+        });
     }
 }

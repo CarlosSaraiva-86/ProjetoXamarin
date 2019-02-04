@@ -40,27 +40,33 @@
 
                         <BoxView BackgroundColor="#282828" Grid.Row="1" Grid.ColumnSpan="4" HeightRequest="2" />
 
-                        <Label Text="Itens" Grid.Row="2" Grid.ColumnSpan="2" />
-                        <Label Text="Valor"  Grid.Row="2" Grid.Column="3" />
+                        <!--<Label Text="Itens" Grid.Row="2" Grid.ColumnSpan="2" />-->
+                        <Label Text="Itens" Grid.Row="2"></Label>
+                        <Label Text="Valor"  Grid.Row="2" Grid.Column="2" />
+                        <Label Text="Status" Grid.Row="2" Grid.Column="3" />
 
                         <Label Text="(2) Red Ipa" Grid.Row="3" Grid.ColumnSpan="2" />
-                        <Label Text="R$ 24,00" Grid.Row="3" Grid.Column="3" />
+                        <Label Text="R$ 24,00" Grid.Row="3" Grid.Column="2" />
+                        <Label Text="Entregue" Grid.Row="3" Grid.Column="3" TextColor="Green"/>
 
                         <Label Text="(3) Blonde Ale" Grid.Row="4" Grid.ColumnSpan="2" />
-                        <Label Text="R$ 21,00" Grid.Row="4" Grid.Column="3" />
-
+                        <Label Text="R$ 21,00" Grid.Row="4" Grid.Column="2" />
+                        <Label Text="Entregue" Grid.Row="4" Grid.Column="3" TextColor="Green"/>
+                        
                         <Label Text="(1) Weis" Grid.Row="5" Grid.ColumnSpan="2" />
-                        <Label Text="R$ 10,00" Grid.Row="5" Grid.Column="3" />
+                        <Label Text="R$ 10,00" Grid.Row="5" Grid.Column="2" />
+                        <Label Text="Entregue" Grid.Row="5" Grid.Column="3" TextColor="Green"/>
 
                         <Label Text="(1) Pizza" Grid.Row="6" Grid.ColumnSpan="2" />
-                        <Label Text="R$ 24,00" Grid.Row="6" Grid.Column="3" />
+                        <Label Text="R$ 24,00" Grid.Row="6" Grid.Column="2" />
+                        <Label Text="Pendente" Grid.Row="6" Grid.Column="3" TextColor="Yellow"/>
 
                         <BoxView BackgroundColor="#282828" Grid.Row="7" Grid.ColumnSpan="4" HeightRequest="2" />
-                        <Label Text="Total" Grid.Row="8" Grid.ColumnSpan="2" FontSize="18"/>
-                        <Label Text="R$ 79,00" Grid.Row="8" Grid.Column="3" FontSize="18"/>
+                        <Label Text="Total" Grid.Row="8" FontSize="18"/>
+                        <Label Text="R$ 79,00" Grid.Row="8" Grid.Column="2" FontSize="18"/>
 
                         <StackLayout Grid.Row="10" Grid.ColumnSpan="4" VerticalOptions="End">
-                            <Button Text="{Binding TextoBotao}" Clicked="Button_Clicked"></Button>
+                            <Button Text="{Binding TextoBotao}" Command="{Binding BotaoPrincipal}"></Button>
                         </StackLayout>
                     </Grid>
                 </Grid>

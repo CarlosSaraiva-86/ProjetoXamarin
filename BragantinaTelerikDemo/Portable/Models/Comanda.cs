@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BragantinaTelerikDemo.Portable.Models
 {
-    class Comanda
+    public class Comanda
     {
         public int Cod { get; set; }
 
