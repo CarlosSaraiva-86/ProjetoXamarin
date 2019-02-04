@@ -92,6 +92,9 @@
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <BundleResource Include="Resources\Fonts\telerikfontexamples.ttf" />
+    <BundleResource Include="Resources\Fonts\SourceSerifPro-Regular.ttf" />
+    <BundleResource Include="Resources\Fonts\SourceSerifPro-Semibold.ttf" />
+    <BundleResource Include="Resources\Fonts\SourceSerifPro-Bold.ttf" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />

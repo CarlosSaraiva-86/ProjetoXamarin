@@ -54,7 +54,8 @@
 
                         <Label Text="Qtde:" TextColor="Black" FontAttributes="Bold" FontSize="Large" Grid.Column="0"/>
                         <telerikInput:RadNumericInput x:Name="numericInput" Minimum="0" Maximum="5" Grid.Column="1"/>
-                        <Button Text="Pedir"  Grid.Column="2"></Button>
+                        <Button Text="Pedir"  TextColor="#FFFFFF" BackgroundColor="#282828" BorderRadius="10" 
+                                    FontSize="14" FontAttributes="Bold" Grid.Column="2"></Button>
                     </Grid>
                 </StackLayout>
 

@@ -20,6 +20,10 @@
                 <On Platform="Android">Fonts/telerikfontexamples.ttf#telerikfontexamples</On>
             </OnPlatform>
 
+            <OnPlatform x:TypeArguments="x:String" x:Key="TituloFont">
+                <On Platform="Android">Fonts/SourceSerifPro-Bold.ttf#Source Serif Pro</On> 
+            </OnPlatform>
+
             <x:String x:Key="ExpandedIcon">&#xF107;</x:String>
             <x:String x:Key="CollapsedIcon">&#xF105;</x:String>
 

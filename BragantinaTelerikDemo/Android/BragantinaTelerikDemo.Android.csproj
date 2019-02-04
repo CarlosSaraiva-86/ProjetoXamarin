@@ -131,6 +131,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Fonts\telerikfontexamples.ttf" />
+    <AndroidAsset Include="Assets\Fonts\SourceSerifPro-Regular.ttf" />
+    <AndroidAsset Include="Assets\Fonts\SourceSerifPro-Semibold.ttf" />
+    <AndroidAsset Include="Assets\Fonts\SourceSerifPro-Bold.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
