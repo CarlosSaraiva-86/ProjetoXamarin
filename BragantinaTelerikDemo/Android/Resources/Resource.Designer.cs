@@ -7288,26 +7288,26 @@ namespace BragantinaTelerikDemo.Android
 			// aapt resource value: 0x7f020057
 			public const int avd_hide_password = 2130837591;
 			
-			// aapt resource value: 0x7f020160
-			public const int avd_hide_password_1 = 2130837856;
-			
 			// aapt resource value: 0x7f020161
-			public const int avd_hide_password_2 = 2130837857;
+			public const int avd_hide_password_1 = 2130837857;
 			
 			// aapt resource value: 0x7f020162
-			public const int avd_hide_password_3 = 2130837858;
+			public const int avd_hide_password_2 = 2130837858;
+			
+			// aapt resource value: 0x7f020163
+			public const int avd_hide_password_3 = 2130837859;
 			
 			// aapt resource value: 0x7f020058
 			public const int avd_show_password = 2130837592;
 			
-			// aapt resource value: 0x7f020163
-			public const int avd_show_password_1 = 2130837859;
-			
 			// aapt resource value: 0x7f020164
-			public const int avd_show_password_2 = 2130837860;
+			public const int avd_show_password_1 = 2130837860;
 			
 			// aapt resource value: 0x7f020165
-			public const int avd_show_password_3 = 2130837861;
+			public const int avd_show_password_2 = 2130837861;
+			
+			// aapt resource value: 0x7f020166
+			public const int avd_show_password_3 = 2130837862;
 			
 			// aapt resource value: 0x7f020059
 			public const int beer = 2130837593;
@@ -8047,11 +8047,11 @@ namespace BragantinaTelerikDemo.Android
 			// aapt resource value: 0x7f02014e
 			public const int notification_icon_background = 2130837838;
 			
-			// aapt resource value: 0x7f02015e
-			public const int notification_template_icon_bg = 2130837854;
-			
 			// aapt resource value: 0x7f02015f
-			public const int notification_template_icon_low_bg = 2130837855;
+			public const int notification_template_icon_bg = 2130837855;
+			
+			// aapt resource value: 0x7f020160
+			public const int notification_template_icon_low_bg = 2130837856;
 			
 			// aapt resource value: 0x7f02014f
 			public const int notification_tile_bg = 2130837839;
@@ -8081,22 +8081,25 @@ namespace BragantinaTelerikDemo.Android
 			public const int shade_right = 2130837847;
 			
 			// aapt resource value: 0x7f020158
-			public const int tab_view_popup_background = 2130837848;
+			public const int SpotifyIcon = 2130837848;
 			
 			// aapt resource value: 0x7f020159
-			public const int TelerikChatAuthor = 2130837849;
+			public const int tab_view_popup_background = 2130837849;
 			
 			// aapt resource value: 0x7f02015a
-			public const int TelerikSendMessage = 2130837850;
+			public const int TelerikChatAuthor = 2130837850;
 			
 			// aapt resource value: 0x7f02015b
-			public const int TelerikTypingAuthors = 2130837851;
+			public const int TelerikSendMessage = 2130837851;
 			
 			// aapt resource value: 0x7f02015c
-			public const int tooltip_frame_dark = 2130837852;
+			public const int TelerikTypingAuthors = 2130837852;
 			
 			// aapt resource value: 0x7f02015d
-			public const int tooltip_frame_light = 2130837853;
+			public const int tooltip_frame_dark = 2130837853;
+			
+			// aapt resource value: 0x7f02015e
+			public const int tooltip_frame_light = 2130837854;
 			
 			static Drawable()
 			{

@@ -12,6 +12,17 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         private string statusComanda;
         private string textoBotao;
         private string numeroComanda;
+        private bool pedido;
+
+        public bool BotaoPedido
+        {
+            get { return pedido; }
+            set
+            {
+                pedido = value;
+                OnPropertyChanged();
+            }
+        }
 
         public string StatusComanda
         {
@@ -44,19 +55,24 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         public ComandaViewModel()
         {
             statusComanda = "";
+            BotaoPedido = false;
             textoBotao = "ABRIR COMANDA";
             numeroComanda = "Abra a comanda no caixa";
         }
 
+        public ICommand Pedido => new Command(() => 
+        {
+            MessagingCenter.Send("Apresente o código no caixa", "QRCodePedido");
+        });
+
         public ICommand BotaoPrincipal => new Command(() =>
         {
             if (StatusComanda == "")
-            {
-                //Navigation.PushAsync(new QRcodeView("Apresente o código no caixa"));
-                
+            {                
                 StatusComanda = "Aberta";
                 TextoBotao = "PAGAMENTO";
                 NumeroComanda = "Comanda: 16783";
+                BotaoPedido = true;
                 MessagingCenter.Send("Apresente o código no caixa", "QRCodeAberta");
             }
             else if (StatusComanda == "Aberta")
@@ -64,15 +80,15 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                 StatusComanda = "Pago";
                 TextoBotao = "CHECKOUT";
                 NumeroComanda = "";
-                //Navigation.PushAsync(new PagamentoView());
+                BotaoPedido = false;
                 MessagingCenter.Send("", "AbrirPagamento");
             }
             else
             {
-                //Navigation.PushAsync(new QRcodeView("Apresente código na saída"));
                 TextoBotao = "ABRIR COMANDA";
                 StatusComanda = "";
                 NumeroComanda = "Abra a comanda no caixa";
+                BotaoPedido = false;
                 MessagingCenter.Send("Apresente código na saída", "QRCodeFechada");
             }
         });

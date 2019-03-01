@@ -14,5 +14,6 @@
     <!--Pages can be added as references or inline-->
     <views:PerfilUsuario Title="Perfil" Icon="Perfil1.png"></views:PerfilUsuario>
     <views:ComandaView Title="Comanda" Icon="Comanda1.png"></views:ComandaView>
-    <views:CardapioView Title="Cardápio" Icon="Cardapio1.png"></views:CardapioView>    
+    <views:CardapioView Title="Cardápio" Icon="Cardapio1.png"></views:CardapioView>
+    <views:MusicaView Title ="Spotify" Icon="SpotifyIcon.png"></views:MusicaView>
 </TabbedPage>

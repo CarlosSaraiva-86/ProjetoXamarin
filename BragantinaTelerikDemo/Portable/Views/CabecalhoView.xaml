@@ -11,7 +11,7 @@
                 <ColumnDefinition Width="50"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Image Source="logo.png" Grid.Row="0" Grid.Column="0"></Image>
+            <Image Source="logo.png" Grid.Row="0" Grid.Column="0" Margin="0,0"></Image>
             <Label Text="Cervejaria Bragantina" Grid.Column="1" Grid.Row="0" TextColor="White" 
                    VerticalTextAlignment="Center" FontAttributes="Bold" FontSize="20" Margin="5, 0"
                    FontFamily="{StaticResource TituloFont}"/>

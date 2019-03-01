@@ -65,7 +65,13 @@
                         <Label Text="Total" Grid.Row="8" FontSize="18"/>
                         <Label Text="R$ 79,00" Grid.Row="8" Grid.Column="2" FontSize="18"/>
 
-                        <StackLayout Grid.Row="10" Grid.ColumnSpan="4" VerticalOptions="End">
+                        <StackLayout Grid.Row="10" Grid.ColumnSpan="4" IsVisible="{Binding BotaoPedido}">
+                            <Button Text="PEDIDO PENDENTE" Command="{Binding Pedido}"
+                                    TextColor="#FFFFFF" BackgroundColor="#282828" BorderRadius="10" 
+                                    FontSize="14" FontAttributes="Bold"></Button>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="11" Grid.ColumnSpan="4" VerticalOptions="End">
                             <Button Text="{Binding TextoBotao}" Command="{Binding BotaoPrincipal}"
                                     TextColor="#FFFFFF" BackgroundColor="#282828" BorderRadius="10" 
                                     FontSize="14" FontAttributes="Bold"></Button>
