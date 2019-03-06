@@ -1,4 +1,5 @@
 ﻿using BragantinaTelerikDemo.Portable.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -9,20 +10,17 @@ namespace BragantinaTelerikDemo.Portable.API
 {
     public class LoginAPI
     {
+        private readonly string uri = "http://191.252.64.46:5000/APIBragantina/";
+
         public async Task<HttpResponseMessage> FazerLogin(Login login)
         {
-            using (var cliente = new HttpClient())
-            {
-                cliente.BaseAddress = new Uri("https://aluracar.herokuapp.com");
-                var camposFormulario = new FormUrlEncodedContent(new[]
-                {
-                        new KeyValuePair<string, string>("email", login.email),
-                        new KeyValuePair<string, string>("senha", login.senha)
-                    });
-                var resultado = await cliente.PostAsync("/login", camposFormulario);
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(uri);
+            var json = JsonConvert.SerializeObject(login);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var resposta = await httpClient.PostAsync("login", content);
 
-                return resultado;
-            }
+            return resposta;
         }
     }
 }

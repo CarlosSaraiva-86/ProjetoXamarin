@@ -12,6 +12,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
+        LoginAPI api = new LoginAPI();
         public ICommand EntrarCommand { get; private set; }
         public ICommand CadastrarCommand { get; private set; }
 
@@ -20,30 +21,17 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             EntrarCommand = new Command(
                 async () =>
                 {
-                    var login = new Usuario() { Email = usuario };
-                    MessagingCenter.Send<Usuario>(login, "SucessoLogin");
-                    //var loginService = new LoginAPI();
-                    //HttpResponseMessage resultado = null;
-                    //try
-                    //{
-                    //    resultado = await loginService.FazerLogin(new Login(usuario, senha));
-                    //}
-                    //catch (Exception exc)
-                    //{
-                    //    MessagingCenter.Send<LoginException>(new
-                    //        LoginException("Erro de comunicação com o servidor.", exc), "FalhaLogin");
-                    //}
-                    //if (resultado.IsSuccessStatusCode)
-                    //{
-                    //    string resultContent = resultado.Content.ReadAsStringAsync().Result;
-                    //    LoginResult resultadoLogin =
-                    //        JsonConvert.DeserializeObject<LoginResult>(resultContent);
+                    //var login = new Usuario() { Email = usuario }
+                    var login = new Login(usuario, senha);
 
-                    //    MessagingCenter.Send<Usuario>(resultadoLogin.usuario, "SucessoLogin");
-                    //}
-                    //else
-                    //    MessagingCenter.Send<LoginException>(new LoginException(), "FalhaLogin");
+                    var resposta = await api.FazerLogin(login);
 
+                    if (resposta.IsSuccessStatusCode)
+                    {
+                        MessagingCenter.Send<Login>(login, "SucessoLogin");
+                    }
+                    else
+                        MessagingCenter.Send<LoginException>(new LoginException(), "FalhaLogin");  
                 },
             () =>
             {
@@ -56,7 +44,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                 {
                     MessagingCenter.Send<Usuario>(new Usuario(), "CadastrarUsuario");
                 });
-        }
+        }        
 
         private string usuario;
         public string Usuario

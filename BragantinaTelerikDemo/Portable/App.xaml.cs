@@ -21,7 +21,7 @@ namespace BragantinaTelerikDemo.Portable
         protected override void OnStart()
         {
             // Handle when your app starts
-            MessagingCenter.Subscribe<Usuario>(this, "SucessoLogin",
+            MessagingCenter.Subscribe<Login>(this, "SucessoLogin",
                (usuario) =>
                {
                    MainPage = new NavigationPage(new MenuView());
