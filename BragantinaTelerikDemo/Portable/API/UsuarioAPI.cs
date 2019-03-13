@@ -8,17 +8,18 @@ using System.Threading.Tasks;
 
 namespace BragantinaTelerikDemo.Portable.API
 {
-    public class LoginAPI
+    public class UsuarioAPI
     {
         Conexao con = new Conexao();
 
-        public async Task<HttpResponseMessage> FazerLogin(Login login)
+        public async Task<HttpResponseMessage> CadastrarUsuario(UsuarioApi user)
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(con.uri);
-            var json = JsonConvert.SerializeObject(login);
+            var json = JsonConvert.SerializeObject(user);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var resposta = await httpClient.PostAsync("login", content);
+            var resposta = await httpClient.PostAsync("usuario", content);
+
             return resposta;
         }
     }
