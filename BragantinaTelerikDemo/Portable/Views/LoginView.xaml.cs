@@ -1,4 +1,5 @@
-﻿using BragantinaTelerikDemo.Portable.ViewModels;
+﻿using BragantinaTelerikDemo.Portable.Models;
+using BragantinaTelerikDemo.Portable.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,11 +33,11 @@ namespace BragantinaTelerikDemo.Portable.Views
 Verifique os dados e tente novamente mais tarde.", "Ok");
                 });
 
-                MessagingCenter.Subscribe<LoginException>(this, "CadastrarUsuario",
-                (msg) =>
-                {
-                    DisplayAlert("Login", @"Tela de cadastro", "Ok");
-                });
+                //MessagingCenter.Subscribe<Usuario>(this, "CadastrarUsuario",
+                //(msg) =>
+                //{
+                //    Navigation.PushAsync(new CadastroUsuarioView());
+                //});
             }
             catch (Exception)
             {
@@ -47,7 +48,7 @@ Verifique os dados e tente novamente mais tarde.", "Ok");
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<LoginException>(this, "FalhaLogin");
-            MessagingCenter.Unsubscribe<LoginException>(this, "CadastrarUsuario");
+            //MessagingCenter.Unsubscribe<Usuario>(this, "CadastrarUsuario");
         }
     }
 }

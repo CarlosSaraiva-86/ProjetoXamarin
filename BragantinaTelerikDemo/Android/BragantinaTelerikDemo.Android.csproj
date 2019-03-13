@@ -50,63 +50,66 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Telerik.Xamarin.Android.Chart">
-      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.Xamarin.Android.Chart.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.Xamarin.Android.Chart.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Xamarin.Android.Common">
-      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.Xamarin.Android.Common.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.Xamarin.Android.Common.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Xamarin.Android.Data">
-      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.Xamarin.Android.Data.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.Xamarin.Android.Data.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Xamarin.Android.Gauges">
-      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.Xamarin.Android.Gauges.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.Xamarin.Android.Gauges.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Xamarin.Android.Input">
-      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.Xamarin.Android.Input.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.Xamarin.Android.Input.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Xamarin.Android.List">
-      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.Xamarin.Android.List.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.Xamarin.Android.List.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Xamarin.Android.Primitives">
-      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.Xamarin.Android.Primitives.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.Xamarin.Android.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.XamarinForms.Barcode">
-      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.Barcode.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.Barcode.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.XamarinForms.Chart">
-      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.Chart.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.Chart.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.XamarinForms.Common">
-      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.Common.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.Common.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.XamarinForms.ConversationalUI">
-      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.ConversationalUI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.ConversationalUI.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.XamarinForms.DataControls">
-      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.DataControls.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.DataControls.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.XamarinForms.DataGrid">
-      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.DataGrid.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.DataGrid.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.XamarinForms.DataVisualization">
-      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.DataVisualization.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.DataVisualization.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.XamarinForms.Input">
-      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.Input.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.Input.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.XamarinForms.PdfViewer">
-      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.PdfViewer.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.PdfViewer.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.XamarinForms.Primitives">
-      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.Primitives.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.XamarinForms.SkiaSharp">
-      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.SkiaSharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for Xamarin R1 2019\Binaries\Android\Telerik.XamarinForms.SkiaSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="sqlite-net-pcl">
+      <Version>1.5.231</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.FFImageLoading.Forms">
       <Version>2.4.4.859</Version>
@@ -131,6 +134,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLite_android.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Fonts\telerikfontexamples.ttf" />

@@ -1,4 +1,6 @@
 ﻿using BragantinaTelerikDemo.Portable.API;
+using BragantinaTelerikDemo.Portable.Dao;
+using BragantinaTelerikDemo.Portable.Data;
 using BragantinaTelerikDemo.Portable.Models;
 using Newtonsoft.Json;
 using System;
@@ -28,10 +30,12 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
 
                     if (resposta.IsSuccessStatusCode)
                     {
+                        var modelo = await resposta.Content.ReadAsStringAsync();
                         MessagingCenter.Send<Login>(login, "SucessoLogin");
+                        SalvarUsuario();
                     }
                     else
-                        MessagingCenter.Send<LoginException>(new LoginException(), "FalhaLogin");  
+                        MessagingCenter.Send<LoginException>(new LoginException(), "FalhaLogin");
                 },
             () =>
             {
@@ -40,11 +44,20 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             });
 
             CadastrarCommand = new Command(
-                async () =>
-                {
-                    MessagingCenter.Send<Usuario>(new Usuario(), "CadastrarUsuario");
-                });
-        }        
+            async () =>
+            {
+                    MessagingCenter.Send<UsuarioApi>(new UsuarioApi(), "CadastrarUsuario");
+            });
+        }
+
+        private static void SalvarUsuario()
+        {
+            using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
+            {
+                UsuarioDAO dao = new UsuarioDAO(conexao);
+                dao.Salvar(new Usuario { Nome = "Marcelinho", Telefone = "99 98334295"});
+            }
+        }
 
         private string usuario;
         public string Usuario
@@ -67,6 +80,8 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                 ((Command)EntrarCommand).ChangeCanExecute();
             }
         }
+
+
     }
 
     public class LoginException : Exception

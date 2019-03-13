@@ -26,6 +26,12 @@ namespace BragantinaTelerikDemo.Portable
                {
                    MainPage = new NavigationPage(new MenuView());
                });
+
+            MessagingCenter.Subscribe<UsuarioApi>(this, "CadastrarUsuario",
+               (msg) =>
+               {
+                   MainPage = new CadastroUsuarioView(new UsuarioApi());
+               });
         }
 
         protected override void OnSleep()
