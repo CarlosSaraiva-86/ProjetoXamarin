@@ -13,6 +13,9 @@
           Margin="5,0,5,5"    >
             <Grid Grid.ColumnSpacing="0"
               Grid.RowSpacing="0">
+                <ActivityIndicator IsRunning="{Binding Aguarde}"
+                                   IsVisible="{Binding Aguarde}">
+                </ActivityIndicator>
                 <telerikDataControls:RadListView Grid.Row="0"
                                              ItemsSource="{Binding Items}"
                                              WidthRequest="325"
@@ -41,7 +44,7 @@
                                                           Orientation="Vertical" />
                     </telerikDataControls:RadListView.LayoutDefinition>
                     <telerikDataControls:RadListView.GroupDescriptors>
-                        <telerikListView:PropertyGroupDescriptor PropertyName="Group" />
+                        <telerikListView:PropertyGroupDescriptor PropertyName="Grupo" />
                     </telerikDataControls:RadListView.GroupDescriptors>
                     <telerikDataControls:RadListView.ItemTemplate>
                         <DataTemplate>
@@ -49,7 +52,7 @@
                                 <telerikListView:ListViewTemplateCell.View>
                                     <Grid Grid.ColumnSpacing="0"
                                       Grid.RowSpacing="0">
-                                        <ffimageloading:CachedImage Source="{Binding Image, Converter={StaticResource ImageSourceConverter}}"
+                                        <ffimageloading:CachedImage Source="{Binding Imagem, Converter={StaticResource ImageSourceConverter}}"
                                            Aspect="AspectFill" />
                                         <Grid Grid.ColumnSpacing="0"
                                           Grid.RowSpacing="0"
@@ -63,7 +66,7 @@
                                           Padding="16,8,0,8">
                                             <StackLayout HorizontalOptions="Start"
                                                      VerticalOptions="End">
-                                                <Label Text="{Binding Title}"
+                                                <Label Text="{Binding Descricao}"
                                                    TextColor="#362F2D"
                                                    FontAttributes="Italic"
                                                    FontSize="16" />

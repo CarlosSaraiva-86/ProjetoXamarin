@@ -23,7 +23,7 @@ namespace BragantinaTelerikDemo.Portable.Views
             this.BindingContext = this.ViewModel;
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
             MessagingCenter.Subscribe<Produto>(this, "ProdutoSelecionado",
@@ -31,6 +31,7 @@ namespace BragantinaTelerikDemo.Portable.Views
                 {
                     Navigation.PushAsync(new DetalheView(msg));
                 });
+            await this.ViewModel.GetProdutos();
         }
 
         protected override void OnDisappearing()
