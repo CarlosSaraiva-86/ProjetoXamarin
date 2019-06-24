@@ -20,5 +20,19 @@ namespace BragantinaTelerikDemo.Portable.Dao
         {
             conexao.Insert(usuario);
         }
+
+        private Usuario usuarioLogado;
+
+        public Usuario UsuarioLogado
+        {
+            get
+            {
+                var usuarioDB = conexao.Table<Usuario>(); ;
+
+                usuarioLogado = new Usuario();
+
+                return usuarioLogado;
+            }
+        }
     }
 }

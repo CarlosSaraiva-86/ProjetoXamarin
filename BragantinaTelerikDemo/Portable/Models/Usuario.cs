@@ -26,7 +26,7 @@ namespace BragantinaTelerikDemo.Portable.Models
         public Usuario usuario { get; set; }
     }
 
-    public class UsuarioApi
+    public class UsuarioNuvem
     {
         public int Id { get; internal set; }
         public string Nome { get; set; }
@@ -39,6 +39,18 @@ namespace BragantinaTelerikDemo.Portable.Models
         public string UF { get; set; }
         public string Cpf { get; internal set; }
         public byte[] ImgByte { get; set; }
-        public Login Login { get; set; }
+        public string ImgPerfil { get; set; }
+        public Login Login {
+            get
+            {
+                return new Login(this.Email, this.Senha);
+            }
+        }
+        public string Senha { get; set; }
+
+        public UsuarioNuvem()
+        {
+            
+        }
     }
 }

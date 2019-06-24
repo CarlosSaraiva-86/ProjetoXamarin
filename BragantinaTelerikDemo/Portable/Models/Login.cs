@@ -6,8 +6,8 @@ namespace BragantinaTelerikDemo.Portable.Models
 {
     public class Login
     {
-        public string Usuario { get; private set; }
-        public string Senha { get; private set; }       
+        public string Usuario { get; set; }
+        public string Senha { get; set; }
 
         public Login(string email, string senha)
         {
@@ -20,5 +20,6 @@ namespace BragantinaTelerikDemo.Portable.Models
             this.Usuario = email;
             this.Senha = senha;
         }
+
     }
 }

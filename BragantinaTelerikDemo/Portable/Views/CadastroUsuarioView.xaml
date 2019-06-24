@@ -7,29 +7,31 @@
     <ContentPage.Content>
         <StackLayout Padding="20" Spacing="20">
 
-            <Entry x:Name="Nome" Placeholder="Nome" Text="{Binding Usuario.Nome}"/>
+            <Entry x:Name="Nome" Placeholder="Nome" Text="{Binding Nome}"/>
 
-            <Entry x:Name="CPF" Placeholder="CPF" Keyboard="Numeric">
-                <Entry.Behaviors>
-                    <behavior:MaskedBehavior Mask="XXX.XXX.XXX-XX" />
-                </Entry.Behaviors>
-            </Entry>
+                <Entry x:Name="CPF" Placeholder="CPF" Keyboard="Numeric" Text="{Binding CPF}">
+                    <Entry.Behaviors>
+                        <behavior:MaskedBehavior Mask="XXX.XXX.XXX-XX" />
+                    </Entry.Behaviors>
+                </Entry>
 
-            <Entry x:Name="Email" Placeholder="Email" Keyboard="Email" Text="{Binding Email}"/>
+                <Entry x:Name="Email" Placeholder="Email" Keyboard="Email" Text="{Binding Email}"/>
 
-            <Entry x:Name="Senha" Placeholder="Senha" IsPassword="True"/>
+                <Entry x:Name="Senha" Placeholder="Senha" IsPassword="True" Text="{Binding Senha}"/>
 
-            <Entry x:Name="Telefone" Placeholder="Telefone" Keyboard="Telephone" Text="{Binding Fone}">
-                <Entry.Behaviors>
-                    <behavior:MaskedBehavior Mask="(XX) X XXXX-XXXX"/>
-                </Entry.Behaviors>
-            </Entry>
+                <Entry x:Name="Telefone" Placeholder="Telefone" Keyboard="Telephone" Text="{Binding Fone}">
+                    <Entry.Behaviors>
+                        <behavior:MaskedBehavior Mask="(XX) X XXXX-XXXX"/>
+                    </Entry.Behaviors>
+                </Entry>
 
-            <Entry x:Name="UF" Placeholder="UF"/>
+                
+                <Entry x:Name="UF" Placeholder="UF" Text="{Binding UF}"/>
 
-            <Entry x:Name="Cidade" Placeholder="Cidade"/>
+                <Entry x:Name="Cidade" Placeholder="Cidade" Text="{Binding Cidade}"/>
 
-            <Button Text="Cadastrar" Command="{Binding CadastrarCommand}" TextColor="#FFFFFF" 
+
+                <Button Text="Cadastrar" Command="{Binding CadastrarCommand}" TextColor="#FFFFFF" 
              BackgroundColor="#282828" BorderRadius="10" FontSize="14" FontAttributes="Bold"></Button>
 
         </StackLayout>

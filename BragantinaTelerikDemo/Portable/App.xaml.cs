@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using BragantinaTelerikDemo.Portable.Models;
 using BragantinaTelerikDemo.Portable.Views;
 using Xamarin.Forms;
@@ -27,10 +28,23 @@ namespace BragantinaTelerikDemo.Portable
                    MainPage = new NavigationPage(new MenuView());
                });
 
-            MessagingCenter.Subscribe<UsuarioApi>(this, "CadastrarUsuario",
+            MessagingCenter.Subscribe<Usuario>(this, "SucessoLoginFB",
+               (usuario) =>
+               {
+                   MainPage = new NavigationPage(new MenuView());
+                   MessagingCenter.Send<Usuario>(usuario,"UsuarioFB");
+               });
+
+            MessagingCenter.Subscribe<string>(this, "LoginFacebook",
+               (usuario) =>
+               {
+                   MainPage = new NavigationPage(new LoginFbView());
+               });
+
+            MessagingCenter.Subscribe<UsuarioNuvem>(this, "CadastrarUsuario",
                (msg) =>
                {
-                   MainPage = new CadastroUsuarioView(new UsuarioApi());
+                   MainPage = new CadastroUsuarioView(msg);
                });
         }
 
@@ -42,6 +56,12 @@ namespace BragantinaTelerikDemo.Portable
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        public async static Task NavigateToProfile(List<string> infoLoginFb)
+        {
+            Usuario usuario = new Usuario { Nome = infoLoginFb[1], ImgPerfil = infoLoginFb[2]};
+            MessagingCenter.Send<Usuario>(usuario, "SucessoLoginFB");
         }
     }
 }

@@ -46,7 +46,7 @@
                         <telerikPrimitives:RadBorder Style="{StaticResource AvatarBorderStyle}">
                             <Image Source="{Binding Avatar, Converter={StaticResource ImageSourceConverter}}" />
                         </telerikPrimitives:RadBorder>
-                        <Label Text="Antonio Gomes" Style="{StaticResource UserNameLabelStyle}" />
+                        <Label Text="{Binding Name}" Style="{StaticResource UserNameLabelStyle}" />
                         <Label Text="(11) 9 9833-4295" Style="{StaticResource UserJobTitleLabelStyle}" />
                     </StackLayout>
                 </StackLayout>

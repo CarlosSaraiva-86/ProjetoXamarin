@@ -1,6 +1,9 @@
-﻿using System;
+﻿using BragantinaTelerikDemo.Portable.Dao;
+using BragantinaTelerikDemo.Portable.Data;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace BragantinaTelerikDemo.Portable.ViewModels
 {
@@ -15,10 +18,16 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                 _titulo = value;
             }
         }
+        public int CodComanda { get; set; }
 
         public QRCodeViewModel(string titulo)
         {
             _titulo = titulo;
+            using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
+            {
+                UsuarioDAO dao = new UsuarioDAO(conexao);
+                CodComanda = dao.UsuarioLogado.Id;
+            }
         }
 
     }

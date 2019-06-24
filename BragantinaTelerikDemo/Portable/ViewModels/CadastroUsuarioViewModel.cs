@@ -1,4 +1,5 @@
-﻿using BragantinaTelerikDemo.Portable.Models;
+﻿using BragantinaTelerikDemo.Portable.API;
+using BragantinaTelerikDemo.Portable.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +10,8 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
 {
     public class CadastroUsuarioViewModel : BaseViewModel
     {
-        public UsuarioApi Usuario { get; set; }
+        public UsuarioNuvem Usuario { get; set; }
+        public Login login { get; set; }
         public string Nome
         {
             get
@@ -38,6 +40,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             }
 
         }
+
         public string Email
         {
             get
@@ -52,21 +55,92 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             }
         }
 
+        public string CPF
+        {
+            get
+            {
+                return Usuario.Cpf;
+            }
+            set
+            {
+                Usuario.Cpf = value;
+                OnPropertyChanged();
+                ((Command)CadastrarCommand).ChangeCanExecute();
+            }
+        }
+
+        //public string Senha { get; set; }
+        public string Senha
+        {
+            get
+            {
+                return Usuario.Senha;
+            }
+            set
+            {
+                Usuario.Senha = value;
+                OnPropertyChanged();
+                ((Command)CadastrarCommand).ChangeCanExecute();
+            }
+        }
+
+        public string Cidade
+        {
+            get
+            {
+                return Usuario.Cidade;
+            }
+            set
+            {
+                Usuario.Cidade = value;
+                OnPropertyChanged();
+                ((Command)CadastrarCommand).ChangeCanExecute();
+            }
+        }
+
+        public string UF
+        {
+            get
+            {
+                return Usuario.UF;
+            }
+            set
+            {
+                Usuario.UF = value;
+                OnPropertyChanged();
+                ((Command)CadastrarCommand).ChangeCanExecute();
+            }
+        }
         public ICommand CadastrarCommand { get; set; }
 
-        public CadastroUsuarioViewModel(UsuarioApi usuario)
+        public CadastroUsuarioViewModel(UsuarioNuvem usuario)
         {
-            this.Usuario = usuario;
-            CadastrarCommand = new Command(() =>
+            try
             {
-                MessagingCenter.Send<UsuarioApi>(this.Usuario
-                    , "CadastrarUsuarioNuvem");
-            }, () =>
+                this.Usuario = usuario;
+                //this.Usuario.Login = this.login;
+                CadastrarCommand = new Command(() =>
+                {
+                    //MessagingCenter.Send<UsuarioApi>(this.Usuario
+                    //    , "CadastrarUsuarioNuvem");
+                    UsuarioAPI api = new UsuarioAPI();
+                    api.CadastrarUsuario(Usuario);
+                }, () =>
+                {
+                    return !string.IsNullOrEmpty(this.Nome)
+                     && !string.IsNullOrEmpty(this.Fone)
+                     && !string.IsNullOrEmpty(this.Email)
+                     && !string.IsNullOrEmpty(this.CPF)
+                     && !string.IsNullOrEmpty(this.Cidade)
+                     && !string.IsNullOrEmpty(this.UF)
+                     && !string.IsNullOrEmpty(this.Senha);
+                    ;
+                });
+            }
+            catch (Exception ex)
             {
-                return !string.IsNullOrEmpty(this.Nome)
-                 && !string.IsNullOrEmpty(this.Fone)
-                 && !string.IsNullOrEmpty(this.Email);
-            });
+                
+            }
         }
     }
 }

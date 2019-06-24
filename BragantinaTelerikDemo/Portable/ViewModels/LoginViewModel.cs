@@ -17,6 +17,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         LoginAPI api = new LoginAPI();
         public ICommand EntrarCommand { get; private set; }
         public ICommand CadastrarCommand { get; private set; }
+        public ICommand EntrarFBCommand { get; private set; }
 
         public LoginViewModel()
         {
@@ -30,9 +31,10 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
 
                     if (resposta.IsSuccessStatusCode)
                     {
-                        var modelo = await resposta.Content.ReadAsStringAsync();
+                        var resultado = await resposta.Content.ReadAsStringAsync();
                         MessagingCenter.Send<Login>(login, "SucessoLogin");
-                        SalvarUsuario();
+                        Usuario usuarioJson = JsonConvert.DeserializeObject<Usuario>(resultado);
+                        SalvarUsuario(usuarioJson);
                     }
                     else
                         MessagingCenter.Send<LoginException>(new LoginException(), "FalhaLogin");
@@ -43,19 +45,25 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                     && !string.IsNullOrEmpty(senha);
             });
 
+            EntrarFBCommand = new Command(
+                async () =>
+                {
+                    MessagingCenter.Send<string>("", "LoginFacebook");
+                });
+
             CadastrarCommand = new Command(
             async () =>
             {
-                    MessagingCenter.Send<UsuarioApi>(new UsuarioApi(), "CadastrarUsuario");
+                MessagingCenter.Send<UsuarioNuvem>(new UsuarioNuvem(), "CadastrarUsuario");
             });
         }
 
-        private static void SalvarUsuario()
+        private static void SalvarUsuario(Usuario usuario)
         {
             using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
             {
                 UsuarioDAO dao = new UsuarioDAO(conexao);
-                dao.Salvar(new Usuario { Nome = "Marcelinho", Telefone = "99 98334295"});
+                dao.Salvar(usuario);
             }
         }
 
