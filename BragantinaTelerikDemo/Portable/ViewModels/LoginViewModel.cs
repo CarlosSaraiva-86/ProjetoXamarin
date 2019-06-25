@@ -56,6 +56,36 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             {
                 MessagingCenter.Send<UsuarioNuvem>(new UsuarioNuvem(), "CadastrarUsuario");
             });
+
+
+            LoginAutomatico();
+        }
+
+        private async void LoginAutomatico()
+        {
+           var loginAuto = new Usuario();
+           
+            using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
+            {
+                var dao = new UsuarioDAO(conexao);
+                loginAuto = dao.UsuarioLogado;
+            }
+            //METODO BUSCAR USUARIO SQLITE
+
+            if (!string.IsNullOrEmpty(loginAuto.IdToken))
+            {
+                var resposta = await api.FazerLogin(loginAuto.IdToken);
+
+                if (resposta.IsSuccessStatusCode)
+                {
+                    var resultado = await resposta.Content.ReadAsStringAsync();
+                    var login = JsonConvert.DeserializeObject<Login>(resultado);
+                    MessagingCenter.Send<Login>(new Login(true), "SucessoLogin");
+                    //MessagingCenter.Send<Login>(new Login("Autenticado Via API", "Autenticado Via API"), "SucessoLogin");
+                }
+                else
+                    MessagingCenter.Send<LoginException>(new LoginException(), "FalhaLogin");
+            }
         }
 
         private static void SalvarUsuario(Usuario usuario)

@@ -33,11 +33,6 @@ namespace BragantinaTelerikDemo.Portable.Views
 Verifique os dados e tente novamente mais tarde.", "Ok");
                 });
 
-                //MessagingCenter.Subscribe<UsuarioNuvem>(this, "CadastrarUsuario",
-                //(msg) =>
-                //{
-                //    Navigation.PushAsync(new CadastroUsuarioView(msg));
-                //});
             }
             catch (Exception)
             {
@@ -48,7 +43,6 @@ Verifique os dados e tente novamente mais tarde.", "Ok");
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<LoginException>(this, "FalhaLogin");
-            MessagingCenter.Unsubscribe<Usuario>(this, "CadastrarUsuario");
         }
     }
 }

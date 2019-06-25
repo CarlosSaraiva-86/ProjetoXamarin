@@ -6,6 +6,8 @@ namespace BragantinaTelerikDemo.Portable.Models
 {
     public class Login
     {
+        private bool AutenticadoAPI;
+
         public string Usuario { get; set; }
         public string Senha { get; set; }
 
@@ -21,5 +23,10 @@ namespace BragantinaTelerikDemo.Portable.Models
             this.Senha = senha;
         }
 
+
+        public Login(bool autenticadoAPi)
+        {
+            this.AutenticadoAPI = autenticadoAPi;
+        }
     }
 }

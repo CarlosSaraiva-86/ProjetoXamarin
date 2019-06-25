@@ -46,8 +46,8 @@
                         <telerikPrimitives:RadBorder Style="{StaticResource AvatarBorderStyle}">
                             <Image Source="{Binding Avatar, Converter={StaticResource ImageSourceConverter}}" />
                         </telerikPrimitives:RadBorder>
-                        <Label Text="{Binding Name}" Style="{StaticResource UserNameLabelStyle}" />
-                        <Label Text="(11) 9 9833-4295" Style="{StaticResource UserJobTitleLabelStyle}" />
+                        <Label Text="{Binding Usuario.Nome}" Style="{StaticResource UserNameLabelStyle}" />
+                        <Label Text="{Binding Usuario.Telefone}" Style="{StaticResource UserJobTitleLabelStyle}" />
                     </StackLayout>
                 </StackLayout>
                 <ScrollView VerticalOptions="FillAndExpand" Margin="5,-10,5,5" Grid.Row="2" Grid.RowSpan="2" BackgroundColor="#FFFFFF">

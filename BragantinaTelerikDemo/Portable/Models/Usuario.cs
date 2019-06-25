@@ -19,6 +19,7 @@ namespace BragantinaTelerikDemo.Portable.Models
         public string UF { get; set; }
         public string Cpf { get; internal set; }
         public string ImgPerfil { get; set; }
+        public string IdToken { get; set; }
     }
 
     public class LoginResult

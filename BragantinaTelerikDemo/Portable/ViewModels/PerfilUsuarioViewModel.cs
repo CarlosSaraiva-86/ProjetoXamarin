@@ -1,4 +1,6 @@
-﻿using BragantinaTelerikDemo.Portable.Models;
+﻿using BragantinaTelerikDemo.Portable.Dao;
+using BragantinaTelerikDemo.Portable.Data;
+using BragantinaTelerikDemo.Portable.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +11,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
 {
     class PerfilUsuarioViewModel : BaseViewModel
     {
+        public Usuario Usuario { get; set; }
         public PerfilUsuarioViewModel()
         {
             this.Avatar = "https://scontent.fbjp1-1.fna.fbcdn.net/v/t1.0-9/33923600_1395086363925833_547282230553083904_n.jpg?_nc_cat=111&_nc_ht=scontent.fbjp1-1.fna&oh=e812948c16474113a5d63428adaa65eb&oe=5CA7269C";
@@ -50,6 +53,16 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                 Avatar = usuario.ImgPerfil;
                 Name = usuario.Nome;
             });
+            this.Usuario = buscarUsuarioLogado();
+        }
+
+        private Usuario buscarUsuarioLogado()
+        {
+            using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
+            {
+                var dao = new UsuarioDAO(conexao);
+                return dao.UsuarioLogado;
+            }
         }
 
         private string avatar;
