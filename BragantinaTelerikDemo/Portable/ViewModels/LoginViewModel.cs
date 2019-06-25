@@ -79,13 +79,20 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                 if (resposta.IsSuccessStatusCode)
                 {
                     var resultado = await resposta.Content.ReadAsStringAsync();
-                    var login = JsonConvert.DeserializeObject<Login>(resultado);
-                    MessagingCenter.Send<Login>(new Login(true), "SucessoLogin");
+                    var login = JsonConvert.DeserializeObject<UserApi>(resultado);
+                    MessagingCenter.Send<Login>(new Login(login.login.Usuario, login.login.Senha), "SucessoLogin");
                     //MessagingCenter.Send<Login>(new Login("Autenticado Via API", "Autenticado Via API"), "SucessoLogin");
                 }
                 else
                     MessagingCenter.Send<LoginException>(new LoginException(), "FalhaLogin");
             }
+        }
+
+        class LoginAuto
+        {
+            public int id { get; set; }
+            public string Usuario { get; set; }
+            public string Senha { get; set; }
         }
 
         private static void SalvarUsuario(Usuario usuario)

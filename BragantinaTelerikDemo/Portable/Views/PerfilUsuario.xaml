@@ -75,6 +75,7 @@
 
                             <!--<BoxView BackgroundColor="White" Grid.Row="1" Grid.ColumnSpan="4" HeightRequest="2" />-->
 
+                            <!--
                             <Image Source="{Binding Premio}" WidthRequest="150" HeightRequest="150"
                                    Grid.ColumnSpan="4" Grid.Row="1" VerticalOptions="Center"></Image>
                             <Button Text="Bonus +" TextColor="#e77324" FontAttributes="Bold" BackgroundColor="Transparent" 
@@ -94,8 +95,9 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
+                            -->
 
-                            <Label TextColor="#000000" Grid.ColumnSpan="4" Grid.Row="4" Grid.Column="0">
+                            <Label TextColor="#000000" Grid.ColumnSpan="4" Grid.Row="3" Grid.Column="0">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Visite nosso site " />
@@ -108,6 +110,10 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
+                            <Button Grid.ColumnSpan="4" Grid.Row="5" Grid.Column="0" Text="Sair" TextColor="#FFFFFF" 
+                                    BackgroundColor="#282828" BorderRadius="10" FontSize="14" FontAttributes="Bold"
+                                    Command="{Binding LogoutCommand}">                                
+                            </Button>
                         </Grid>
                     </Grid>
                 </ScrollView>

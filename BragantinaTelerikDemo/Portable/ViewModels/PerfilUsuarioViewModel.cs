@@ -19,6 +19,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             IndicePremio = 1;
             this.Name = "Antonio";
 
+
             TesteCommand = new Command(() =>
             {
                 if (IndicePremio == 0)
@@ -105,5 +106,13 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
 
         public ICommand TesteCommand { get; private set; }
 
+        public ICommand LogoutCommand => new Command(() => 
+        {
+            using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
+            {
+                UsuarioDAO dao = new UsuarioDAO(conexao);
+                dao.Deletar();
+            }
+        });
     }
 }

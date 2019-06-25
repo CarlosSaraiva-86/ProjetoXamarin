@@ -24,9 +24,9 @@ namespace BragantinaTelerikDemo.Portable.Models
         }
 
 
-        public Login(bool autenticadoAPi)
+        public Login()
         {
-            this.AutenticadoAPI = autenticadoAPi;
+            
         }
     }
 }

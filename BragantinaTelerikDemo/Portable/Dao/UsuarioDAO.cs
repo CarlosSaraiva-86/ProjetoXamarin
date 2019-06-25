@@ -31,6 +31,15 @@ namespace BragantinaTelerikDemo.Portable.Dao
 
         private Usuario usuarioLogado;
 
+        public void Deletar()
+        {
+            var list = conexao.Query<Usuario>("select * from Usuario");
+            foreach (var lista in list)
+            {
+                conexao.Delete(lista);
+            }
+        }
+
         public Usuario UsuarioLogado
         {
             get
@@ -39,8 +48,13 @@ namespace BragantinaTelerikDemo.Portable.Dao
 
                 usuarioLogado = new Usuario();
                 var list = conexao.Query<Usuario>("select * from Usuario");
-                if (list.Count > 0)
-                    usuarioLogado = list[0];
+                foreach (var lista in list)
+                {
+                    if (String.IsNullOrEmpty(lista.IdToken))
+                        conexao.Delete(lista.Id);
+                    else
+                        usuarioLogado = lista;
+                }
 
                 return usuarioLogado;
             }

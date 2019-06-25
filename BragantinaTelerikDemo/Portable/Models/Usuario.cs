@@ -5,10 +5,12 @@ using System.Text;
 
 namespace BragantinaTelerikDemo.Portable.Models
 {
+    [Table("Usuario")]
     public class Usuario
     {
         [PrimaryKey, AutoIncrement, NotNull]
-        public int Id { get; internal set; }
+        public int Id { get; set; }
+
         public string Nome { get; set; }
         public string Telefone { get; set; }
         public bool Facebook { get; set; }
@@ -53,5 +55,22 @@ namespace BragantinaTelerikDemo.Portable.Models
         {
             
         }
+    }
+
+    public class UserApi
+    {
+        public int Id { get; internal set; }
+        public string Nome { get; set; }
+        public string Telefone { get; set; }
+        public bool Facebook { get; set; }
+        public double Meta { get; set; }
+        public double Consumo { get; set; }
+        public string Email { get; set; }
+        public string Cidade { get; set; }
+        public string UF { get; set; }
+        public string Cpf { get; internal set; }
+        public byte[] ImgByte { get; set; }
+        public string ImgPerfil { get; set; }
+        public Login login { get; set; }
     }
 }
