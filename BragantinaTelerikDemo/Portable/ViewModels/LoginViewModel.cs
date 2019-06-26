@@ -32,9 +32,9 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                     if (resposta.IsSuccessStatusCode)
                     {
                         var resultado = await resposta.Content.ReadAsStringAsync();
-                        MessagingCenter.Send<Login>(login, "SucessoLogin");
                         Usuario usuarioJson = JsonConvert.DeserializeObject<Usuario>(resultado);
                         SalvarUsuario(usuarioJson);
+                        MessagingCenter.Send<Login>(login, "SucessoLogin");                        
                     }
                     else
                         MessagingCenter.Send<LoginException>(new LoginException(), "FalhaLogin");

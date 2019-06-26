@@ -14,10 +14,10 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         public Usuario Usuario { get; set; }
         public PerfilUsuarioViewModel()
         {
-            this.Avatar = "https://scontent.fbjp1-1.fna.fbcdn.net/v/t1.0-9/33923600_1395086363925833_547282230553083904_n.jpg?_nc_cat=111&_nc_ht=scontent.fbjp1-1.fna&oh=e812948c16474113a5d63428adaa65eb&oe=5CA7269C";
-            this.Premio = "beer0.png";
-            IndicePremio = 1;
-            this.Name = "Antonio";
+            //this.Avatar = "https://scontent.fbjp1-1.fna.fbcdn.net/v/t1.0-9/33923600_1395086363925833_547282230553083904_n.jpg?_nc_cat=111&_nc_ht=scontent.fbjp1-1.fna&oh=e812948c16474113a5d63428adaa65eb&oe=5CA7269C";
+            //this.Premio = "beer0.png";
+            //IndicePremio = 1;
+            //this.Name = "Antonio";
 
 
             TesteCommand = new Command(() =>
@@ -54,7 +54,13 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                 Avatar = usuario.ImgPerfil;
                 Name = usuario.Nome;
             });
+
+            ////MessagingCenter.Subscribe<Usuario>(this, "SucessoLogin", (usuario) => 
+            ////{
+            ////    this.Usuario = buscarUsuarioLogado();
+            ////});
             this.Usuario = buscarUsuarioLogado();
+            Avatar = this.Usuario.ImgPerfil;
         }
 
         private Usuario buscarUsuarioLogado()
