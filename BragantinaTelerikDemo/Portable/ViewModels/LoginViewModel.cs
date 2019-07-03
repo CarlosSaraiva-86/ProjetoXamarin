@@ -32,8 +32,11 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                     if (resposta.IsSuccessStatusCode)
                     {
                         var resultado = await resposta.Content.ReadAsStringAsync();
-                        Usuario usuarioJson = JsonConvert.DeserializeObject<Usuario>(resultado);
-                        SalvarUsuario(usuarioJson);
+                        UserApi usuarioJson = JsonConvert.DeserializeObject<UserApi>(resultado);
+                        Usuario usuario = new Usuario { Id = usuarioJson.login.Id, Cidade = usuarioJson.Cidade, Consumo = usuarioJson.Consumo,
+                            Cpf = usuarioJson.Cpf, Email = usuarioJson.Email, Facebook = usuarioJson.Facebook, IdToken = usuarioJson.IdToken,
+                            ImgPerfil = usuarioJson.ImgPerfil, Nome = usuarioJson.Nome, Telefone = usuarioJson.Telefone, UF = usuarioJson.UF};
+                        SalvarUsuario(usuario);
                         MessagingCenter.Send<Login>(login, "SucessoLogin");                        
                     }
                     else

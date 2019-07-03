@@ -7,7 +7,7 @@ namespace BragantinaTelerikDemo.Portable.Models
     public class Login
     {
         private bool AutenticadoAPI;
-
+        public int Id { get; set; }
         public string Usuario { get; set; }
         public string Senha { get; set; }
 

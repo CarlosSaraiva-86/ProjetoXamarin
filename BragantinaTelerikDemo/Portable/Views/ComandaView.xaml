@@ -5,80 +5,87 @@
              xmlns:barcode="clr-namespace:Telerik.XamarinForms.Barcode;assembly=Telerik.XamarinForms.Barcode"
              x:Class="BragantinaTelerikDemo.Portable.Views.ComandaView">
     <ContentPage.Content>
-        <StackLayout>
-            <Grid Margin="5,5,5,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <primitives:RadBorder BackgroundColor="White" Grid.Row="0" CornerRadius="6, 6, 6, 6" />
-                <Label Text="{Binding NumeroComanda}" Margin="20,10,5,15" FontSize="22" TextColor="Black" Grid.Row="0" Grid.Column="0"/>
-            </Grid>
-            <ScrollView VerticalOptions="FillAndExpand" Margin="5,0,5,5">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
+        <StackLayout Margin="5,5,5,0" >
+            <primitives:RadBorder BackgroundColor="White"  CornerRadius="6, 6, 6, 6">
+                <StackLayout  BackgroundColor="White">
+
+                    <Label Text="{Binding NumeroComandaFormatado}" Margin="20,10,5,15" FontSize="22" TextColor="Black"/>
+                    <!--<Label Text="Nº Comanda" Margin="20,10,5,15" FontSize="22" TextColor="Black"/>-->
+                </StackLayout>
+            </primitives:RadBorder>
+
+
+            <primitives:RadBorder BackgroundColor="White"  CornerRadius="6, 6, 6, 6" VerticalOptions="Fill">
+                <StackLayout Padding="10" VerticalOptions="FillAndExpand">
                     <primitives:RadBorder BackgroundColor="White" Grid.Row="1" CornerRadius="6, 6, 6, 6" />
-                    <Grid Grid.Row="1" Padding="20, 10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
+                    <StackLayout  Orientation="Horizontal">
+                        <Label Text="Status: " FontSize="20" VerticalTextAlignment="Center"/>
+                        <Label Text="{Binding StatusComanda}" FontSize="20" VerticalTextAlignment="Center" 
+                               HorizontalOptions="Start" TextColor="{Binding CorStatusComanda}"/>
+                    </StackLayout>
 
-                        <Label Text="Status: " FontSize="20" VerticalTextAlignment="Center" Grid.Column="0"/>
-                        <Label Text="{Binding StatusComanda}" FontSize="20" VerticalTextAlignment="Center" HorizontalOptions="Start" TextColor="Green" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    <BoxView BackgroundColor="#282828"  HeightRequest="1" />
 
 
-                        <BoxView BackgroundColor="#282828" Grid.Row="1" Grid.ColumnSpan="4" HeightRequest="2" />
+                    <ListView x:Name="listViewItens" ItemsSource="{Binding Itens}" SeparatorColor="White" RowHeight="30" SelectionMode="None" IsPullToRefreshEnabled="true" RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+                    <!--<ListView x:Name="listViewItens" ItemsSource="{Binding Itens}" SeparatorColor="White" RowHeight="30" SelectionMode="None">-->
+                        <ListView.Header>
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="65"/>
+                                    <ColumnDefinition Width="80"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Qtde" FontSize="15" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Grid.Column="0"></Label>
+                                <Label Text="Item" FontSize="15" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Grid.Column="1"></Label>
+                                <!--<Label Text=" - " VerticalTextAlignment="Center" Grid.Column="2"></Label>-->
+                                <Label Text="Valor Total" FontSize="15" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Grid.Column="2"></Label>
+                                <Label Text="Status" FontSize="15" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="{Binding Cor}" Grid.Column="3"></Label>
+                            </Grid>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.View>
+                                        <Grid >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="20"/>
+                                                <ColumnDefinition Width="150"/>
+                                                <ColumnDefinition Width="65"/>
+                                                <ColumnDefinition Width="80"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="{Binding QtdeFormatada}" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Grid.Column="0"></Label>
+                                            <Label Text="{Binding Descricao}" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Grid.Column="1"></Label>
+                                            <!--<Label Text=" - " VerticalTextAlignment="Center" Grid.Column="2"></Label>-->
+                                            <Label Text="{Binding ValorTotalFormatado}" FontSize="15" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Grid.Column="2"></Label>
+                                            <Label Text="{Binding StatusFormatado}" FontSize="15" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="{Binding Cor}" Grid.Column="3"></Label>
+                                        </Grid>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
 
-                        <!--<Label Text="Itens" Grid.Row="2" Grid.ColumnSpan="2" />-->
-                        <Label Text="Itens" Grid.Row="2"></Label>
-                        <Label Text="Valor"  Grid.Row="2" Grid.Column="2" />
-                        <Label Text="Status" Grid.Row="2" Grid.Column="3" />
-
-                        <Label Text="(2) Red Ipa" Grid.Row="3" Grid.ColumnSpan="2" />
-                        <Label Text="R$ 24,00" Grid.Row="3" Grid.Column="2" />
-                        <Label Text="Entregue" Grid.Row="3" Grid.Column="3" TextColor="Green"/>
-
-                        <Label Text="(3) Blonde Ale" Grid.Row="4" Grid.ColumnSpan="2" />
-                        <Label Text="R$ 21,00" Grid.Row="4" Grid.Column="2" />
-                        <Label Text="Entregue" Grid.Row="4" Grid.Column="3" TextColor="Green"/>
-                        
-                        <Label Text="(1) Weis" Grid.Row="5" Grid.ColumnSpan="2" />
-                        <Label Text="R$ 10,00" Grid.Row="5" Grid.Column="2" />
-                        <Label Text="Entregue" Grid.Row="5" Grid.Column="3" TextColor="Green"/>
-
-                        <Label Text="(1) Pizza" Grid.Row="6" Grid.ColumnSpan="2" />
-                        <Label Text="R$ 24,00" Grid.Row="6" Grid.Column="2" />
-                        <Label Text="Pendente" Grid.Row="6" Grid.Column="3" TextColor="Yellow"/>
-
-                        <BoxView BackgroundColor="#282828" Grid.Row="7" Grid.ColumnSpan="4" HeightRequest="2" />
-                        <Label Text="Total" Grid.Row="8" FontSize="18"/>
-                        <Label Text="R$ 79,00" Grid.Row="8" Grid.Column="2" FontSize="18"/>
-
-                        <StackLayout Grid.Row="10" Grid.ColumnSpan="4" IsVisible="{Binding BotaoPedido}">
-                            <Button Text="PEDIDO PENDENTE" Command="{Binding Pedido}"
+                    <StackLayout>
+                        <Button Text="PEDIDO PENDENTE" Command="{Binding Pedido}"
                                     TextColor="#FFFFFF" BackgroundColor="#282828" BorderRadius="10" 
                                     FontSize="14" FontAttributes="Bold"></Button>
-                        </StackLayout>
+                    </StackLayout>
 
-                        <StackLayout Grid.Row="11" Grid.ColumnSpan="4" VerticalOptions="End">
-                            <Button Text="{Binding TextoBotao}" Command="{Binding BotaoPrincipal}"
+                    <StackLayout Grid.Row="11" Grid.ColumnSpan="4" VerticalOptions="End">
+                        <Button Text="{Binding TextoBotao}" Command="{Binding BotaoPrincipal}"
                                     TextColor="#FFFFFF" BackgroundColor="#282828" BorderRadius="10" 
                                     FontSize="14" FontAttributes="Bold"></Button>
-                        </StackLayout>
-                    </Grid>
-                </Grid>
-            </ScrollView>
+                    </StackLayout>
+                </StackLayout>
+            </primitives:RadBorder>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

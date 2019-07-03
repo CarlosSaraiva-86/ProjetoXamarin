@@ -27,7 +27,7 @@ namespace BragantinaTelerikDemo.Portable.Views
             DisplayAlert("Pagamento com Cartão", "Integração Getnet", "OK");
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
             MessagingCenter.Subscribe<string>(this, "QRCodeAberta", (msg) =>
@@ -49,6 +49,7 @@ namespace BragantinaTelerikDemo.Portable.Views
             {
                 Navigation.PushAsync(new PagamentoView());
             });
+            await this.vm.ConsultaDadosComanda();
         }
 
         protected override void OnDisappearing()

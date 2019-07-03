@@ -53,8 +53,8 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Text="Qtde:" TextColor="Black" FontAttributes="Bold" FontSize="Large" Grid.Column="0"/>
-                        <telerikInput:RadNumericInput x:Name="numericInput" Minimum="0" Maximum="5" Grid.Column="1"/>
-                        <Button Text="Pedir"  TextColor="#FFFFFF" BackgroundColor="#282828" BorderRadius="10" 
+                        <telerikInput:RadNumericInput x:Name="numericInput" Minimum="1" Maximum="5" Grid.Column="1" Value="{Binding Qtde, Mode=TwoWay}"/>
+                        <Button Text="Pedir"  Command="{Binding  PedirCommand}" TextColor="#FFFFFF" BackgroundColor="#282828" BorderRadius="10" 
                                     FontSize="14" FontAttributes="Bold" Grid.Column="2"></Button>
                     </Grid>
                 </StackLayout>

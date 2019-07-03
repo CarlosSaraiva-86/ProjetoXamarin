@@ -22,5 +22,30 @@ namespace BragantinaTelerikDemo.Portable.Views
             this.Produto = produto;
             this.BindingContext = new DetalheViewModel(produto);
         }
-	}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            MessagingCenter.Subscribe<string>("","SucessoEnvioItem",
+                (msg)=> 
+                    {
+                        DisplayAlert("Atenção", "Item Enviado com Sucesso!","OK");
+                        Navigation.PopAsync();
+                    }
+                );
+            MessagingCenter.Subscribe<string>("", "FalhaEnvioItem",
+                (msg) =>
+                {
+                    DisplayAlert("Atenção", "Falha ao enviar o item!\nVerifique sua conexão", "OK");
+                }
+                );
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<string>("","SucessoEnvioItem");
+            MessagingCenter.Unsubscribe<string>("","FalhaEnvioItem");
+        }
+    }
 }

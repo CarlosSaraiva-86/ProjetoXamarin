@@ -8,9 +8,8 @@ namespace BragantinaTelerikDemo.Portable.Models
     [Table("Usuario")]
     public class Usuario
     {
-        [PrimaryKey, AutoIncrement, NotNull]
+        [PrimaryKey, NotNull]
         public int Id { get; set; }
-
         public string Nome { get; set; }
         public string Telefone { get; set; }
         public bool Facebook { get; set; }
@@ -71,6 +70,7 @@ namespace BragantinaTelerikDemo.Portable.Models
         public string Cpf { get; internal set; }
         public byte[] ImgByte { get; set; }
         public string ImgPerfil { get; set; }
+        public string IdToken { get; set; }
         public Login login { get; set; }
     }
 }

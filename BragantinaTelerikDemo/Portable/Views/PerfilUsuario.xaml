@@ -110,14 +110,18 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Button Grid.ColumnSpan="4" Grid.Row="5" Grid.Column="0" Text="Sair" TextColor="#FFFFFF" 
-                                    BackgroundColor="#282828" BorderRadius="10" FontSize="14" FontAttributes="Bold"
-                                    Command="{Binding LogoutCommand}">                                
-                            </Button>
+                           
                         </Grid>
                     </Grid>
                 </ScrollView>
+                <StackLayout VerticalOptions="End">
+                    <Button Grid.ColumnSpan="4" Grid.Row="5" Grid.Column="0" Text="Sair" TextColor="#FFFFFF" 
+                                    BackgroundColor="#282828" BorderRadius="10" FontSize="14" FontAttributes="Bold"
+                                    Command="{Binding LogoutCommand}" VerticalOptions="End">
+                    </Button>
+                </StackLayout>
             </Grid>
         </ScrollView>
+        
     </ContentPage.Content>
 </ContentPage>

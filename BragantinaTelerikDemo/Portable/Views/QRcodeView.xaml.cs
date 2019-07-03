@@ -1,4 +1,5 @@
-﻿using BragantinaTelerikDemo.Portable.ViewModels;
+﻿using BragantinaTelerikDemo.Portable.Models;
+using BragantinaTelerikDemo.Portable.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,24 @@ namespace BragantinaTelerikDemo.Portable.Views
 			InitializeComponent ();
             this.BindingContext = new QRCodeViewModel(titulo);
 		}
-	}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            MessagingCenter.Subscribe<Pedido>(this, "SucessoAberturaComanda",
+             async (msg) =>
+             {
+                 await DisplayAlert("Comanda", "Comanda aberta com sucesso!", "ok");
+                 await Navigation.PopToRootAsync();
+                 //this.Navigation.PopAsync();
+             });
+
+            
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+        }
+    }
 }

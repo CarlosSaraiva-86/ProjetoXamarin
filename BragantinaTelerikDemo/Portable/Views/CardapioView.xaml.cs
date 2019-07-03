@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 using BragantinaTelerikDemo.Portable.ViewModels;
 using BragantinaTelerikDemo.Portable.Models;
 
+
 namespace BragantinaTelerikDemo.Portable.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
