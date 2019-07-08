@@ -12,11 +12,19 @@ namespace BragantinaTelerikDemo.Portable.API
     {
         Conexao con = new Conexao();
 
-        public async Task<HttpResponseMessage> ConsultarComandaAberta(int codComanda)
+        public async Task<HttpResponseMessage> ConsultarComandaAtiva(int codComanda)
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(con.uri);
             var resposta = await httpClient.GetAsync("pedido/" + codComanda);
+            return resposta;
+        }
+
+        public async Task<HttpResponseMessage> ConsultarComandaAberta(int codComanda)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(con.uri);
+            var resposta = await httpClient.GetAsync("pedido/" + codComanda + "/aberto");
             return resposta;
         }
     }

@@ -15,8 +15,8 @@
             </primitives:RadBorder>
 
 
-            <primitives:RadBorder BackgroundColor="White"  CornerRadius="6, 6, 6, 6" VerticalOptions="Fill">
-                <StackLayout Padding="10" VerticalOptions="FillAndExpand">
+            <primitives:RadBorder BackgroundColor="White"  CornerRadius="6, 6, 6, 6" VerticalOptions="FillAndExpand">
+                <StackLayout Padding="10">
                     <primitives:RadBorder BackgroundColor="White" Grid.Row="1" CornerRadius="6, 6, 6, 6" />
                     <StackLayout  Orientation="Horizontal">
                         <Label Text="Status: " FontSize="20" VerticalTextAlignment="Center"/>
@@ -28,7 +28,7 @@
 
 
                     <ListView x:Name="listViewItens" ItemsSource="{Binding Itens}" SeparatorColor="White" RowHeight="30" SelectionMode="None" IsPullToRefreshEnabled="true" RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
-                    <!--<ListView x:Name="listViewItens" ItemsSource="{Binding Itens}" SeparatorColor="White" RowHeight="30" SelectionMode="None">-->
+                        
                         <ListView.Header>
                             <Grid >
                                 <Grid.RowDefinitions>

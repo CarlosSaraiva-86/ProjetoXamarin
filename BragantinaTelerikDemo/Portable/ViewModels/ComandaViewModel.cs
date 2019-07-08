@@ -20,6 +20,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
     {
         Usuario Usuario = new Usuario();
         private string statusComanda;
+        private string codStatusComanda;
         private Color corStatusComanda;
         private string textoBotao;
         private string numeroComandaFormatado;
@@ -42,6 +43,16 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             set
             {
                 statusComanda = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string CodStatusComanda
+        {
+            get { return codStatusComanda; }
+            set
+            {
+                codStatusComanda = value;
                 OnPropertyChanged();
             }
         }
@@ -79,7 +90,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         {
             statusComanda = "";
             BotaoPedido = false;
-            textoBotao = "ABRIR COMANDA";
+            //textoBotao = "ABRIR COMANDA";
             //numeroComandaFormatado = "Abra a comanda no caixa";
             this.Usuario = buscarUsuarioLogado();
             this.Itens = new ObservableCollection<Item>();
@@ -101,18 +112,56 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
 ConsultaDadosComanda()
         {
             var comandaApi = new ComandaApi();
-            var resposta = await comandaApi.ConsultarComandaAberta(numeroComanda);
+            var resposta = await comandaApi.ConsultarComandaAtiva(numeroComanda);
             var resultado = await resposta.Content.ReadAsStringAsync();
             var pedido = JsonConvert.DeserializeObject<Pedido>(resultado);
             this.Comanda = pedido;
+
             NumeroComandaFormatado = "Nº: " + pedido.IdUsuario.ToString();
             if (string.IsNullOrEmpty(pedido.Id.ToString()))
                 NumeroComandaFormatado = "Abra a comanda no caixa";
+
+
 
             Status _status = new Status();
             _status.GerarStatusComanda(pedido.Status);
             StatusComanda = _status.StatusComanda;
             CorStatusComanda = _status.Cor;
+            CodStatusComanda = pedido.Status.ToString();
+            if (pedido.Status.ToString() == "404")
+            {
+                StatusComanda = "";
+                NumeroComandaFormatado = "";
+            }
+
+            //Aberto
+            if (this.Comanda.Status == 10)
+            {
+                TextoBotao = "Pagar";
+                //Clicar no botão para fechar e se dirigir ao pagamento
+            }
+            //Pago
+            if (this.Comanda.Status == 30)
+            {
+                TextoBotao = "Checkout";
+            }
+            //Checkout
+            if (this.Comanda.Status == 20)
+            {
+                TextoBotao = "Abrir Comanda";
+            }
+            //Not Found
+            if (!resposta.IsSuccessStatusCode)
+            {
+                TextoBotao = "Abrir Comanda";
+                StatusComanda = "";
+                CodStatusComanda = "404";
+            }
+            //if (this.Comanda.Status == 404)
+            //{
+
+            //}
+
 
             Itens.Clear();
             var itemApi = new ItemAPI();
@@ -135,23 +184,23 @@ ConsultaDadosComanda()
             }
         }
 
-        
+
         //public async Task ConsultaItens()
         //{
         //    var itemApi = new ItemAPI();
         //    var resposta = await itemApi.ConsultarItens(numeroComanda);
         //    var resultado = await resposta.Content.ReadAsStringAsync();
         //    Itens = JsonConvert.DeserializeObject<ObservableCollection<Item>>(resultado);
-            
+
         //    //Status _status = new Status();
         //    //_status.GerarStatusItens(20);
         //    //StatusComanda = _status.StatusComanda;
         //    //CorStatusComanda = _status.Cor;
         //}
 
-        public ICommand Pedido => new Command(() => 
+        public ICommand Pedido => new Command(() =>
         {
-            MessagingCenter.Send("Apresente o código no caixa", "QRCodePedido");
+            MessagingCenter.Send("Apresente o código no caixa", "ItensPendentes");
         });
 
         private bool _isRefreshing = false;
@@ -182,30 +231,33 @@ ConsultaDadosComanda()
 
         public ICommand BotaoPrincipal => new Command(() =>
         {
-            if (StatusComanda == "")
-            {                
-                StatusComanda = "Aberta";
-                TextoBotao = "PAGAMENTO";
-                NumeroComandaFormatado = "Comanda: " + numeroComanda;
-                BotaoPedido = true;
-                MessagingCenter.Send("Apresente o código no caixa", "QRCodeAberta");
-            }
-            else if (StatusComanda == "Aberta")
+            if (CodStatusComanda == "10")
             {
-                StatusComanda = "Pago";
-                TextoBotao = "CHECKOUT";
-                NumeroComandaFormatado = "";
-                BotaoPedido = false;
+                TextoBotao = "PAGAR";
+                BotaoPedido = true;
                 MessagingCenter.Send("", "AbrirPagamento");
+                //Abrir tela QRCode como numero da comanda e mensagem de abre sua comanda no caixa
             }
-            else
+            else if (CodStatusComanda == "20")
             {
                 TextoBotao = "ABRIR COMANDA";
-                StatusComanda = "";
-                NumeroComandaFormatado = "Abra a comanda no caixa";
+                BotaoPedido = false;
+                MessagingCenter.Send("Apresente o código no caixa", "QRCodeAberta");
+            }
+            else if (CodStatusComanda == "30")
+            {
+                TextoBotao = "CHECKOUT";
                 BotaoPedido = false;
                 MessagingCenter.Send("Apresente código na saída", "QRCodeFechada");
             }
+            else if (CodStatusComanda == "404")
+            {
+                TextoBotao = "ABRIR COMANDA";
+                BotaoPedido = false;
+                MessagingCenter.Send("Apresente o código no caixa", "QRCodeAberta");
+            }
+
+
         });
 
 

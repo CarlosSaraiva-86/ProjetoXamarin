@@ -16,12 +16,12 @@ namespace BragantinaTelerikDemo.Portable.Helpers
 
             if (status == 10)
             {
-                StatusComanda = "Aberto";
+                StatusComanda = "Aberta";
                 Cor = Color.Green;
             }
-            else if (status == 20)
+            else if (status == 20)//Pago e feito checkout
             {
-                StatusComanda = "Fechado";
+                StatusComanda = "Pago";
                 Cor = Color.Orange;
             }
             else if (status == 30)
