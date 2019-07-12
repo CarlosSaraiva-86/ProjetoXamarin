@@ -103,6 +103,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
             {
                 UsuarioDAO dao = new UsuarioDAO(conexao);
+                dao.Deletar();
                 dao.Salvar(usuario);
             }
         }

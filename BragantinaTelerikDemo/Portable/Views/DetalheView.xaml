@@ -4,45 +4,41 @@
              xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
              xmlns:telerikNumericInput="clr-namespace:Telerik.XamarinForms.Input.NumericInput;assembly=Telerik.XamarinForms.Input"
              x:Class="BragantinaTelerikDemo.Portable.Views.DetalheView"
-             Title="{Binding Produto.Title}"
+             Title="{Binding Produto.Descricao}"
              BackgroundColor="White">
 
     <ContentPage.Content>
         <ScrollView Margin="0,10,0,0">
             <StackLayout>
-                <Image Source="{Binding Produto.Image}"/>
+                <Image Source="{Binding Produto.Imagem}"/>
                 <StackLayout>
-                    <Grid IsVisible="{Binding Produto.Info}" HorizontalOptions="Center">
+                    <Grid IsVisible="{Binding Produto.Cozinha}" HorizontalOptions="Center">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="15"></RowDefinition>
                             <RowDefinition Height="30"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40"></ColumnDefinition>
-                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        <Grid.ColumnDefinitions>                            
                             <ColumnDefinition Width="40"></ColumnDefinition>
                             <ColumnDefinition Width="75"></ColumnDefinition>
                             <ColumnDefinition Width="40"></ColumnDefinition>
                             <ColumnDefinition Width="65"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Label Text="álcool" Grid.Column="1" Grid.Row="0"></Label>
-                        <Label Text="5%" Grid.Column="1" Grid.Row="1" FontAttributes="Bold"></Label>
-                        <Label Text="tonalidade" Grid.Column="3" Grid.Row="0"></Label>
-                        <Label Text="08 EBC" Grid.Column="3" Grid.Row="1" FontAttributes="Bold"></Label>
-                        <Label Text="amargor" Grid.Column="5" Grid.Row="0"></Label>
-                        <Label Text="17 IBU" Grid.Column="5" Grid.Row="1" FontAttributes="Bold"></Label>
-                        <Image Source="{Binding Produto.Alcool}" Grid.RowSpan="2" Grid.Column="0"></Image>
-                        <Image Source="{Binding Produto.Tonalidade}" Grid.RowSpan="2" Grid.Column="2"></Image>
-                        <Image Source="{Binding Produto.Amargor}" Grid.RowSpan="2" Grid.Column="4"></Image>
+                        
+                        <Label Text="tonalidade" Grid.Column="1" Grid.Row="0"></Label>
+                        <Label Text="{Binding Produto.Tonalidade}" Grid.Column="1" Grid.Row="1" FontAttributes="Bold"></Label>
+                        <Label Text="amargor" Grid.Column="3" Grid.Row="0"></Label>
+                        <Label Text="{Binding Produto.Amargor}" Grid.Column="3" Grid.Row="1" FontAttributes="Bold"></Label>
+                        <Image Source="{Binding Produto.ImgTonalidade}" Grid.RowSpan="2" Grid.Column="0"></Image>
+                        <Image Source="{Binding Produto.ImgAmargor}" Grid.RowSpan="2" Grid.Column="2"></Image>
                     </Grid>
                     <Label Text="{Binding Produto.Titulo}" HorizontalTextAlignment="Center" 
                            FontSize="Large" FontAttributes="Bold"></Label>
-                    <Label Text="{Binding Produto.Descricao}" HorizontalTextAlignment="Center" 
+                    <Label Text="{Binding Produto.Informacao}" HorizontalTextAlignment="Center" 
                            FontSize="Medium"></Label>
                 </StackLayout>
 
                 <StackLayout Margin="0,10,0,0">
-                    <Grid IsVisible="{Binding Produto.Cozinha}" HorizontalOptions="Center">
+                    <Grid HorizontalOptions="Center">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>

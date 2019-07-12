@@ -1,13 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BragantinaTelerikDemo.Portable.Views.PagamentoView"
+             xmlns:behavior="clr-namespace:BragantinaTelerikDemo.Portable.Helpers"
              Title="Pagamento">
     <ContentPage.Content>
-        <StackLayout>
-            <Image Source="getnet.png"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="20" Spacing="20" BackgroundColor="White">
+            <Label Text="{Binding ValorTotalFormatado}" FontAttributes="Bold" FontSize="Large"></Label>
+            <Entry x:Name="Numero" Placeholder="Número do Cartão" Keyboard="Numeric" Text="{Binding NumCartao}">
+                <Entry.Behaviors>
+                    <behavior:MaskedBehavior Mask="XXXX XXXX XXXX XXXX" />
+                </Entry.Behaviors>
+            </Entry>
+            <Entry x:Name="Nome" Placeholder="Nome impresso no cartão" Text="{Binding Nome}">
+            </Entry>
+            <Picker Title="Mes" SelectedItem="{Binding Mes}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>01</x:String>
+                        <x:String>02</x:String>
+                        <x:String>03</x:String>
+                        <x:String>04</x:String>
+                        <x:String>05</x:String>
+                        <x:String>06</x:String>
+                        <x:String>07</x:String>
+                        <x:String>08</x:String>
+                        <x:String>09</x:String>
+                        <x:String>10</x:String>
+                        <x:String>11</x:String>
+                        <x:String>12</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Entry x:Name="Ano" Placeholder="Ano" Text="{Binding Ano}" Keyboard="Numeric">
+                <Entry.Behaviors>
+                    <behavior:MaskedBehavior Mask="XX" />
+                </Entry.Behaviors>
+            </Entry>
+            <Entry x:Name="Seg" Placeholder="Código de Segurança" Text="{Binding CodSeg}" Keyboard="Numeric">
+                <Entry.Behaviors>
+                    <behavior:MaskedBehavior Mask="XXXX" />
+                </Entry.Behaviors>
+            </Entry>
+            <Button Text="Pagar" Command="{Binding PagarCommand}" TextColor="#FFFFFF" 
+             BackgroundColor="#282828" BorderRadius="10" FontSize="14" FontAttributes="Bold"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

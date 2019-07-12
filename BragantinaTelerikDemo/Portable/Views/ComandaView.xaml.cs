@@ -45,9 +45,9 @@ namespace BragantinaTelerikDemo.Portable.Views
                 Navigation.PushAsync(new QRcodeView(msg));
             });
 
-            MessagingCenter.Subscribe<string>(this, "AbrirPagamento", (msg) =>
+            MessagingCenter.Subscribe<Pedido>(this, "AbrirPagamento", (msg) =>
             {
-                Navigation.PushAsync(new PagamentoView());
+                Navigation.PushAsync(new PagamentoView(msg));
             });
 
             MessagingCenter.Subscribe<string>(this, "ItensPendentes", (msg) =>
@@ -63,7 +63,7 @@ namespace BragantinaTelerikDemo.Portable.Views
             MessagingCenter.Unsubscribe<string>(this, "QRCodeAberta");
             MessagingCenter.Unsubscribe<string>(this, "QRCodeFechada");
             MessagingCenter.Unsubscribe<string>(this, "QRCodePedido");
-            MessagingCenter.Unsubscribe<string>(this, "AbrirPagamento");
+            MessagingCenter.Unsubscribe<Pedido>(this, "AbrirPagamento");
             MessagingCenter.Unsubscribe<string>(this, "ItensPendentes");
         }
     }

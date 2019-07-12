@@ -28,6 +28,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         public DetalheViewModel(Produto produto)
         {
             this.Produto = produto;
+
             int nComanda = BuscarUsuarioLogado();
             PedirCommand = new Command(
             async () =>

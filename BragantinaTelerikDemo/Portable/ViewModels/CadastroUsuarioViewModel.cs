@@ -118,11 +118,9 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             try
             {
                 this.Usuario = usuario;
-                //this.Usuario.Login = this.login;
+
                 CadastrarCommand = new Command(() =>
-                {
-                    //MessagingCenter.Send<UsuarioApi>(this.Usuario
-                    //    , "CadastrarUsuarioNuvem");
+                {                    
                     UsuarioAPI api = new UsuarioAPI();
                     api.CadastrarUsuario(Usuario);
                 }, () =>

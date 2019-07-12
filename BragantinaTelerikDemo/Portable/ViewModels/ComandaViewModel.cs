@@ -108,8 +108,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
 
         public Pedido Comanda { get; set; }
         public ObservableCollection<Item> Itens { get; set; }
-        public async Task
-ConsultaDadosComanda()
+        public async Task ConsultaDadosComanda()
         {
             var comandaApi = new ComandaApi();
             var resposta = await comandaApi.ConsultarComandaAtiva(numeroComanda);
@@ -146,7 +145,7 @@ ConsultaDadosComanda()
                 TextoBotao = "Checkout";
             }
             //Checkout
-            if (this.Comanda.Status == 20)
+            if (this.Comanda.Status == 20 || this.Comanda.Status == 50)
             {
                 TextoBotao = "Abrir Comanda";
             }
@@ -183,20 +182,6 @@ ConsultaDadosComanda()
                 });
             }
         }
-
-
-        //public async Task ConsultaItens()
-        //{
-        //    var itemApi = new ItemAPI();
-        //    var resposta = await itemApi.ConsultarItens(numeroComanda);
-        //    var resultado = await resposta.Content.ReadAsStringAsync();
-        //    Itens = JsonConvert.DeserializeObject<ObservableCollection<Item>>(resultado);
-
-        //    //Status _status = new Status();
-        //    //_status.GerarStatusItens(20);
-        //    //StatusComanda = _status.StatusComanda;
-        //    //CorStatusComanda = _status.Cor;
-        //}
 
         public ICommand Pedido => new Command(() =>
         {
@@ -235,10 +220,10 @@ ConsultaDadosComanda()
             {
                 TextoBotao = "PAGAR";
                 BotaoPedido = true;
-                MessagingCenter.Send("", "AbrirPagamento");
+                MessagingCenter.Send<Pedido>(Comanda, "AbrirPagamento");
                 //Abrir tela QRCode como numero da comanda e mensagem de abre sua comanda no caixa
             }
-            else if (CodStatusComanda == "20")
+            else if (CodStatusComanda == "20" || CodStatusComanda == "50")
             {
                 TextoBotao = "ABRIR COMANDA";
                 BotaoPedido = false;
@@ -256,11 +241,6 @@ ConsultaDadosComanda()
                 BotaoPedido = false;
                 MessagingCenter.Send("Apresente o código no caixa", "QRCodeAberta");
             }
-
-
         });
-
-
-
     }
 }
