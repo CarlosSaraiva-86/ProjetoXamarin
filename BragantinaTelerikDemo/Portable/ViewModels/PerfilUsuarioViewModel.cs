@@ -14,40 +14,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         public Usuario Usuario { get; set; }
         public PerfilUsuarioViewModel()
         {
-            //this.Avatar = "https://scontent.fbjp1-1.fna.fbcdn.net/v/t1.0-9/33923600_1395086363925833_547282230553083904_n.jpg?_nc_cat=111&_nc_ht=scontent.fbjp1-1.fna&oh=e812948c16474113a5d63428adaa65eb&oe=5CA7269C";
-            //this.Premio = "beer0.png";
-            //IndicePremio = 1;
-            //this.Name = "Antonio";
-
-
-            TesteCommand = new Command(() =>
-            {
-                if (IndicePremio == 0)
-                {
-                    this.Premio = "beer0.png";
-                }
-                if (IndicePremio == 1)
-                {
-                    this.Premio = "beer25.png";
-                }
-                if (IndicePremio == 2)
-                {
-                    this.Premio = "beer50.png";
-                }
-                if (IndicePremio == 3)
-                {
-                    this.Premio = "beer75.png";
-                }
-                if (IndicePremio == 4)
-                {
-                    this.Premio = "beer100.png";
-                }
-
-                if (IndicePremio >= 4)
-                    IndicePremio = 0;
-                else
-                    IndicePremio++;
-            });
+           
 
             MessagingCenter.Subscribe<Usuario>(this, "UsuarioFB", (usuario) =>
             {
@@ -55,10 +22,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                 Name = usuario.Nome;
             });
 
-            ////MessagingCenter.Subscribe<Usuario>(this, "SucessoLogin", (usuario) => 
-            ////{
-            ////    this.Usuario = buscarUsuarioLogado();
-            ////});
+            
             this.Usuario = buscarUsuarioLogado();
             Avatar = this.Usuario.ImgPerfil;
         }
@@ -114,11 +78,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
 
         public ICommand LogoutCommand => new Command(() => 
         {
-            using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
-            {
-                UsuarioDAO dao = new UsuarioDAO(conexao);
-                dao.Deletar();
-            }
+            MessagingCenter.Send("", "LogoutApp");            
         });
     }
 }

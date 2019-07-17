@@ -49,6 +49,11 @@ namespace BragantinaTelerikDemo.Portable.Helpers
                 StatusComanda = "Entregue";
                 Cor = Color.Green;
             }
+            else if (status == 50)
+            {
+                StatusComanda = "Cancelado";
+                Cor = Color.Red;
+            }
         }
     }
 

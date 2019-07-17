@@ -14,10 +14,10 @@ namespace BragantinaTelerikDemo.Portable.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class QRcodeView : ContentPage
 	{
-        public QRcodeView (string titulo)
+        public QRcodeView (QRCodePedido qr)
 		{
 			InitializeComponent ();
-            this.BindingContext = new QRCodeViewModel(titulo);
+            this.BindingContext = new QRCodeViewModel(qr);
 		}
 
         protected override void OnAppearing()
@@ -26,17 +26,23 @@ namespace BragantinaTelerikDemo.Portable.Views
             MessagingCenter.Subscribe<Pedido>(this, "SucessoAberturaComanda",
              async (msg) =>
              {
-                 await DisplayAlert("Comanda", "Comanda aberta com sucesso!", "ok");
+                 DisplayAlert("Comanda", "Comanda aberta com sucesso!", "ok");
                  await Navigation.PopToRootAsync();
-                 //this.Navigation.PopAsync();
              });
 
-            
+            MessagingCenter.Subscribe<string>("", "SucessoFechadoComanda",
+             async (msg) =>
+             {
+                 DisplayAlert("Comanda", "Obrigado pela preferencia!", "ok");
+                 await Navigation.PopToRootAsync();
+             });
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            MessagingCenter.Unsubscribe<string>("", "SucessoAberturaComanda");
+            MessagingCenter.Unsubscribe<string>("", "SucessoFechadoComanda");
         }
     }
 }

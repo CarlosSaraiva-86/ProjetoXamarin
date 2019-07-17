@@ -113,6 +113,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         }
         public ICommand CadastrarCommand { get; set; }
 
+       
         public CadastroUsuarioViewModel(UsuarioNuvem usuario)
         {
             try

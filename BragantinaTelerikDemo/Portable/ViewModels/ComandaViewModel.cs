@@ -24,8 +24,10 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         private Color corStatusComanda;
         private string textoBotao;
         private string numeroComandaFormatado;
-        private bool pedido;
+        private bool pedido = true;
+        private bool principal = true;
         public int numeroComanda { get { return this.Usuario.Id; } }
+
 
         public bool BotaoPedido
         {
@@ -33,6 +35,16 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             set
             {
                 pedido = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool Principal
+        {
+            get { return principal; }
+            set
+            {
+                principal = value;
                 OnPropertyChanged();
             }
         }
@@ -136,18 +148,32 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             //Aberto
             if (this.Comanda.Status == 10)
             {
-                TextoBotao = "Pagar";
+                TextoBotao = "PAGAR";
+                BotaoPedido = true;
+                Principal = true;
+                //Clicar no botão para fechar e se dirigir ao pagamento
+            }
+            if (this.Comanda.Status == 20)
+            {
+                TextoBotao = "";
+                BotaoPedido = false;
+                Principal = false;
+                
                 //Clicar no botão para fechar e se dirigir ao pagamento
             }
             //Pago
             if (this.Comanda.Status == 30)
             {
-                TextoBotao = "Checkout";
+                TextoBotao = "CHECKOUT";
+                BotaoPedido = false;
+                Principal = true;
             }
             //Checkout
-            if (this.Comanda.Status == 20 || this.Comanda.Status == 50)
+            if (this.Comanda.Status == 50)
             {
-                TextoBotao = "Abrir Comanda";
+                TextoBotao = "ABRIR COMANDA";
+                BotaoPedido = false;
+                Principal = true;
             }
             //Not Found
             if (!resposta.IsSuccessStatusCode)
@@ -155,11 +181,11 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                 TextoBotao = "Abrir Comanda";
                 StatusComanda = "";
                 CodStatusComanda = "404";
+                Principal = true;
             }
-            //if (this.Comanda.Status == 404)
-            //{
-
-            //}
+            else
+                Principal = true;
+           
 
 
             Itens.Clear();
@@ -220,26 +246,46 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             {
                 TextoBotao = "PAGAR";
                 BotaoPedido = true;
+                Principal = true;
                 MessagingCenter.Send<Pedido>(Comanda, "AbrirPagamento");
                 //Abrir tela QRCode como numero da comanda e mensagem de abre sua comanda no caixa
             }
-            else if (CodStatusComanda == "20" || CodStatusComanda == "50")
+            else if (CodStatusComanda == "20")
             {
-                TextoBotao = "ABRIR COMANDA";
+                //TextoBotao = "";
                 BotaoPedido = false;
-                MessagingCenter.Send("Apresente o código no caixa", "QRCodeAberta");
+                Principal = false;
+                //MessagingCenter.Send("Apresente o código no caixa", "QRCodeAberta");
             }
             else if (CodStatusComanda == "30")
             {
                 TextoBotao = "CHECKOUT";
                 BotaoPedido = false;
-                MessagingCenter.Send("Apresente código na saída", "QRCodeFechada");
+                Principal = true;
+                QRCodePedido qr = new QRCodePedido();
+                qr.titulo = "Apresente código na saída";
+                qr.status = 20;
+                MessagingCenter.Send(qr, "QRCodeFechada");
+            }
+            else if (CodStatusComanda == "50")
+            {
+                TextoBotao = "ABRIR COMANDA";
+                BotaoPedido = false;
+                Principal = true;
+                QRCodePedido qr = new QRCodePedido();
+                qr.titulo = "Apresente o código no caixa";
+                qr.status = 10;
+                MessagingCenter.Send(qr, "QRCodeAberta");
             }
             else if (CodStatusComanda == "404")
             {
                 TextoBotao = "ABRIR COMANDA";
                 BotaoPedido = false;
-                MessagingCenter.Send("Apresente o código no caixa", "QRCodeAberta");
+                Principal = true;
+                QRCodePedido qr = new QRCodePedido();
+                qr.titulo = "Apresente o código no caixa";
+                qr.status = 10;
+                MessagingCenter.Send(qr, "QRCodeAberta");
             }
         });
     }

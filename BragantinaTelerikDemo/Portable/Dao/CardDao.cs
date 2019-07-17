@@ -22,6 +22,11 @@ namespace BragantinaTelerikDemo.Portable.Dao
             conexao.Insert(card);
         }
 
+        public void Deletar(Cartao card)
+        {
+            conexao.Delete(card);
+        }
+
         public Cartao Recuperar()
         {
             var cartoes = conexao.Query<Cartao>("SELECT * FROM Cartao");

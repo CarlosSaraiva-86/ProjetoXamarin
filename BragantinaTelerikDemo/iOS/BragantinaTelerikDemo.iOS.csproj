@@ -204,46 +204,7 @@
     <BundleResource Include="Resources\ListView_LinearLayout.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\beer.jpg">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Cardapio1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Cardapio2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Comanda1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Comanda2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Perfil1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\Border_User.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\getnet.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\beer0.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\beer100.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\beer25.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\beer50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\beer75.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\login.png">
@@ -253,6 +214,15 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\SpotifyIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Cardapio90.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Comanda90.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Perfil90.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

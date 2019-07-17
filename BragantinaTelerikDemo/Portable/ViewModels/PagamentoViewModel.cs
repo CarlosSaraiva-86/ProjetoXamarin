@@ -10,15 +10,18 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Input;
 using Xamarin.Forms;
+using static BragantinaTelerikDemo.Portable.API.PagamentoAPI;
 
 namespace BragantinaTelerikDemo.Portable.ViewModels
 {
     public class PagamentoViewModel : BaseViewModel
     {
         PagamentoAPI api = new PagamentoAPI();
+        ComandaApi apiComanda = new ComandaApi();
         ItemAPI apiItem = new ItemAPI();
         Pedido pedido = new Pedido();
         Card card = new Card();
@@ -36,6 +39,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             {
                 valorTotal = value;
                 OnPropertyChanged();
+                //((Command)PagarCommand).ChangeCanExecute();
             }
         }
         string valorTotalFormatado;
@@ -49,6 +53,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             {
                 valorTotalFormatado = value;
                 OnPropertyChanged();
+                //((Command)PagarCommand).ChangeCanExecute();
             }
         }
 
@@ -62,6 +67,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             {
                 card.cardholder_name = value;
                 OnPropertyChanged();
+                //((Command)PagarCommand).ChangeCanExecute();
             }
         }
         public string NumCartao
@@ -74,6 +80,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             {
                 card.card_number = value;
                 OnPropertyChanged();
+                //((Command)PagarCommand).ChangeCanExecute();
             }
         }
 
@@ -87,6 +94,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             {
                 card.expiration_month = value;
                 OnPropertyChanged();
+                //((Command)PagarCommand).ChangeCanExecute();
             }
         }
 
@@ -100,6 +108,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             {
                 card.expiration_year = value;
                 OnPropertyChanged();
+                //((Command)PagarCommand).ChangeCanExecute();
             }
         }
 
@@ -113,11 +122,12 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             {
                 card.security_code = value;
                 OnPropertyChanged();
+                //((Command)PagarCommand).ChangeCanExecute();
             }
         }
 
         public PagamentoViewModel(Pedido ped)
-        {            
+        {
             pedido = ped;
             ConsultarTotal(pedido.IdUsuario);
             using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
@@ -131,7 +141,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                     autorization = "Bearer " + token.access_token;
                     var cardRec = api.Recuperar(autorization, cartao);
                     card.number_token = cardRec.number_token;
-                    card.card_number = null;
+                    card.brand = cardRec.brand;
                     Mes = cardRec.expiration_month;
                     Ano = cardRec.expiration_year;
                     Nome = cardRec.cardholder_name;
@@ -145,50 +155,114 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             var resposta = await apiItem.ConsultarItens(idUsuario);
             var resultado = await resposta.Content.ReadAsStringAsync();
             var itens = JsonConvert.DeserializeObject<ObservableCollection<Item>>(resultado);
-            
+
             foreach (var item in itens)
             {
-                if (item.Status == 30)
+                if (item.Status == 30 || item.Status == 20)
                     valorTotal += item.ValorTotal;
             }
             ValorTotal = valorTotal;
-            valorTotalFormatado = "Valor Total: "+valorTotal.ToString("n2");
+            valorTotalFormatado = "Valor Total: " + valorTotal.ToString("n2");
             ValorTotalFormatado = valorTotalFormatado;
         }
 
         public ICommand PagarCommand => new Command(() =>
         {
             var token = api.Autenticar();
-            autorization = "Bearer " + token.access_token;            
-
+            autorization = "Bearer " + token.access_token;
+            
             if (!armazenado)
             {
                 card = api.Tokenizar(autorization, card);
-                card.card_number = null;
                 CardArm cardArm = new CardArm
                 {
                     cardholder_name = card.cardholder_name,
-                    customer_id = pedido.IdUsuario.ToString(),
+                    customer_id = "cliente_"+pedido.IdUsuario.ToString(),
                     expiration_month = card.expiration_month,
                     expiration_year = card.expiration_year,
                     number_token = card.number_token
                 };
 
                 var cartao = api.Armazenar(autorization, cardArm);
-                using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
+                if (cartao.card_id != null)
                 {
-                    CardDAO dao = new CardDAO(conexao);
-                    dao.Salvar(cartao);                    
+                    using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
+                    {
+                        CardDAO dao = new CardDAO(conexao);
+                        dao.Salvar(cartao);
+                    }
                 }
             }
-            
-            if (api.Verificar(autorization, card))
+            if (card.number_token == null)
+                card = api.Tokenizar(autorization, card);
+
+            card.card_number = null;
+            if (!string.IsNullOrEmpty(card.number_token) && !string.IsNullOrEmpty(card.security_code))
             {
-                Credit credit = new Credit(card);
-                Pagamento pagamento = new Pagamento(ValorTotal, pedido.Id.ToString(), pedido.IdUsuario.ToString(), credit);
-                var pgto = api.Pagamento(autorization, pagamento);
+                if (api.Verificar(autorization, card))
+                {
+                    Credit credit = new Credit(card);
+                    Pagamento pagamento = new Pagamento(ValorTotal, pedido.Id.ToString(), pedido.IdUsuario.ToString(), credit);
+                    var pgto = api.Pagamento(autorization, pagamento);
+
+                    if (pgto != null)
+                    {
+                        if (pgto.status == "APPROVED")
+                        {
+                            if (api.Inserir(pgto))
+                            {
+                                if (apiComanda.AlterarStatus(pedido.Id, 20))
+                                {
+                                    ConsultaComandaAberta(pedido.IdUsuario);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessagingCenter.Send("", "PagamentoRecusado");
+                        }
+                    }
+                    else
+                    {
+                        MessagingCenter.Send("", "PagamentoRecusado");
+                    }
+                }
+            }
+            else
+            {
+                MessagingCenter.Send("", "InformacoesFaltantes");
             }
         });
 
+        private async void ConsultaComandaAberta(int CodComanda)
+        {
+            var comandaApi = new ComandaApi();
+            var resposta = await comandaApi.ConsultarComandaAtiva(CodComanda);
+            var resultado = await resposta.Content.ReadAsStringAsync();
+            var comanda = JsonConvert.DeserializeObject<Pedido>(resultado);
+            
+            if (comanda.Status != 30)
+                ConsultaComandaAberta(CodComanda);
+            else
+                MessagingCenter.Send("", "PagamentoAprovado");
+        }
+
+        public ICommand DeletarCommand => new Command(() =>
+        {
+            using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
+            {
+                CardDAO dao = new CardDAO(conexao);
+                var cartao = dao.Recuperar();
+                if (cartao != null)
+                {
+                    api.Deletar(autorization, cartao);
+                    dao.Deletar(cartao);
+                    Ano = "";
+                    Mes = "";
+                    Nome = "";
+                    NumCartao = "";
+                }
+            }
+        });
     }
 }

@@ -22,7 +22,7 @@ namespace BragantinaTelerikDemo.Portable.Models
         public string cardholder_name { get; set; }
         public string expiration_month { get; set; }
         public string expiration_year { get; set; }
-        public string security_code { get; set; }
+        public string security_code { get; set; }        
     }
 
     public class CardArm

@@ -74,7 +74,7 @@
                     </ListView>
 
                     <StackLayout>
-                        <Button Text="PEDIDO PENDENTE" Command="{Binding Pedido}"
+                        <Button Text="COMANDA" Command="{Binding Pedido}" IsVisible="{Binding BotaoPedido}"
                                     TextColor="#FFFFFF" BackgroundColor="#282828" BorderRadius="10" 
                                     FontSize="14" FontAttributes="Bold"></Button>
                     </StackLayout>
@@ -82,6 +82,7 @@
                     <StackLayout Grid.Row="11" Grid.ColumnSpan="4" VerticalOptions="End">
                         <Button Text="{Binding TextoBotao}" Command="{Binding BotaoPrincipal}"
                                     TextColor="#FFFFFF" BackgroundColor="#282828" BorderRadius="10" 
+                                    IsVisible="{Binding Principal}"
                                     FontSize="14" FontAttributes="Bold"></Button>
                     </StackLayout>
                 </StackLayout>

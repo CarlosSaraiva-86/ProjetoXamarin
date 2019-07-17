@@ -18,7 +18,8 @@ namespace BragantinaTelerikDemo.Portable.Models
         {
             Order _order = new Order(idPedido);
             Customer _customer = new Customer(idCliente);
-            seller_id = "63068de7-8b9f-4c9a-8e91-ed0f985c7d5f";
+            IdPagamento pgto = new IdPagamento();
+            seller_id = pgto.idSeller;
             int vlr = Convert.ToInt32(valor * 100);
             amount = vlr;
             order = _order;

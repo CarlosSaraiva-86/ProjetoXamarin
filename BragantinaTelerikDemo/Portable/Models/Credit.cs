@@ -8,7 +8,7 @@ namespace BragantinaTelerikDemo.Portable.Models
     {
         public bool delayed { get; set; }
         public bool authenticated { get; set; }
-        public bool pre_autorization { get; set; }
+        //public bool pre_autorization { get; set; }
         public bool save_card_data { get; set; }
         public string transaction_type { get; set; }
         public int number_installments { get; set; }

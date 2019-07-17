@@ -25,42 +25,45 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         public int CodComanda { get; set; }
         Pedido Comanda = new Pedido();
 
-        public QRCodeViewModel(string titulo)
+        public QRCodeViewModel(QRCodePedido qr)
         {
-            _titulo = titulo;
+            _titulo = qr.titulo;
             using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
             {
                 UsuarioDAO dao = new UsuarioDAO(conexao);
                 CodComanda = dao.UsuarioLogado.Id;
             }
-            buscarComandaAberta();
+            if (qr.status == 10)
+                buscarComandaAberta();
+            if (qr.status == 20)
+                buscarCheckout();
+        }
+
+        private void buscarCheckout()
+        {
+            ConsultaComandaFechada();
         }
 
         bool comandaAberta = false;
+
         private void buscarComandaAberta()
         {
             Comanda comanda = new Comanda();
             ComandaApi comandaApi = new ComandaApi();
+            ConsultaComandaAberta();
+        }
 
-            //Device.StartTimer(TimeSpan.FromSeconds(10), () =>
-            //{
-
-                ConsultaComandaAberta();
-                //if (comandaAberta)
-                //    return false;
-                //return true;
-                //if (_vezesTimer == 4)
-                //{
-                //    _vezesTimer = 0;
-                //    Button.IsEnabled = true;
-                //    Entry.Text = string.Empty;
-                //    return false;
-                //}
-
-                //Entry.Text = $"Timer foi executado {++_vezesTimer} vezes";
-                //Button.IsEnabled = false;
-                //return true;
-            //});
+        private async void ConsultaComandaFechada()
+        {
+            var comandaApi = new ComandaApi();
+            var resposta = await comandaApi.ConsultarComandaAtiva(CodComanda);
+            var resultado = await resposta.Content.ReadAsStringAsync();
+            var comanda = JsonConvert.DeserializeObject<Pedido>(resultado);
+            this.Comanda = comanda;
+            if (resposta.IsSuccessStatusCode)
+                ConsultaComandaFechada();
+            else
+                MessagingCenter.Send("", "SucessoFechadoComanda");
         }
 
         private async void ConsultaComandaAberta()
@@ -74,9 +77,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                 ConsultaComandaAberta();
             else
                 MessagingCenter.Send<Pedido>(this.Comanda, "SucessoAberturaComanda");
-
-
         }
     }
-    
+
 }

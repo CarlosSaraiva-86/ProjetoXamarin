@@ -30,17 +30,17 @@ namespace BragantinaTelerikDemo.Portable.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            MessagingCenter.Subscribe<string>(this, "QRCodeAberta", (msg) =>
+            MessagingCenter.Subscribe<QRCodePedido>(this, "QRCodeAberta", (msg) =>
             {
                 Navigation.PushAsync(new QRcodeView(msg));
             });
 
-            MessagingCenter.Subscribe<string>(this, "QRCodeFechada", (msg) =>
+            MessagingCenter.Subscribe<QRCodePedido>(this, "QRCodeFechada", (msg) =>
             {
                 Navigation.PushAsync(new QRcodeView(msg));
             });
 
-            MessagingCenter.Subscribe<string>(this, "QRCodePedido", (msg) =>
+            MessagingCenter.Subscribe<QRCodePedido>(this, "QRCodePedido", (msg) =>
             {
                 Navigation.PushAsync(new QRcodeView(msg));
             });

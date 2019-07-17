@@ -7,7 +7,20 @@ xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=
              Title="Pagamento">
     <ContentPage.Content>
         <StackLayout Padding="20" Spacing="20" BackgroundColor="White">
-            <Label Text="{Binding ValorTotalFormatado}" FontAttributes="Bold" FontSize="Large"></Label>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="{Binding ValorTotalFormatado}" FontAttributes="Bold" FontSize="Large" Grid.Row="0" 
+                       Grid.Column="0"></Label>
+                <Button Text="Apagar Cartão" Command="{Binding DeletarCommand}" TextColor="#FFFFFF" 
+                        BackgroundColor="#282828" BorderRadius="10" FontSize="8" FontAttributes="Bold" 
+                        Grid.Row="0" Grid.Column="1"></Button>
+            </Grid>
             <Entry x:Name="Numero" Placeholder="Número do Cartão" Keyboard="Numeric" Text="{Binding NumCartao}">
                 <Entry.Behaviors>
                     <behavior:MaskedBehavior Mask="XXXX XXXX XXXX XXXX" />
