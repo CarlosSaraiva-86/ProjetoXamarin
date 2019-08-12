@@ -15,12 +15,14 @@ using System.Web;
 using System.Windows.Input;
 using Xamarin.Forms;
 using static BragantinaTelerikDemo.Portable.API.PagamentoAPI;
+using static BragantinaTelerikDemo.Portable.API.UsuarioAPI;
 
 namespace BragantinaTelerikDemo.Portable.ViewModels
 {
     public class PagamentoViewModel : BaseViewModel
     {
         PagamentoAPI api = new PagamentoAPI();
+        UsuarioAPI apiUsuario = new UsuarioAPI();
         ComandaApi apiComanda = new ComandaApi();
         ItemAPI apiItem = new ItemAPI();
         Pedido pedido = new Pedido();
@@ -201,8 +203,9 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             {
                 if (api.Verificar(autorization, card))
                 {
+                    Usuario user = apiUsuario.Consultar(pedido.IdUsuario);
                     Credit credit = new Credit(card);
-                    Pagamento pagamento = new Pagamento(ValorTotal, pedido.Id.ToString(), pedido.IdUsuario.ToString(), credit);
+                    Pagamento pagamento = new Pagamento(ValorTotal, pedido.Id.ToString(), user, credit);
                     var pgto = api.Pagamento(autorization, pagamento);
 
                     if (pgto != null)

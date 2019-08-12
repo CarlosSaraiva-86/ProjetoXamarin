@@ -46,7 +46,7 @@ namespace BragantinaTelerikDemo.Android
 
                     var id = obj["id"].ToString().Replace("\"", "");
                     var name = obj["name"].ToString().Replace("\"", "");
-                    var email = obj["email"].ToString().Replace("\"", "");
+                    //var email = obj["email"].ToString().Replace("\"", "");
                     //var tel = obj["mobile_phone"].ToString().Replace("\"", "");
                     var picture = obj["picture"]["data"]["url"];
 

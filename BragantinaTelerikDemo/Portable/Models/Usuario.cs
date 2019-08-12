@@ -11,6 +11,7 @@ namespace BragantinaTelerikDemo.Portable.Models
         [PrimaryKey, NotNull]
         public int Id { get; set; }
         public string Nome { get; set; }
+        public string Sobrenome { get; set; }
         public string Telefone { get; set; }
         public bool Facebook { get; set; }
         public double Meta { get; set; }
@@ -18,6 +19,10 @@ namespace BragantinaTelerikDemo.Portable.Models
         public string Email { get; set; }
         public string Cidade { get; set; }
         public string UF { get; set; }
+        public string Logradouro { get; set; }
+        public string Bairro { get; set; }
+        public string CEP { get; set; }
+        public string Numero { get; set; }
         public string Cpf { get; internal set; }
         public string ImgPerfil { get; set; }
         public string IdToken { get; set; }
@@ -39,6 +44,10 @@ namespace BragantinaTelerikDemo.Portable.Models
         public string Email { get; set; }
         public string Cidade { get; set; }
         public string UF { get; set; }
+        public string Bairro { get; set; }
+        public string Logradouro { get; set; }
+        public string Numero { get; set; }
+        public string CEP { get; set; }
         public string Cpf { get; internal set; }
         public byte[] ImgByte { get; set; }
         public string ImgPerfil { get; set; }
@@ -50,6 +59,7 @@ namespace BragantinaTelerikDemo.Portable.Models
             }
         }
         public string Senha { get; set; }
+        public string Sobrenome { get; internal set; }
 
         public UsuarioNuvem()
         {

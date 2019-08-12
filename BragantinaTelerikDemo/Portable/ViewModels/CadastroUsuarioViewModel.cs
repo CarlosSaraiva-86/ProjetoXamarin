@@ -1,4 +1,5 @@
 ﻿using BragantinaTelerikDemo.Portable.API;
+using BragantinaTelerikDemo.Portable.Helpers;
 using BragantinaTelerikDemo.Portable.Models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,10 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
     {
         public UsuarioNuvem Usuario { get; set; }
         public Login login { get; set; }
+        ContentPage page;
+
+       
+
         public string Nome
         {
             get
@@ -98,6 +103,20 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             }
         }
 
+        public string Cep
+        {
+            get
+            {
+                return Usuario.CEP;
+            }
+            set
+            {
+                Usuario.CEP = value;
+                OnPropertyChanged();
+                ((Command)CadastrarCommand).ChangeCanExecute();
+            }
+        }
+
         public string UF
         {
             get
@@ -111,14 +130,88 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                 ((Command)CadastrarCommand).ChangeCanExecute();
             }
         }
+
+        public string Bairro
+        {
+            get
+            {
+                return Usuario.Bairro;
+            }
+            set
+            {
+                Usuario.Bairro = value;
+                OnPropertyChanged();
+                ((Command)CadastrarCommand).ChangeCanExecute();
+            }
+        }
+
+        public string Endereco
+        {
+            get
+            {
+                return Usuario.Logradouro;
+            }
+            set
+            {
+                Usuario.Logradouro = value;
+                OnPropertyChanged();
+                ((Command)CadastrarCommand).ChangeCanExecute();
+            }
+        }
+
+        public string Sobrenome
+        {
+            get
+            {
+                return Usuario.Sobrenome;
+            }
+            set
+            {
+                Usuario.Sobrenome = value;
+                OnPropertyChanged();
+                ((Command)CadastrarCommand).ChangeCanExecute();
+            }
+        }
+
+        public string Numero
+        {
+            get
+            {
+                return Usuario.Numero;
+            }
+            set
+            {
+                Usuario.Numero = value;
+                OnPropertyChanged();
+                ((Command)CadastrarCommand).ChangeCanExecute();
+            }
+        }
+
         public ICommand CadastrarCommand { get; set; }
 
-       
-        public CadastroUsuarioViewModel(UsuarioNuvem usuario)
+        private void LocalizarCEP(object sender, FocusEventArgs e)
+        {
+            if (Usuario.CEP != "")
+            {
+                CEP cep = new CEP();
+                var info = cep.Consultar(Usuario.CEP);
+                this.Endereco = info.logradouro;
+                this.UF = info.uf;
+                this.Cidade = info.localidade;
+                this.Bairro = info.bairro;
+            }
+        }
+
+
+        public CadastroUsuarioViewModel(UsuarioNuvem usuario, ContentPage view)
         {
             try
             {
                 this.Usuario = usuario;
+
+                page = view;
+                Entry cepEntry = page.FindByName<Entry>("CEP");
+                cepEntry.Unfocused += LocalizarCEP;
 
                 CadastrarCommand = new Command(() =>
                 {                    

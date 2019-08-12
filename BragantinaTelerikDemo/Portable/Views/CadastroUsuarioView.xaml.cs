@@ -1,4 +1,5 @@
-﻿using BragantinaTelerikDemo.Portable.Models;
+﻿using BragantinaTelerikDemo.Portable.Helpers;
+using BragantinaTelerikDemo.Portable.Models;
 using BragantinaTelerikDemo.Portable.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -18,9 +19,9 @@ namespace BragantinaTelerikDemo.Portable.Views
         public CadastroUsuarioView(UsuarioNuvem usuario)
         {
             InitializeComponent();
-            this.ViewModel = new CadastroUsuarioViewModel(usuario);
+            this.ViewModel = new CadastroUsuarioViewModel(usuario, this);
             this.BindingContext = this.ViewModel;
-        }
+        }       
 
         protected override void OnAppearing()
         {

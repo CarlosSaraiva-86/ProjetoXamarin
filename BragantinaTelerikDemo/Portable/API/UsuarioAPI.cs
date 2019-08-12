@@ -48,6 +48,19 @@ namespace BragantinaTelerikDemo.Portable.API
             return user;
         }
 
+        public Usuario Consultar(int id)
+        {
+            var client = new RestClient(con.uri + "usuario/" + id);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Connection", "keep-alive");
+            request.AddHeader("Accept-Encoding", "gzip, deflate");
+            request.AddHeader("Accept", "*/*");
+            IRestResponse response = client.Execute(request);
+            var user = JsonConvert.DeserializeObject<Usuario>(response.Content);
+            return user;
+        }
+
         public class UsuarioFB
         {
             public int Id { get; internal set; }

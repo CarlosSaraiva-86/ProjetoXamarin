@@ -3,6 +3,7 @@ using BragantinaTelerikDemo.Portable.Data;
 using BragantinaTelerikDemo.Portable.Models;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -14,8 +15,6 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         public Usuario Usuario { get; set; }
         public PerfilUsuarioViewModel()
         {
-           
-
             MessagingCenter.Subscribe<Usuario>(this, "UsuarioFB", (usuario) =>
             {
                 Avatar = usuario.ImgPerfil;
