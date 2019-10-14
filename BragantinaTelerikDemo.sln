@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BragantinaTelerikDemo.Andro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BragantinaTelerikDemo.iOS", "BragantinaTelerikDemo\iOS\BragantinaTelerikDemo.iOS.csproj", "{4D093CBA-9D8A-43DA-ADE4-B21E3DA40B1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BragantinaTelerikDemo.Portable", "BragantinaTelerikDemo\Portable\BragantinaTelerikDemo.Portable.csproj", "{78D35958-FF64-4710-BEF8-F6B0444F42DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BragantinaTelerikDemo.Portable", "BragantinaTelerikDemo\Portable\BragantinaTelerikDemo.Portable.csproj", "{78D35958-FF64-4710-BEF8-F6B0444F42DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

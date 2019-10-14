@@ -26,10 +26,10 @@ namespace BragantinaTelerikDemo.Portable.API
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(con.uri);
-            //var json = JsonConvert.SerializeObject(tok);
-            //var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var json = JsonConvert.SerializeObject(token);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
             //var content = new StringContent("", Encoding.UTF8, "application/json");
-            var resposta = await httpClient.GetAsync("login/" + token);
+            var resposta = await httpClient.PostAsync("login/token", content);
             return resposta;
         }
     }

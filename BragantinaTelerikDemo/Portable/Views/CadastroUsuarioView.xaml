@@ -9,7 +9,6 @@
             <StackLayout Padding="20" Spacing="20">
 
                 <Entry x:Name="Nome" Placeholder="Nome" Text="{Binding Nome}"/>
-                <Entry x:Name="Sobrenome" Placeholder="Sobrenome" Text="{Binding Sobrenome}"/>
                 <Entry x:Name="CPF" Placeholder="CPF" Keyboard="Numeric" Text="{Binding CPF}">
                     <Entry.Behaviors>
                         <behavior:MaskedBehavior Mask="XXX.XXX.XXX-XX" />
@@ -25,10 +24,10 @@
                         <behavior:MaskedBehavior Mask="(XX) X XXXX-XXXX"/>
                     </Entry.Behaviors>
                 </Entry>
-                <Entry x:Name="CEP" Placeholder="CEP" Text="{Binding Cep}" Keyboard="Numeric"/>
+                <!--<Entry x:Name="CEP" Placeholder="CEP" Text="{Binding Cep}" Keyboard="Numeric"/>
                 <Entry x:Name="Endereco" Placeholder="Endereço" Text="{Binding Endereco}"/>
                 <Entry x:Name="Numero" Placeholder="Número" Text="{Binding Numero}"/>
-                <Entry x:Name="Bairro" Placeholder="Bairro" Text="{Binding Bairro}"/>
+                <Entry x:Name="Bairro" Placeholder="Bairro" Text="{Binding Bairro}"/>-->
                 <Entry x:Name="UF" Placeholder="UF" Text="{Binding UF}"/>
                 <Entry x:Name="Cidade" Placeholder="Cidade" Text="{Binding Cidade}"/>
                 <Button Text="Cadastrar" Command="{Binding CadastrarCommand}" TextColor="#FFFFFF" 
