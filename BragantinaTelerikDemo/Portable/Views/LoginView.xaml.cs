@@ -29,9 +29,12 @@ namespace BragantinaTelerikDemo.Portable.Views
             var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
             if (status != PermissionStatus.Granted)
             {
-                var result = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Storage);
-                if (result.ContainsKey(Permission.Storage))
-                    status = result[Permission.Storage];
+                if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Storage))
+                {
+                    await DisplayAlert("Armazenamento", "O aplicativo necessita da permissão de armazenamento para funcionar.", "OK");
+                }
+
+                var result = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Storage);                
             }
 
             try

@@ -64,46 +64,39 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                 MessagingCenter.Send<UsuarioNuvem>(new UsuarioNuvem(), "CadastrarUsuario");
             });
 
-                     
+            LoginAutomatico();
         }
 
-        public async void Permissoes()
-        {
-            var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
-            if (status != PermissionStatus.Granted)
-            {
-                var result = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Storage);
-                if (result.ContainsKey(Permission.Storage))
-                    status = result[Permission.Storage];
-            }
-
-            if (status == PermissionStatus.Granted)
-                LoginAutomatico();
-        }
+       
         private async void LoginAutomatico()
         {
-           var loginAuto = new Usuario();
-           
-            using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
-            {
-                var dao = new UsuarioDAO(conexao);
-                loginAuto = dao.UsuarioLogado;
-            }
-            //METODO BUSCAR USUARIO SQLITE
+            var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
 
-            if (!string.IsNullOrEmpty(loginAuto.IdToken))
+            if (status == PermissionStatus.Granted)
             {
-                var resposta = await api.FazerLogin(loginAuto.IdToken);
+                var loginAuto = new Usuario();
 
-                if (resposta.IsSuccessStatusCode)
+                using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
                 {
-                    var resultado = await resposta.Content.ReadAsStringAsync();
-                    var login = JsonConvert.DeserializeObject<UserApi>(resultado);
-                    MessagingCenter.Send<Login>(new Login(login.login.Usuario, login.login.Senha), "SucessoLogin");
-                    //MessagingCenter.Send<Login>(new Login("Autenticado Via API", "Autenticado Via API"), "SucessoLogin");
+                    var dao = new UsuarioDAO(conexao);
+                    loginAuto = dao.UsuarioLogado;
                 }
-                else
-                    MessagingCenter.Send<LoginException>(new LoginException(), "FalhaLogin");
+                //METODO BUSCAR USUARIO SQLITE
+
+                if (!string.IsNullOrEmpty(loginAuto.IdToken))
+                {
+                    var resposta = await api.FazerLogin(loginAuto.IdToken);
+
+                    if (resposta.IsSuccessStatusCode)
+                    {
+                        var resultado = await resposta.Content.ReadAsStringAsync();
+                        var login = JsonConvert.DeserializeObject<UserApi>(resultado);
+                        MessagingCenter.Send<Login>(new Login(login.login.Usuario, login.login.Senha), "SucessoLogin");
+                        //MessagingCenter.Send<Login>(new Login("Autenticado Via API", "Autenticado Via API"), "SucessoLogin");
+                    }
+                    else
+                        MessagingCenter.Send<LoginException>(new LoginException(), "FalhaLogin");
+                }
             }
         }
 
