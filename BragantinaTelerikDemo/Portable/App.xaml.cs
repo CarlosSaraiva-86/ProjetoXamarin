@@ -1,13 +1,12 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using BragantinaTelerikDemo.Portable.API;
 using BragantinaTelerikDemo.Portable.Dao;
 using BragantinaTelerikDemo.Portable.Data;
 using BragantinaTelerikDemo.Portable.Models;
 using BragantinaTelerikDemo.Portable.Views;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using Xamarin.Forms;
 using static BragantinaTelerikDemo.Portable.API.UsuarioAPI;
 

@@ -1,5 +1,7 @@
 ﻿using BragantinaTelerikDemo.Portable.Models;
 using BragantinaTelerikDemo.Portable.ViewModels;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +22,17 @@ namespace BragantinaTelerikDemo.Portable.Views
             this.BindingContext = new LoginViewModel();
         }
 
-        protected override void OnAppearing()
+        async protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+            if (status != PermissionStatus.Granted)
+            {
+                var result = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Storage);
+                if (result.ContainsKey(Permission.Storage))
+                    status = result[Permission.Storage];
+            }
 
             try
             {

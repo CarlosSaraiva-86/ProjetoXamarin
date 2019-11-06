@@ -3,10 +3,13 @@ using BragantinaTelerikDemo.Portable.Dao;
 using BragantinaTelerikDemo.Portable.Data;
 using BragantinaTelerikDemo.Portable.Models;
 using Newtonsoft.Json;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -18,6 +21,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         public ICommand EntrarCommand { get; private set; }
         public ICommand CadastrarCommand { get; private set; }
         public ICommand EntrarFBCommand { get; private set; }
+        public bool Busy { get; set; }
 
         public LoginViewModel()
         {
@@ -60,10 +64,22 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                 MessagingCenter.Send<UsuarioNuvem>(new UsuarioNuvem(), "CadastrarUsuario");
             });
 
-
-            LoginAutomatico();
+                     
         }
 
+        public async void Permissoes()
+        {
+            var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+            if (status != PermissionStatus.Granted)
+            {
+                var result = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Storage);
+                if (result.ContainsKey(Permission.Storage))
+                    status = result[Permission.Storage];
+            }
+
+            if (status == PermissionStatus.Granted)
+                LoginAutomatico();
+        }
         private async void LoginAutomatico()
         {
            var loginAuto = new Usuario();
