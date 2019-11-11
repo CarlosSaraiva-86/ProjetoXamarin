@@ -17,10 +17,10 @@
         <PackageReference Include="RestSharp" Version="106.6.10" />
         <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
         <PackageReference Include="Xamarin.Auth" Version="1.6.0.4" />
-        <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.4.859" />
+        <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
         <PackageReference Include="SkiaSharp" Version="1.68.0" />
         <PackageReference Include="SkiaSharp.Views.Forms " Version="1.59.3" />
-        <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
+        <PackageReference Include="Xamarin.Forms" Version="4.3.0.947036" />
         <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
     </ItemGroup>
     <ItemGroup>

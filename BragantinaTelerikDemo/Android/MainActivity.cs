@@ -5,12 +5,12 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using FFImageLoading.Forms.Droid;
+using FFImageLoading.Forms.Platform;
 using Plugin.Permissions;
 
 namespace BragantinaTelerikDemo.Android
 {
-    [Activity(Label = "BragantinaTelerikDemo.Android", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Cervejaria Bragantina", Icon = "@drawable/login", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
