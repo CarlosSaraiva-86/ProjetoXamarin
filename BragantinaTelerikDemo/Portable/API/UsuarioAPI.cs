@@ -14,7 +14,7 @@ namespace BragantinaTelerikDemo.Portable.API
     {
         Conexao con = new Conexao();
 
-        public void CadastrarUsuario(UsuarioNuvem user)
+        public void CadastrarUsuario(Usuario user)
         {
             var json = JsonConvert.SerializeObject(user);
             var client = new RestClient(con.uri + "usuario");
@@ -27,10 +27,9 @@ namespace BragantinaTelerikDemo.Portable.API
             request.AddHeader("Content-Type", "application/json");
             request.AddParameter("undefined", json, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
-            var result = response.Content.ToString();
-            user.IdToken = result;
+            //user = JsonConvert.DeserializeObject<UsuarioNuvem>(response.Content);
             if (response.IsSuccessful)
-                MessagingCenter.Send<UsuarioNuvem>(user, "SucessoCadastro");
+                MessagingCenter.Send<Usuario>(user, "SucessoCadastro");
             else
                 MessagingCenter.Send<ArgumentException>(new ArgumentException(), "FalhaCadastro");
         }

@@ -11,7 +11,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
 {
     public class CadastroUsuarioViewModel : BaseViewModel
     {
-        public UsuarioNuvem Usuario { get; set; }
+        public Usuario Usuario { get; set; }
         public Login login { get; set; }
         ContentPage page;
 
@@ -55,6 +55,20 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             set
             {
                 Usuario.Email = value;
+                OnPropertyChanged();
+                ((Command)CadastrarCommand).ChangeCanExecute();
+            }
+        }
+
+        public string User
+        {
+            get
+            {
+                return Usuario.User;
+            }
+            set
+            {
+                Usuario.User = value;
                 OnPropertyChanged();
                 ((Command)CadastrarCommand).ChangeCanExecute();
             }
@@ -203,7 +217,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         //}
 
 
-        public CadastroUsuarioViewModel(UsuarioNuvem usuario, ContentPage view)
+        public CadastroUsuarioViewModel(Usuario usuario, ContentPage view)
         {
             try
             {
@@ -222,6 +236,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                     return !string.IsNullOrEmpty(this.Nome)
                      && !string.IsNullOrEmpty(this.Fone)
                      && !string.IsNullOrEmpty(this.Email)
+                     && !string.IsNullOrEmpty(this.User)
                      && !string.IsNullOrEmpty(this.CPF)
                      && !string.IsNullOrEmpty(this.Cidade)
                      && !string.IsNullOrEmpty(this.UF)

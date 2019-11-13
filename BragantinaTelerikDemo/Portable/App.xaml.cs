@@ -24,7 +24,7 @@ namespace BragantinaTelerikDemo.Portable
         protected override void OnStart()
         {
             // Handle when your app starts
-            MessagingCenter.Subscribe<Login>(this, "SucessoLogin",
+            MessagingCenter.Subscribe<Usuario>(this, "SucessoLogin",
                (usuario) =>
                {
                    MainPage = new NavigationPage(new MenuView());
@@ -36,7 +36,7 @@ namespace BragantinaTelerikDemo.Portable
                    MainPage = new NavigationPage(new LoginView());
                    //MessagingCenter.Send<Usuario>(usuario,"UsuarioFB");
                });
-            MessagingCenter.Subscribe<UsuarioNuvem>(this, "CadastrarUsuarioFB",
+            MessagingCenter.Subscribe<Usuario>(this, "CadastrarUsuarioFB",
                 (msg)=> 
                 {
                     MainPage = new CadastroUsuarioView(msg);
@@ -48,13 +48,13 @@ namespace BragantinaTelerikDemo.Portable
                    MainPage = new NavigationPage(new LoginFbView());
                });
 
-            MessagingCenter.Subscribe<UsuarioNuvem>(this, "CadastrarUsuario",
+            MessagingCenter.Subscribe<Usuario>(this, "CadastrarUsuario",
                (msg) =>
                {
                    MainPage = new CadastroUsuarioView(msg);
                });
 
-            MessagingCenter.Subscribe<UsuarioNuvem>(this, "SucessoCadastro", (msg) =>
+            MessagingCenter.Subscribe<Usuario>(this, "SucessoCadastro", (msg) =>
             {
                 SalvarUsuario(msg);
                 MainPage = new NavigationPage(new LoginView());
@@ -88,69 +88,39 @@ namespace BragantinaTelerikDemo.Portable
 
         public async static Task NavigateToProfile(List<string> infoLoginFb)
         {
-            UsuarioAPI api = new UsuarioAPI();
-            UsuarioNuvem usuario = new UsuarioNuvem { Nome = infoLoginFb[1], ImgPerfil = infoLoginFb[2],
-                IdToken = infoLoginFb[0], Facebook = true };
+            LoginAPI api = new LoginAPI();
+            Usuario usuario = new Usuario { Nome = infoLoginFb[1], ImgPerfil = infoLoginFb[2],
+                Facebook = true };
 
-            var user = api.Consultar(usuario.IdToken);
+            var user = api.FazerLogin(usuario);
 
-            if (user.Login != null)
+            if (user != null)
             {                 
                 SalvarUsuario(user);
                 MessagingCenter.Send("", "SucessoLoginFB");
             }
             else
-                MessagingCenter.Send<UsuarioNuvem>(usuario, "CadastrarUsuarioFB");
+                MessagingCenter.Send<Usuario>(usuario, "CadastrarUsuarioFB");
         }
 
-        public static void SalvarUsuario(UsuarioFB user)
+        public static void SalvarUsuario(Usuario user)
         {
-            Usuario usuario = new Usuario
-            {
-                Cidade = user.Cidade,
-                Consumo = user.Consumo,
-                UF = user.UF,
-                Telefone = user.Telefone,
-                Nome = user.Nome,
-                Cpf = user.Cpf,
-                Email = user.Email,
-                Facebook = user.Facebook,
-                Id = user.Login.Id,
-                IdToken = user.IdToken,
-                ImgPerfil = user.ImgPerfil,
-                Meta = user.Meta
-            };
             using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
             {
                 UsuarioDAO dao = new UsuarioDAO(conexao);
                 dao.Deletar();
-                dao.Salvar(usuario);
+                dao.Salvar(user);
             }
         }
 
-        public static void SalvarUsuario(UsuarioNuvem user)
-        {
-            Usuario usuario = new Usuario
-            {
-                Cidade = user.Cidade,
-                Consumo = user.Consumo,
-                UF = user.UF,
-                Telefone = user.Telefone,
-                Nome = user.Nome,
-                Cpf = user.Cpf,
-                Email = user.Email,
-                Facebook = user.Facebook,
-                Id = user.Login.Id,
-                IdToken = user.IdToken,
-                ImgPerfil = user.ImgPerfil,
-                Meta = user.Meta
-            };
-            using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
-            {
-                UsuarioDAO dao = new UsuarioDAO(conexao);
-                dao.Deletar();
-                dao.Salvar(usuario);
-            }
-        }
+        //public static void SalvarUsuario(Usuario usuario)
+        //{
+        //    using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
+        //    {
+        //        UsuarioDAO dao = new UsuarioDAO(conexao);
+        //        dao.Deletar();
+        //        dao.Salvar(usuario);
+        //    }
+        //}
     }
 }

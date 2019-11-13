@@ -56,6 +56,9 @@ Verifique os dados e tente novamente mais tarde.", "Ok");
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<LoginException>(this, "FalhaLogin");
+            //MessagingCenter.Unsubscribe<Login>(this, "SucessoLogin");
+            //MessagingCenter.Unsubscribe<string>(this, "LoginFacebook");
+            //MessagingCenter.Unsubscribe<UsuarioNuvem>(new UsuarioNuvem(), "CadastrarUsuario");
         }
     }
 }

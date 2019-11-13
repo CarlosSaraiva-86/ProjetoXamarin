@@ -12,7 +12,7 @@ namespace BragantinaTelerikDemo.Portable.API
     {
         Conexao con = new Conexao();
 
-        public async Task<HttpResponseMessage> FazerLogin(Login login)
+        public async Task<Usuario> FazerLogin(Usuario login)
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(con.uri);
@@ -22,15 +22,15 @@ namespace BragantinaTelerikDemo.Portable.API
             return resposta;
         }
 
-        public async Task<HttpResponseMessage> FazerLogin(string token)
-        {
-            HttpClient httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri(con.uri);
-            var json = JsonConvert.SerializeObject(token);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            //var content = new StringContent("", Encoding.UTF8, "application/json");
-            var resposta = await httpClient.PostAsync("login/token", content);
-            return resposta;
-        }
+        //public async Task<HttpResponseMessage> FazerLogin(string token)
+        //{
+        //    HttpClient httpClient = new HttpClient();
+        //    httpClient.BaseAddress = new Uri(con.uri);
+        //    var json = JsonConvert.SerializeObject(token);
+        //    var content = new StringContent(json, Encoding.UTF8, "application/json");
+        //    //var content = new StringContent("", Encoding.UTF8, "application/json");
+        //    var resposta = await httpClient.PostAsync("login/token", content);
+        //    return resposta;
+        //}
     }
 }

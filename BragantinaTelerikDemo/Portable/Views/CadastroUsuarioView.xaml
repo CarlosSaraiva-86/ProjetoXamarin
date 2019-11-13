@@ -16,6 +16,7 @@
                 </Entry>
 
                 <Entry x:Name="Email" Placeholder="Email" Keyboard="Email" Text="{Binding Email}"/>
+                <Entry x:Name="Usuario" Placeholder="Usuario" Text="{Binding User}"/>
 
                 <Entry x:Name="Senha" Placeholder="Senha" IsPassword="True" Text="{Binding Senha}"/>
 

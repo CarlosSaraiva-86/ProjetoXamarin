@@ -29,19 +29,19 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                 async () =>
                 {
                     //var login = new Usuario() { Email = usuario }
-                    var login = new Login(usuario, senha);
+                    var login = new Usuario() { User = usuario, Senha = senha };
 
                     var resposta = await api.FazerLogin(login);
 
                     if (resposta.IsSuccessStatusCode)
                     {
                         var resultado = await resposta.Content.ReadAsStringAsync();
-                        UserApi usuarioJson = JsonConvert.DeserializeObject<UserApi>(resultado);
-                        Usuario usuario = new Usuario { Id = usuarioJson.login.Id, Cidade = usuarioJson.Cidade, Consumo = usuarioJson.Consumo,
-                            Cpf = usuarioJson.Cpf, Email = usuarioJson.Email, Facebook = usuarioJson.Facebook, IdToken = usuarioJson.IdToken,
-                            ImgPerfil = usuarioJson.ImgPerfil, Nome = usuarioJson.Nome, Telefone = usuarioJson.Telefone, UF = usuarioJson.UF};
-                        SalvarUsuario(usuario);
-                        MessagingCenter.Send<Login>(login, "SucessoLogin");                        
+                        var usuarioJson = JsonConvert.DeserializeObject<Usuario>(resultado);
+                        //Usuario usuario = new Usuario { Id = usuarioJson.login.Id, Cidade = usuarioJson.Cidade, Consumo = usuarioJson.Consumo,
+                        //    Cpf = usuarioJson.Cpf, Email = usuarioJson.Email, Facebook = usuarioJson.Facebook,
+                        //    ImgPerfil = usuarioJson.ImgPerfil, Nome = usuarioJson.Nome, Telefone = usuarioJson.Telefone, UF = usuarioJson.UF};
+                        SalvarUsuario(usuarioJson);
+                        MessagingCenter.Send<Usuario>(login, "SucessoLogin");                        
                     }
                     else
                         MessagingCenter.Send<LoginException>(new LoginException(), "FalhaLogin");
@@ -61,7 +61,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             CadastrarCommand = new Command(
             async () =>
             {
-                MessagingCenter.Send<UsuarioNuvem>(new UsuarioNuvem(), "CadastrarUsuario");
+                MessagingCenter.Send<Usuario>(new Usuario(), "CadastrarUsuario");
             });
 
             LoginAutomatico();
@@ -83,15 +83,15 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                 }
                 //METODO BUSCAR USUARIO SQLITE
 
-                if (!string.IsNullOrEmpty(loginAuto.IdToken))
+                if (!string.IsNullOrEmpty(loginAuto.User))
                 {
-                    var resposta = await api.FazerLogin(loginAuto.IdToken);
+                    var resposta = await api.FazerLogin(loginAuto);
 
                     if (resposta.IsSuccessStatusCode)
                     {
                         var resultado = await resposta.Content.ReadAsStringAsync();
-                        var login = JsonConvert.DeserializeObject<UserApi>(resultado);
-                        MessagingCenter.Send<Login>(new Login(login.login.Usuario, login.login.Senha), "SucessoLogin");
+                        var login = JsonConvert.DeserializeObject<Usuario>(resultado);
+                        MessagingCenter.Send<Usuario>(login, "SucessoLogin");
                         //MessagingCenter.Send<Login>(new Login("Autenticado Via API", "Autenticado Via API"), "SucessoLogin");
                     }
                     else

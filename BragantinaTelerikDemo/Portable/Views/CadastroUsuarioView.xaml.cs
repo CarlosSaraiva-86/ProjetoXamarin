@@ -16,7 +16,7 @@ namespace BragantinaTelerikDemo.Portable.Views
     public partial class CadastroUsuarioView : ContentPage
     {
         public CadastroUsuarioViewModel ViewModel { get; set; }
-        public CadastroUsuarioView(UsuarioNuvem usuario)
+        public CadastroUsuarioView(Usuario usuario)
         {
             InitializeComponent();
             this.ViewModel = new CadastroUsuarioViewModel(usuario, this);
@@ -37,7 +37,7 @@ namespace BragantinaTelerikDemo.Portable.Views
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            MessagingCenter.Unsubscribe<UsuarioNuvem>(this, "SucessoCadastro");
+            MessagingCenter.Unsubscribe<Usuario>(this, "SucessoCadastro");
             MessagingCenter.Unsubscribe<ArgumentException>(this, "FalhaCadastro");
         }
     }

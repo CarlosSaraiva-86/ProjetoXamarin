@@ -50,7 +50,7 @@ namespace BragantinaTelerikDemo.Portable.Dao
                 var list = conexao.Query<Usuario>("select * from Usuario");
                 foreach (var lista in list)
                 {
-                    if (String.IsNullOrEmpty(lista.IdToken))
+                    if (String.IsNullOrEmpty(lista.Email))
                         conexao.Delete(lista.Id);
                     else
                         usuarioLogado = lista;
