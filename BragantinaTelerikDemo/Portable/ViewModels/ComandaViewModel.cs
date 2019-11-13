@@ -127,8 +127,8 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             var resultado = await resposta.Content.ReadAsStringAsync();
             var pedido = JsonConvert.DeserializeObject<Pedido>(resultado);
             this.Comanda = pedido;
-
-            NumeroComandaFormatado = "Nº: " + pedido.IdUsuario.ToString();
+            if (pedido.Usuario != null)
+                NumeroComandaFormatado = "Nº: " + pedido.Usuario.Id.ToString();
             if (string.IsNullOrEmpty(pedido.Id.ToString()))
                 NumeroComandaFormatado = "Abra a comanda no caixa";
 
@@ -185,27 +185,30 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             }
             else
                 Principal = true;
-           
 
 
-            Itens.Clear();
-            var itemApi = new ItemAPI();
-            var resposta2 = await itemApi.ConsultarItens(numeroComanda);
-            var resultado2 = await resposta2.Content.ReadAsStringAsync();
-            var itensJson = JsonConvert.DeserializeObject<ObservableCollection<Item>>(resultado2);
-            foreach (var itemJson in itensJson)
+
+            //Itens.Clear();
+            //var itemApi = new ItemAPI();
+            //var resposta2 = await itemApi.ConsultarItens(numeroComanda);
+            //var resultado2 = await resposta2.Content.ReadAsStringAsync();
+            //var itensJson = JsonConvert.DeserializeObject<ObservableCollection<Item>>(resultado2);
+            if (Comanda.Itens != null)
             {
-                Helpers.Status status = new Helpers.Status();
-                status.GerarStatusItens(itemJson.Status);
-                this.Itens.Add(new Item
+                foreach (var itemJson in Comanda.Itens)
                 {
-                    Descricao = itemJson.Descricao,
-                    ValorTotal = itemJson.ValorTotal,
-                    Qtde = itemJson.Qtde,
-                    Status = itemJson.Status,
-                    StatusFormatado = status.StatusComanda,
-                    Cor = status.Cor
-                });
+                    Helpers.Status status = new Helpers.Status();
+                    status.GerarStatusItens(itemJson.Status);
+                    this.Itens.Add(new Item
+                    {
+                        Descricao = itemJson.Descricao,
+                        ValorTotal = itemJson.ValorTotal,
+                        Qtde = itemJson.Qtde,
+                        Status = itemJson.Status,
+                        StatusFormatado = status.StatusComanda,
+                        Cor = status.Cor
+                    });
+                }
             }
         }
 

@@ -33,7 +33,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             PedirCommand = new Command(
             async () =>
             {
-                Item item = new Item() { IdProduto = Produto.Id, IdUser = nComanda, Status = 10, Qtde = Convert.ToInt32(Qtde)};
+                Item item = new Item() { Produto = Produto, Status = 10, Qtde = Convert.ToInt32(Qtde)};
 
                 var comandaApi = new ItemAPI();
                 var resposta = await comandaApi.EnviarItem(item);

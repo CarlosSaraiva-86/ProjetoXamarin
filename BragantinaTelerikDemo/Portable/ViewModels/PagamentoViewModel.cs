@@ -131,7 +131,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         public PagamentoViewModel(Pedido ped)
         {
             pedido = ped;
-            ConsultarTotal(pedido.IdUsuario);
+            ConsultarTotal(pedido.Usuario.Id);
             using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
             {
                 CardDAO dao = new CardDAO(conexao);
@@ -179,7 +179,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                 CardArm cardArm = new CardArm
                 {
                     cardholder_name = card.cardholder_name,
-                    customer_id = "cliente_"+pedido.IdUsuario.ToString(),
+                    customer_id = "cliente_"+pedido.Usuario.Id.ToString(),
                     expiration_month = card.expiration_month,
                     expiration_year = card.expiration_year,
                     number_token = card.number_token
@@ -203,7 +203,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             {
                 if (api.Verificar(autorization, card))
                 {
-                    Usuario user = apiUsuario.Consultar(pedido.IdUsuario);
+                    Usuario user = apiUsuario.Consultar(pedido.Usuario.Id);
                     Credit credit = new Credit(card);
                     Pagamento pagamento = new Pagamento(ValorTotal, pedido.Id.ToString(), user, credit);
                     var pgto = api.Pagamento(autorization, pagamento);
@@ -216,7 +216,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                             {
                                 if (apiComanda.AlterarStatus(pedido.Id, 20))
                                 {
-                                    ConsultaComandaAberta(pedido.IdUsuario);
+                                    ConsultaComandaAberta(pedido.Usuario.Id);
                                 }
                             }
                         }

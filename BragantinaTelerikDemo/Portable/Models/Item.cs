@@ -8,8 +8,8 @@ namespace BragantinaTelerikDemo.Portable.Models
     public class Item
     {
         public int Id { get; set; }
-        public int IdUser { get; set; }
-        public int IdProduto { get; set; }
+        //public int IdUser { get; set; }
+        public Produto Produto { get; set; }
         public int IdPedido { get; set; }
         //public string Descricao { get { return Descricao.PadRight(20,' '); } set { }; }
         private string descricao;

@@ -71,12 +71,14 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             var comandaApi = new ComandaApi();
             var resposta = await comandaApi.ConsultarComandaAberta(CodComanda);
             var resultado = await resposta.Content.ReadAsStringAsync();
-            var comanda = JsonConvert.DeserializeObject<Pedido>(resultado);
-            this.Comanda = comanda;
             if (!resposta.IsSuccessStatusCode)
                 ConsultaComandaAberta();
             else
+            {
+                var comanda = JsonConvert.DeserializeObject<Pedido>(resultado);
+                this.Comanda = comanda;
                 MessagingCenter.Send<Pedido>(this.Comanda, "SucessoAberturaComanda");
+            }
         }
     }
 
