@@ -5,6 +5,7 @@ using BragantinaTelerikDemo.Portable.Dao;
 using BragantinaTelerikDemo.Portable.Data;
 using BragantinaTelerikDemo.Portable.Models;
 using BragantinaTelerikDemo.Portable.Views;
+using Newtonsoft.Json;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using Xamarin.Forms;
@@ -90,17 +91,23 @@ namespace BragantinaTelerikDemo.Portable
         {
             LoginAPI api = new LoginAPI();
             Usuario usuario = new Usuario { Nome = infoLoginFb[1], ImgPerfil = infoLoginFb[2],
-                Facebook = true };
+                FacebookId = infoLoginFb[0],Facebook = true };
 
-            var user = api.FazerLogin(usuario);
+            var resposta = await api.FazerLogin(usuario);
 
-            if (user != null)
-            {                 
-                SalvarUsuario(user);
-                MessagingCenter.Send("", "SucessoLoginFB");
+            if (resposta.IsSuccessStatusCode)
+            {
+                var resultado = await resposta.Content.ReadAsStringAsync();
+                var user = JsonConvert.DeserializeObject<Usuario>(resultado);
+                if (user != null)
+                {
+                    SalvarUsuario(user);
+                    MessagingCenter.Send("", "SucessoLoginFB");
+                }
+                else
+                    MessagingCenter.Send<Usuario>(usuario, "CadastrarUsuarioFB");
             }
-            else
-                MessagingCenter.Send<Usuario>(usuario, "CadastrarUsuarioFB");
+            
         }
 
         public static void SalvarUsuario(Usuario user)

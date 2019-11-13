@@ -12,7 +12,7 @@ namespace BragantinaTelerikDemo.Portable.API
     {
         Conexao con = new Conexao();
 
-        public async Task<Usuario> FazerLogin(Usuario login)
+        public async Task<HttpResponseMessage> FazerLogin(Usuario login)
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(con.uri);
