@@ -14,8 +14,9 @@ namespace BragantinaTelerikDemo.Portable.Models
         public string Informacao { get; set; }
         public bool Info { get; set; }
         public bool Cozinha { get; set; }
+        public double Valor { get; set; }
 
-        public Produto(int id, string imagem, string descricao, string grupo, string titulo, string informacao, bool cozinha)
+        public Produto(int id, string imagem, string descricao, string grupo, string titulo, string informacao, bool cozinha, double valor)
         {
             this.Id = id;
             this.Imagem = imagem;
@@ -23,7 +24,8 @@ namespace BragantinaTelerikDemo.Portable.Models
             this.Grupo = grupo;
             this.Titulo = titulo;
             this.Informacao = informacao;
-            this.Cozinha = !cozinha;            
+            this.Cozinha = cozinha;
+            this.Valor = valor;
         }
 
         public Produto()

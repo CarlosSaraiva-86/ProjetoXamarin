@@ -43,6 +43,16 @@ namespace BragantinaTelerikDemo.Portable.API
                 return true;
             return false;
         }
+
+        public async Task<HttpResponseMessage> Update(Pedido pedido)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(con.uri);
+            var json = JsonConvert.SerializeObject(pedido);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var resposta = await httpClient.PostAsync("pedido/update", content);
+            return resposta;
+        }
     }
     
 }

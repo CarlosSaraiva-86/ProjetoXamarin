@@ -70,7 +70,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             foreach (var item in produtosJson)
             {
                 this.Items.Add(new Cerveja(item.Id, item.Imagem, item.Descricao, item.Grupo, item.Titulo, item.Informacao, 
-                    item.Cozinha));
+                    item.Cozinha, item.Valor));
 
             }
             Aguarde = false;

@@ -12,8 +12,8 @@ namespace BragantinaTelerikDemo.Portable.Models
         public string ImgAmargor { get; set; }
 
 
-        public Cerveja(int id, string imagem, string descricao, string grupo, string titulo, string informacao, bool cozinha) 
-            :base(id, imagem, descricao, grupo, titulo, informacao, cozinha)
+        public Cerveja(int id, string imagem, string descricao, string grupo, string titulo, string informacao, bool cozinha, double valor) 
+            :base(id, imagem, descricao, grupo, titulo, informacao, cozinha, valor)
         {
             this.ImgTonalidade = "http://191.252.64.46:5000/APIBragantina/Imagens/Produtos/Thumbs/icone-breja_01.png";
             this.ImgAmargor = "http://191.252.64.46:5000/APIBragantina/Imagens/Produtos/Thumbs/icone-breja_02.png";

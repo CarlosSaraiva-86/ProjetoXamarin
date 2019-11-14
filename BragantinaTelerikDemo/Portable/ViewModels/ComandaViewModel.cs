@@ -188,7 +188,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
 
 
 
-            //Itens.Clear();
+            Itens.Clear();
             //var itemApi = new ItemAPI();
             //var resposta2 = await itemApi.ConsultarItens(numeroComanda);
             //var resultado2 = await resposta2.Content.ReadAsStringAsync();
@@ -199,6 +199,10 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
                 {
                     Helpers.Status status = new Helpers.Status();
                     status.GerarStatusItens(itemJson.Status);
+
+                    if (itemJson.Descricao == null)
+                        itemJson.Descricao = itemJson.Produto.Descricao;
+
                     this.Itens.Add(new Item
                     {
                         Descricao = itemJson.Descricao,

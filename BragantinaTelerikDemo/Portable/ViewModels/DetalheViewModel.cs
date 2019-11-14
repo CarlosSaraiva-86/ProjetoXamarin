@@ -33,15 +33,28 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             PedirCommand = new Command(
             async () =>
             {
-                Item item = new Item() { Produto = Produto, Status = 10, Qtde = Convert.ToInt32(Qtde)};
+                var api = new ComandaApi();
+                var comanda = await api.ConsultarComandaAtiva(nComanda);
+                if (comanda.IsSuccessStatusCode)
+                {
+                    var resultado = await comanda.Content.ReadAsStringAsync();
+                    var pedido = JsonConvert.DeserializeObject<Pedido>(resultado);
+                    pedido.Itens.Add(new Item()
+                    {
+                        Produto = Produto, Status = 10,
+                        Qtde = Convert.ToInt32(Qtde),
+                        ValorTotal = Produto.Valor * Qtde,
+                    });
 
-                var comandaApi = new ItemAPI();
-                var resposta = await comandaApi.EnviarItem(item);
-                var resultado = await resposta.Content.ReadAsStringAsync();
-                if (resposta.IsSuccessStatusCode)
-                    MessagingCenter.Send<string>(resultado, "SucessoEnvioItem");
+                    var resposta = await api.Update(pedido);
+
+                    if (resposta.IsSuccessStatusCode)
+                        MessagingCenter.Send<string>(resultado, "SucessoEnvioItem");
+                    else
+                        MessagingCenter.Send<string>(resultado, "FalhaEnvioItem");
+                }
                 else
-                    MessagingCenter.Send<string>(resultado, "FalhaEnvioItem");
+                    MessagingCenter.Send<string>("", "FalhaEnvioItem");
             });
         }
 
