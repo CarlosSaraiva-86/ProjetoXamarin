@@ -91,7 +91,7 @@ namespace BragantinaTelerikDemo.Portable
         {
             LoginAPI api = new LoginAPI();
             Usuario usuario = new Usuario { Nome = infoLoginFb[1], ImgPerfil = infoLoginFb[2],
-                FacebookId = infoLoginFb[0],Facebook = true };
+                FacebookId = infoLoginFb[0], Email = infoLoginFb[3] ,Facebook = true };
 
             var resposta = await api.FazerLogin(usuario);
 
@@ -103,11 +103,12 @@ namespace BragantinaTelerikDemo.Portable
                 {
                     SalvarUsuario(user);
                     MessagingCenter.Send("", "SucessoLoginFB");
-                }
-                else
-                    MessagingCenter.Send<Usuario>(usuario, "CadastrarUsuarioFB");
+                }    
             }
-            
+            else
+            {
+                MessagingCenter.Send<Usuario>(usuario, "CadastrarUsuarioFB");
+            }
         }
 
         public static void SalvarUsuario(Usuario user)
