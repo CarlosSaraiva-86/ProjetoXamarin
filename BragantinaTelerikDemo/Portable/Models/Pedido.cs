@@ -11,6 +11,7 @@ namespace BragantinaTelerikDemo.Portable.Models
         public DateTime Data { get; set; }
         public int Status { get; set; }
         public List<Item> Itens { get; set; }
+        public bool Ativo { get; set; }
         /*
          * STATUS DA COMANDA
          * 10 - ABERTO
