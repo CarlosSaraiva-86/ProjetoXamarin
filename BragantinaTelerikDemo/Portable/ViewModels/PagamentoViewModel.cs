@@ -240,7 +240,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         private async void ConsultaComandaAberta(int CodComanda)
         {
             var comandaApi = new ComandaApi();
-            var resposta = await comandaApi.ConsultarComandaAtiva(CodComanda);
+            var resposta = await comandaApi.ConsultarComanda(CodComanda);
             var resultado = await resposta.Content.ReadAsStringAsync();
             var comanda = JsonConvert.DeserializeObject<Pedido>(resultado);
             

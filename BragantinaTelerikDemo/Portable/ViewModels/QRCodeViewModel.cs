@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace BragantinaTelerikDemo.Portable.ViewModels
@@ -24,6 +25,11 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         }
         public int CodComanda { get; set; }
         Pedido Comanda = new Pedido();
+
+        public ICommand Fechar => new Command(() =>
+        {
+            MessagingCenter.Send("", "FecharQR");
+        });
 
         public QRCodeViewModel(QRCodePedido qr)
         {
@@ -56,7 +62,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         private async void ConsultaComandaFechada()
         {
             var comandaApi = new ComandaApi();
-            var resposta = await comandaApi.ConsultarComandaAtiva(CodComanda);
+            var resposta = await comandaApi.ConsultarComanda(CodComanda);
             var resultado = await resposta.Content.ReadAsStringAsync();
             var comanda = JsonConvert.DeserializeObject<Pedido>(resultado);
             this.Comanda = comanda;
@@ -69,7 +75,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         private async void ConsultaComandaAberta()
         {
             var comandaApi = new ComandaApi();
-            var resposta = await comandaApi.ConsultarComandaAberta(CodComanda);
+            var resposta = await comandaApi.ConsultarComanda(CodComanda);
             var resultado = await resposta.Content.ReadAsStringAsync();
             if (!resposta.IsSuccessStatusCode)
                 ConsultaComandaAberta();

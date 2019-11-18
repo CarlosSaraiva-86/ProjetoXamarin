@@ -7,6 +7,7 @@
              Title="{Binding Titulo}">
     <ContentPage.Content>
         <StackLayout BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="{Binding CodComanda}" HorizontalOptions="Center"></Label>
             <barcode:RadBarcode Grid.Row="9" Grid.ColumnSpan="3" WidthRequest="260" HeightRequest="260" 
              HorizontalOptions="Center" VerticalOptions="Center"
              Margin="0, 20, 0, 0"
@@ -15,7 +16,11 @@
                     <barcode:QRCode SizingMode="Stretch"/>
                 </barcode:RadBarcode.Symbology>
             </barcode:RadBarcode>
-            <Label Text="{Binding CodComanda}" HorizontalOptions="Center"></Label>
+            <ImageButton Source="x.png"
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand"
+                    BackgroundColor="Transparent"
+                    Command="{Binding Fechar}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

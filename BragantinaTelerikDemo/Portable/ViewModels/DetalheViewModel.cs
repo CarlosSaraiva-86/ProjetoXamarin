@@ -34,7 +34,7 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             async () =>
             {
                 var api = new ComandaApi();
-                var comanda = await api.ConsultarComandaAtiva(nComanda);
+                var comanda = await api.ConsultarComanda(nComanda);
                 if (comanda.IsSuccessStatusCode)
                 {
                     var resultado = await comanda.Content.ReadAsStringAsync();

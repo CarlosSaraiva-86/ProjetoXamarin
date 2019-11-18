@@ -14,6 +14,7 @@ namespace BragantinaTelerikDemo.Portable.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ComandaView : ContentPage
 	{
+        
         ComandaViewModel vm = new ComandaViewModel();
         public ComandaView ()
 		{
@@ -30,19 +31,26 @@ namespace BragantinaTelerikDemo.Portable.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+            var QRcode = new QRcodeView();
+
+
+
             MessagingCenter.Subscribe<QRCodePedido>(this, "QRCodeAberta", (msg) =>
             {
-                Navigation.PushAsync(new QRcodeView(msg));
+                QRcode.setMensagem(msg);
+                Navigation.PushModalAsync(QRcode);
             });
 
             MessagingCenter.Subscribe<QRCodePedido>(this, "QRCodeFechada", (msg) =>
             {
-                Navigation.PushAsync(new QRcodeView(msg));
+                QRcode.setMensagem(msg);
+                Navigation.PushModalAsync(QRcode);
             });
 
             MessagingCenter.Subscribe<QRCodePedido>(this, "QRCodePedido", (msg) =>
             {
-                Navigation.PushAsync(new QRcodeView(msg));
+                QRcode.setMensagem(msg);
+                Navigation.PushModalAsync(QRcode);
             });
 
             MessagingCenter.Subscribe<Pedido>(this, "AbrirPagamento", (msg) =>
