@@ -43,8 +43,8 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
             {
                 new LayoutOption(LayoutType.Grid, ""),
             };
-
             this.SelectedLayout = new LayoutOption(LayoutType.Grid, "");
+            
         }
 
         private bool aguarde;

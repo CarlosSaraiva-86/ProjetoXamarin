@@ -4,6 +4,7 @@ using BragantinaTelerikDemo.Portable.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace BragantinaTelerikDemo.Portable.ViewModels
@@ -21,6 +22,11 @@ namespace BragantinaTelerikDemo.Portable.ViewModels
         }
         public int CodComanda { get; set; }
         Pedido Comanda = new Pedido();
+
+        public ICommand Fechar => new Command(() =>
+        {
+            MessagingCenter.Send("", "FecharItens");
+        });
 
         public RetiradaItensPendentesViewModel(string titulo)
         {

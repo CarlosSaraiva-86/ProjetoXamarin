@@ -18,5 +18,21 @@ namespace BragantinaTelerikDemo.Portable.Views
 			InitializeComponent ();
             this.BindingContext = new RetiradaItensPendentesViewModel(titulo);
         }
-	}
+
+        protected override void OnAppearing()
+        {
+            MessagingCenter.Subscribe<string>("", "FecharItens",
+            async (msg) =>
+            {
+                await Navigation.PopModalAsync();
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<string>("", "FecharItens");
+            Navigation.PopModalAsync();
+        }
+    }
 }

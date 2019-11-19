@@ -16,7 +16,9 @@
                 <ActivityIndicator IsRunning="{Binding Aguarde}"
                                    IsVisible="{Binding Aguarde}">
                 </ActivityIndicator>
-                <telerikDataControls:RadListView Grid.Row="0"
+                <telerikDataControls:RadListView 
+                                             x:Name="listView"
+                                             Grid.Row="0"
                                              ItemsSource="{Binding Items}"
                                              WidthRequest="325"
                                              SelectedItem="{Binding ProdutoSelecionado, Mode=TwoWay}">
@@ -31,7 +33,8 @@
                                                                     VerticalItemSpacing="2"
                                                                     SpanCount="2"
                                                                     ItemLength="190"
-                                                                    Orientation="Vertical" />
+                                                                    Orientation="Vertical" 
+                                                                        />
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
@@ -74,16 +77,6 @@
                                                    TextColor="#534741"
                                                    FontSize="12" />
                                             </StackLayout>
-                                            <!--<StackLayout HorizontalOptions="Start"
-                                                     VerticalOptions="End">
-                                                <Label Text="{Binding Title}"
-                                                   TextColor="#FFFFFF"
-                                                   FontAttributes="Italic"
-                                                   FontSize="16" />
-                                                <Label Text="{Binding Author}"
-                                                   TextColor="#FFFFFF"
-                                                   FontSize="12" />
-                                            </StackLayout>-->
                                         </Grid>
                                     </Grid>
                                 </telerikListView:ListViewTemplateCell.View>
@@ -91,39 +84,6 @@
                         </DataTemplate>
                     </telerikDataControls:RadListView.ItemTemplate>
                     <telerikDataControls:RadListView.GroupHeaderTemplate>
-                        <!--<DataTemplate>
-                            <Grid Grid.ColumnSpacing="4"
-                              Grid.RowSpacing="0"
-                              Padding="16,0,0,0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="16" />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0"
-                                   Text="{StaticResource ExpandedIcon}"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"
-                                   FontFamily="{StaticResource IconsFont}"
-                                   FontSize="14"
-                                   TextColor="#5D4037"
-                                   IsVisible="{Binding IsExpanded}" />
-                                <Label Grid.Column="0"
-                                   Text="{StaticResource CollapsedIcon}"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"
-                                   FontFamily="{StaticResource IconsFont}"
-                                   FontSize="14"
-                                   TextColor="#5D4037"
-                                   IsVisible="{Binding IsExpanded, Converter={StaticResource InvertedBooleanConverter}}" />
-                                <Label Grid.Column="1"
-                                   Text="{Binding Key}"
-                                   HorizontalOptions="Start"
-                                   VerticalOptions="Center"
-                                   FontAttributes="Bold"
-                                   FontSize="14"
-                                   TextColor="#5D4037" />
-                            </Grid>
-                        </DataTemplate>-->
                         <DataTemplate>
                             <Grid Grid.ColumnSpacing="4"
                               Grid.RowSpacing="0"

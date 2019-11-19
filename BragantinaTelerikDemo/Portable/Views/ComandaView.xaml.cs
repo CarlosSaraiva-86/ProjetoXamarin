@@ -60,7 +60,7 @@ namespace BragantinaTelerikDemo.Portable.Views
 
             MessagingCenter.Subscribe<string>(this, "ItensPendentes", (msg) =>
             {
-                Navigation.PushAsync(new RetiradaItensPendentesView(msg));
+                Navigation.PushModalAsync(new RetiradaItensPendentesView(msg));
             });
             await this.vm.ConsultaDadosComanda();
         }

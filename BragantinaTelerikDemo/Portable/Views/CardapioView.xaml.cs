@@ -22,6 +22,7 @@ namespace BragantinaTelerikDemo.Portable.Views
             InitializeComponent();
             this.ViewModel = new CardapioViewModel();
             this.BindingContext = this.ViewModel;
+            
         }
 
         protected async override void OnAppearing()
@@ -33,6 +34,9 @@ namespace BragantinaTelerikDemo.Portable.Views
                     Navigation.PushAsync(new DetalheView(msg));
                 });
             await this.ViewModel.GetProdutos();
+
+            var dataView = this.listView.GetDataView();
+            dataView.CollapseAll();
         }
 
         protected override void OnDisappearing()
